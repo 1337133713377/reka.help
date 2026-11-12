@@ -1,0 +1,562 @@
+<!doctype html>
+<html lang="fr" data-lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title data-fr="REKA — La console de mixage tout-en-un pour Windows" data-en="REKA — The all-in-one mixing console for Windows">REKA — La console de mixage tout-en-un pour Windows</title>
+<meta name="description"
+  content="REKA pilote Voicemeeter et tes plugins VST depuis une seule fenêtre : faders, routing, effets par strip, volume par application, douze thèmes. Pour Windows 10 et 11."
+  data-fr="REKA pilote Voicemeeter et tes plugins VST depuis une seule fenêtre : faders, routing, effets par strip, volume par application, douze thèmes. Pour Windows 10 et 11."
+  data-en="REKA runs Voicemeeter and your VST plugins from a single window: faders, routing, per-strip effects, per-app volume, twelve themes. For Windows 10 and 11.">
+<meta name="theme-color" content="#0f1115">
+<meta property="og:type" content="website">
+<meta property="og:title" content="REKA — La console de mixage tout-en-un pour Windows">
+<meta property="og:description" content="Voicemeeter pour le son, tes plugins VST pour les effets, une seule fenêtre pour tout piloter.">
+<meta property="og:image" content="https://reka.help/assets/img/og.png">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="favicon.ico" sizes="any">
+<link rel="icon" type="image/png" href="assets/img/favicon.png">
+<link rel="apple-touch-icon" href="assets/img/apple-touch-icon.png">
+<link rel="preload" href="assets/fonts/Inter-SemiBold.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="assets/fonts/Inter-Regular.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="assets/css/style.css">
+<script>
+(function(){var d=document.documentElement,l=null,t=null;try{l=localStorage.getItem("reka-lang");t=localStorage.getItem("reka-theme")}catch(e){}var q=new URLSearchParams(location.search).get("lang");if(q==="en"||q==="fr")l=q;if(l!=="en"&&l!=="fr")l=(navigator.language||"fr").toLowerCase().indexOf("fr")===0?"fr":"en";d.setAttribute("data-lang",l);d.setAttribute("lang",l);if(t&&t!=="studio")d.setAttribute("data-theme",t)})();
+</script>
+</head>
+<body>
+<a class="skip" href="#contenu"><span lang="fr">Aller au contenu</span><span lang="en">Skip to content</span></a>
+
+<header class="site-header">
+  <div class="wrap">
+    <a class="brand" href="./" aria-label="REKA">
+      <img src="assets/img/reka-mark-324.webp" alt="" width="56" height="28">
+      <b>REKA</b>
+    </a>
+    <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="nav" aria-label="Menu">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
+    </button>
+    <nav class="nav" id="nav" aria-label="Navigation">
+      <a href="#fonctions"><span lang="fr">Fonctions</span><span lang="en">Features</span></a>
+      <a href="#themes"><span lang="fr">Thèmes</span><span lang="en">Themes</span></a>
+      <a href="#moteurs"><span lang="fr">Moteurs</span><span lang="en">Engines</span></a>
+      <a href="#demarrer"><span lang="fr">Démarrer</span><span lang="en">Get started</span></a>
+      <a href="help.html"><span lang="fr">Aide</span><span lang="en">Help</span></a>
+    </nav>
+    <div class="header-tools">
+      <div class="lang" role="group" aria-label="Langue / Language">
+        <button type="button" data-set-lang="fr" aria-pressed="true">FR</button>
+        <button type="button" data-set-lang="en" aria-pressed="false">EN</button>
+      </div>
+      <a class="btn btn-primary btn-sm" href="https://github.com/1337133713377/reka/releases/latest/download/REKA.exe">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 4v11M7 11l5 5 5-5M5 20h14"/></svg>
+        <span lang="fr">Télécharger</span><span lang="en">Download</span>
+      </a>
+    </div>
+  </div>
+</header>
+
+<main id="contenu">
+
+  <!-- Présentation -->
+  <section class="hero" id="apercu">
+    <div class="wrap hero-grid">
+      <div>
+        <h1 lang="fr">La console de mixage <em>tout-en-un</em> pour Windows.</h1>
+        <h1 lang="en">The <em>all-in-one</em> mixing console for Windows.</h1>
+        <p class="lead" lang="fr">Voicemeeter pour le son, tes plugins VST pour les effets, <strong>une seule fenêtre</strong> pour tout piloter.</p>
+        <p class="lead" lang="en">Voicemeeter for the sound, your VST plugins for the effects, <strong>one window</strong> to run it all.</p>
+        <div class="cta">
+          <a class="btn btn-primary" href="https://github.com/1337133713377/reka/releases/latest/download/REKA.exe">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 4v11M7 11l5 5 5-5M5 20h14"/></svg>
+            <span lang="fr">Télécharger REKA.exe</span><span lang="en">Download REKA.exe</span>
+          </a>
+          <a class="btn btn-ghost" href="help.html">
+            <span lang="fr">Ouvrir l'aide</span><span lang="en">Open the help</span>
+          </a>
+        </div>
+        <div class="hero-meta">
+          <span lang="fr">Windows 10 et 11, 64 bits</span><span lang="en">Windows 10 and 11, 64-bit</span>
+          <span lang="fr">Un seul fichier, rien à installer</span><span lang="en">One file, nothing to install</span>
+          <span lang="fr">Mises à jour automatiques</span><span lang="en">Automatic updates</span>
+          <b class="version-tag" data-latest-version></b>
+        </div>
+      </div>
+
+      <div class="hero-shot">
+        <figure class="shot">
+          <button class="zoom" type="button" data-full="assets/img/console.webp" data-label-fr="Agrandir la capture de la console" data-label-en="Enlarge the console screenshot" aria-label="Agrandir la capture de la console">
+            <div class="stack" data-base="assets/img/console.webp">
+              <img class="top" src="assets/img/console-1034.webp"
+                   srcset="assets/img/console-1034.webp 1034w, assets/img/console.webp 2068w"
+                   sizes="(max-width: 1020px) 100vw, 660px" width="1034" height="860" fetchpriority="high"
+                   alt="La console REKA : six strips avec leurs effets, le routing, les faders, et le panneau Master"
+                   data-alt-fr="La console REKA : six strips avec leurs effets, le routing, les faders, et le panneau Master"
+                   data-alt-en="The REKA console: six strips with their effects, routing and faders, and the Master panel">
+            </div>
+          </button>
+        </figure>
+        <div class="themes-bar" role="radiogroup" aria-label="Thème" data-label-fr="Thème de la console" data-label-en="Console theme">
+          <span class="label"><span lang="fr">Essaie un thème :</span><span lang="en">Try a theme:</span></span>
+          <button class="theme-chip" type="button" role="radio" aria-checked="true" data-theme="studio" style="--c1:#3b82f6;--c2:#60a5fa"><i></i>Studio</button>
+          <button class="theme-chip" type="button" role="radio" aria-checked="false" tabindex="-1" data-theme="synthwave" style="--c1:#ff4fb8;--c2:#00e5ff"><i></i>Synthwave</button>
+          <button class="theme-chip" type="button" role="radio" aria-checked="false" tabindex="-1" data-theme="braise" style="--c1:#ff6a3d;--c2:#ffb347"><i></i>Braise</button>
+          <button class="theme-chip" type="button" role="radio" aria-checked="false" tabindex="-1" data-theme="glace" style="--c1:#00e5ff;--c2:#e9f7ff"><i></i>Glace</button>
+          <button class="theme-chip" type="button" role="radio" aria-checked="false" tabindex="-1" data-theme="matrix" style="--c1:#39ff14;--c2:#7dff6a"><i></i>Matrix</button>
+          <button class="theme-chip" type="button" role="radio" aria-checked="false" tabindex="-1" data-theme="sakura" style="--c1:#ff8fc7;--c2:#ffe3f1"><i></i>Sakura</button>
+          <button class="theme-chip" type="button" role="radio" aria-checked="false" tabindex="-1" data-theme="arcade" style="--c1:#5865f2;--c2:#22c55e"><i></i>Arcade</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- En bref -->
+  <section class="alt" id="fonctions">
+    <div class="wrap">
+      <div class="section-head">
+        <div class="eyebrow"><span lang="fr">En bref</span><span lang="en">At a glance</span></div>
+        <h2 lang="fr">Tout ce qui passe par ton PC, réglé au même endroit.</h2>
+        <h2 lang="en">Everything that plays on your PC, set in one place.</h2>
+        <p lang="fr">Voicemeeter et ton moteur d'effets tournent cachés en arrière-plan. Toi, tu ne vois que la console.</p>
+        <p lang="en">Voicemeeter and your effects engine run hidden in the background. All you see is the console.</p>
+      </div>
+
+      <div class="grid grid-3">
+        <article class="card feature">
+          <div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 4v6M6 14v6M12 4v2M12 10v10M18 4v9M18 17v3"/><rect x="4" y="10" width="4" height="4" rx="1"/><rect x="10" y="6" width="4" height="4" rx="1"/><rect x="16" y="13" width="4" height="4" rx="1"/></svg></div>
+          <h3 lang="fr">Une seule console</h3><h3 lang="en">A single console</h3>
+          <p lang="fr">Faders, mutes, VU-mètres et routing de <strong>Voicemeeter Potato ou Banana</strong>, sans jamais ouvrir sa fenêtre.</p>
+          <p lang="en">Faders, mutes, VU meters and routing for <strong>Voicemeeter Potato or Banana</strong>, without ever opening its window.</p>
+        </article>
+        <article class="card feature">
+          <div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 3v5M15 3v5M6 8h12v3a6 6 0 0 1-12 0zM12 17v4"/></svg></div>
+          <h3 lang="fr">Tes VST, strip par strip</h3><h3 lang="en">Your VSTs, strip by strip</h3>
+          <p lang="fr">Ajoute, coupe, règle et <strong>déplace à la souris</strong> tes plugins VST2, VST3 et CLAP sur chaque entrée.</p>
+          <p lang="en">Add, bypass, tweak and <strong>drag around</strong> your VST2, VST3 and CLAP plugins on every input.</p>
+        </article>
+        <article class="card feature">
+          <div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 7h9a4 4 0 0 1 4 4v9M4 17h6"/><path d="m14 17 3 3 3-3"/></svg></div>
+          <h3 lang="fr">Routing en un clic</h3><h3 lang="en">One-click routing</h3>
+          <p lang="fr">Quatre knobs par strip : <strong>Monitor, Mic Out, Discord, Obs</strong>. Un clic pour envoyer, un glisser pour doser.</p>
+          <p lang="en">Four knobs per strip: <strong>Monitor, Mic Out, Discord, Obs</strong>. Click to send, drag to set the level.</p>
+        </article>
+        <article class="card feature">
+          <div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 16a8 8 0 1 1 16 0"/><path d="m12 16 4-6"/><path d="M4 20h16"/></svg></div>
+          <h3 lang="fr">Charge CPU et GPU</h3><h3 lang="en">CPU and GPU load</h3>
+          <p lang="fr">Deux jauges montrent ce que coûtent tes effets. Un clic droit <strong>mesure un plugin précis</strong>.</p>
+          <p lang="en">Two gauges show what your effects cost. A right-click <strong>measures one specific plugin</strong>.</p>
+        </article>
+        <article class="card feature">
+          <div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 9.5h3l5-4v13l-5-4H4z"/><path d="M16 9a4 4 0 0 1 0 6M18.5 6.5a7.5 7.5 0 0 1 0 11"/></svg></div>
+          <h3 lang="fr">Volume par application</h3><h3 lang="en">Per-app volume</h3>
+          <p lang="fr">Discord, Spotify, ton jeu, ton navigateur : chacun son volume et son mute, <strong>depuis la strip</strong>.</p>
+          <p lang="en">Discord, Spotify, your game, your browser: each gets its own volume and mute, <strong>right on the strip</strong>.</p>
+        </article>
+        <article class="card feature">
+          <div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3a9 9 0 1 0 0 18c1.3 0 2-.9 2-2 0-1.4-1-1.9 0-3 .8-.9 2-.8 3.3-.8A3.7 3.7 0 0 0 21 11.5C21 6.8 17 3 12 3z"/><circle cx="7.5" cy="11" r="1"/><circle cx="10.5" cy="7.5" r="1"/><circle cx="15" cy="7.5" r="1"/></svg></div>
+          <h3 lang="fr">Douze thèmes</h3><h3 lang="en">Twelve themes</h3>
+          <p lang="fr">Synthwave, Matrix, Sakura, Braise… ou <strong>ta couleur pour chaque élément</strong> et ton image de fond.</p>
+          <p lang="en">Synthwave, Matrix, Sakura, Braise… or <strong>your own color for every element</strong> and your own background image.</p>
+        </article>
+        <article class="card feature">
+          <div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2.5" y="7.5" width="19" height="10" rx="5"/><path d="M7 11v3M5.5 12.5h3M15.5 13.5h.01M18 11.5h.01"/></svg></div>
+          <h3 lang="fr">« Joue à REKA »</h3><h3 lang="en">“Playing REKA”</h3>
+          <p lang="fr">Ton profil Discord montre que tu mixes avec REKA. <strong>Désactivable</strong> en un clic.</p>
+          <p lang="en">Your Discord profile shows you're mixing with REKA. <strong>Turn it off</strong> in one click.</p>
+        </article>
+        <article class="card feature">
+          <div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="9" y="3" width="6" height="11" rx="3"/><path d="M5.5 11a6.5 6.5 0 0 0 13 0M12 17.5V21M9 21h6"/></svg></div>
+          <h3 lang="fr">Micro synchronisé</h3><h3 lang="en">Synced microphone</h3>
+          <p lang="fr">Coupe ton micro dans REKA : le <strong>micro barré s'affiche dans Discord</strong>, et l'inverse.</p>
+          <p lang="en">Mute your mic in REKA and the <strong>muted-mic icon shows up in Discord</strong>, and the other way round.</p>
+        </article>
+        <article class="card feature">
+          <div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 3h7l4 4v14H7z"/><path d="M14 3v4h4M10 13h5M10 17h5"/></svg></div>
+          <h3 lang="fr">Toute ta config dans un fichier</h3><h3 lang="en">Your whole setup in one file</h3>
+          <p lang="fr"><strong>Exporte et importe</strong> thème, canaux, routing et chaînes d'effets : un seul fichier <code>.reka</code>.</p>
+          <p lang="en"><strong>Export and import</strong> theme, channels, routing and effect chains: a single <code>.reka</code> file.</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- Dans le détail -->
+  <section id="console">
+    <div class="wrap">
+      <div class="section-head">
+        <div class="eyebrow"><span lang="fr">Dans le détail</span><span lang="en">Up close</span></div>
+        <h2 lang="fr">Ce que tu peux faire avec.</h2>
+        <h2 lang="en">What you can do with it.</h2>
+      </div>
+
+      <div class="split">
+        <figure class="shot">
+          <button class="zoom" type="button" aria-label="Agrandir" data-label-fr="Agrandir la capture" data-label-en="Enlarge the screenshot">
+            <img src="assets/img/effets.webp" width="870" height="414" loading="lazy"
+                 alt="Zone d'effets de trois strips, avec le trait d'insertion pendant un glisser"
+                 data-alt-fr="Zone d'effets de trois strips, avec le trait d'insertion pendant un glisser"
+                 data-alt-en="Effects area of three strips, showing the insertion line while dragging a plugin">
+          </button>
+        </figure>
+        <div>
+          <h3 lang="fr">Des effets que tu ranges à la main</h3>
+          <h3 lang="en">Effects you arrange by hand</h3>
+          <ul lang="fr">
+            <li><strong>Clic sur « + »</strong> : ajoute un plugin depuis la liste de tes VST.</li>
+            <li><strong>Clic sur un effet</strong> : ouvre son interface.</li>
+            <li><strong>Glisser</strong> : change son ordre, ou envoie-le sur une autre strip <strong>avec ses réglages</strong>. <kbd>Ctrl</kbd> = copier.</li>
+            <li><strong>Clic droit</strong> : bypass, mesure de sa charge CPU, suppression.</li>
+            <li><strong>Badge FX</strong> : coupe toute la chaîne d'un coup.</li>
+            <li><strong>+2.5 ms</strong> : le délai que les plugins ajoutent à ta voix. Un point ambre signale un plugin lent.</li>
+          </ul>
+          <ul lang="en">
+            <li><strong>Click a “+”</strong>: add a plugin from your VST list.</li>
+            <li><strong>Click an effect</strong>: open its interface.</li>
+            <li><strong>Drag</strong>: reorder it, or drop it on another strip <strong>with its settings</strong>. <kbd>Ctrl</kbd> = copy.</li>
+            <li><strong>Right-click</strong>: bypass, measure its CPU load, remove.</li>
+            <li><strong>FX badge</strong>: bypasses the whole chain at once.</li>
+            <li><strong>+2.5 ms</strong>: the delay your plugins add to your voice. An amber dot flags a slow plugin.</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="split reverse">
+        <figure class="shot shot-narrow">
+          <button class="zoom" type="button" aria-label="Agrandir" data-label-fr="Agrandir la capture" data-label-en="Enlarge the screenshot">
+            <img src="assets/img/master.webp" width="300" height="676" loading="lazy"
+                 alt="Le haut du Master : connexion, projet, moteurs, jauges CPU et GPU, knob du casque"
+                 data-alt-fr="Le haut du Master : connexion, projet, moteurs, jauges CPU et GPU, knob du casque"
+                 data-alt-en="Top of the Master panel: connection badge, project, engines, CPU and GPU gauges, headphone knob">
+          </button>
+        </figure>
+        <div>
+          <h3 lang="fr">Un Master qui dit tout</h3>
+          <h3 lang="en">A Master panel that tells you everything</h3>
+          <ul lang="fr">
+            <li><strong>Badge de connexion</strong> : vert, tout répond ; rouge, un moteur a décroché.</li>
+            <li><strong>Projet</strong> : change de projet REAPER à chaud.</li>
+            <li><strong>Voicemeeter / REAPER</strong> : affiche leur fenêtre si tu en as besoin.</li>
+            <li><strong>CPU et GPU</strong> : la charge de tes effets, en ambre puis en rouge quand ça chauffe.</li>
+            <li><strong>Casque</strong> : le volume de ta sortie principale.</li>
+            <li><strong>Musique en cours</strong> : pochette, titre, précédent / pause / suivant.</li>
+          </ul>
+          <ul lang="en">
+            <li><strong>Connection badge</strong>: green, everything responds; red, an engine dropped out.</li>
+            <li><strong>Projet</strong> (project): switch REAPER projects on the fly.</li>
+            <li><strong>Voicemeeter / REAPER</strong>: bring up their window when you need it.</li>
+            <li><strong>CPU and GPU</strong>: the load of your effects, amber then red as it heats up.</li>
+            <li><strong>Casque</strong> (headphones): the volume of your main output.</li>
+            <li><strong>Now playing</strong>: cover art, title, previous / pause / next.</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="split">
+        <figure class="shot">
+          <button class="zoom" type="button" aria-label="Agrandir" data-label-fr="Agrandir la capture" data-label-en="Enlarge the screenshot">
+            <img src="assets/img/reglages-audio.webp" width="1240" height="1060" loading="lazy"
+                 alt="Réglages, onglet Audio : le périphérique de chaque entrée et de chaque sortie"
+                 data-alt-fr="Réglages, onglet Audio : le périphérique de chaque entrée et de chaque sortie"
+                 data-alt-en="Settings, Audio tab: the device for each input and each output">
+          </button>
+        </figure>
+        <div>
+          <h3 lang="fr">Tes entrées, tes sorties</h3>
+          <h3 lang="en">Your inputs, your outputs</h3>
+          <p lang="fr">Dans ⚙ → <strong>Audio</strong>, choisis sans ouvrir Voicemeeter :</p>
+          <p lang="en">In ⚙ → <strong>Audio</strong>, pick without opening Voicemeeter:</p>
+          <ul lang="fr">
+            <li>le <strong>micro ou la carte son</strong> de chaque entrée ;</li>
+            <li>le <strong>périphérique de chaque sortie</strong> (A1 pour ton casque, A2 pour OBS…) ;</li>
+            <li>le pilote : <strong>WDM</strong> (le plus rapide), <strong>MME</strong> (le plus compatible), <strong>KS</strong> ou <strong>ASIO</strong> ;</li>
+            <li>le <strong>tampon audio</strong> : plus il est petit, plus ta voix arrive vite.</li>
+          </ul>
+          <ul lang="en">
+            <li>the <strong>microphone or sound card</strong> for each input;</li>
+            <li>the <strong>device for each output</strong> (A1 for your headphones, A2 for OBS…);</li>
+            <li>the driver: <strong>WDM</strong> (fastest), <strong>MME</strong> (most compatible), <strong>KS</strong> or <strong>ASIO</strong>;</li>
+            <li>the <strong>audio buffer</strong>: the smaller it is, the sooner your voice gets through.</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Thèmes -->
+  <section class="alt" id="themes">
+    <div class="wrap">
+      <div class="split">
+        <div>
+          <div class="eyebrow"><span lang="fr">Apparence</span><span lang="en">Appearance</span></div>
+          <h2 lang="fr">Douze thèmes, ou le tien.</h2>
+          <h2 lang="en">Twelve themes, or your own.</h2>
+          <p lang="fr" style="margin-top:16px">Un clic dans ⚙ → <strong>Apparence</strong> et toute la console change : couleurs, faders, VU-mètres. Les pastilles sous la capture en haut de page te montrent six d'entre eux.</p>
+          <p lang="en" style="margin-top:16px">One click in ⚙ → <strong>Apparence</strong> (appearance) and the whole console changes: colors, faders, VU meters. The chips under the screenshot at the top of this page show six of them.</p>
+          <p class="num" style="color:var(--text-2);font-size:.86rem;line-height:1.9">Dark Studio Pro · Néon · Synthwave · Braise · Glace · Matrix · Or noir · Sakura · Océan · Rubis · Arcade · Monochrome</p>
+          <ul lang="fr">
+            <li><strong>Couleur d'accent</strong> : dix teintes, ou n'importe quelle couleur.</li>
+            <li><strong>Couleur de chaque élément</strong> : knob, fader, VU-mètre, bouton… pour toute la console, un seul canal ou le Master.</li>
+            <li><strong>Image d'arrière-plan</strong>, avec assombrissement et transparence des panneaux.</li>
+            <li><strong>Style des faders</strong> : console, rond, fin, vintage.</li>
+            <li><strong>Style des VU-mètres</strong> : LED fines, LED larges, continu.</li>
+            <li><strong>Police</strong> de toute l'interface.</li>
+          </ul>
+          <ul lang="en">
+            <li><strong>Accent color</strong>: ten shades, or any color you like.</li>
+            <li><strong>Color of each element</strong>: knob, fader, VU meter, button… for the whole console, a single channel or the Master.</li>
+            <li><strong>Background image</strong>, with dimming and panel transparency.</li>
+            <li><strong>Fader style</strong>: console, round, thin, vintage.</li>
+            <li><strong>VU meter style</strong>: thin LEDs, wide LEDs, continuous.</li>
+            <li><strong>Font</strong> for the whole interface.</li>
+          </ul>
+        </div>
+        <figure class="shot" style="max-width:520px;margin-inline:auto">
+          <button class="zoom" type="button" aria-label="Agrandir" data-label-fr="Agrandir la capture" data-label-en="Enlarge the screenshot">
+            <img src="assets/img/reglages-themes.webp" width="1240" height="1520" loading="lazy"
+                 alt="Réglages, onglet Apparence : les douze thèmes prédéfinis"
+                 data-alt-fr="Réglages, onglet Apparence : les douze thèmes prédéfinis"
+                 data-alt-en="Settings, Appearance tab: the twelve built-in themes">
+          </button>
+        </figure>
+      </div>
+    </div>
+  </section>
+
+  <!-- Moteurs d'effets -->
+  <section id="moteurs">
+    <div class="wrap">
+      <div class="section-head">
+        <div class="eyebrow"><span lang="fr">Effets</span><span lang="en">Effects</span></div>
+        <h2 lang="fr">Cinq moteurs d'effets au choix.</h2>
+        <h2 lang="en">Five effects engines to choose from.</h2>
+        <p lang="fr">Tu changes de moteur quand tu veux dans ⚙ → <strong>Général</strong> ; REKA redémarre pour l'appliquer.</p>
+        <p lang="en">Switch engines whenever you like in ⚙ → <strong>Général</strong> (general); REKA restarts to apply it.</p>
+      </div>
+
+      <div class="table-scroll" tabindex="0" role="region" aria-label="Moteurs d'effets" data-label-fr="Tableau des moteurs d'effets" data-label-en="Effects engines table">
+        <table class="engines">
+          <thead>
+            <tr>
+              <th scope="col"><span lang="fr">Moteur</span><span lang="en">Engine</span></th>
+              <th scope="col"><span lang="fr">Ce que REKA pilote</span><span lang="en">What REKA controls</span></th>
+              <th scope="col"><span lang="fr">Délai ajouté à la voix</span><span lang="en">Delay added to your voice</span></th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <th scope="row">REAPER <span class="badge"><span lang="fr">conseillé</span><span lang="en">recommended</span></span></th>
+              <td><span lang="fr">Plugins VST2 / VST3 / CLAP : ajout, bypass, interface, déplacement, projets.</span><span lang="en">VST2 / VST3 / CLAP plugins: add, bypass, interface, move, projects.</span></td>
+              <td data-l-fr="Délai ajouté" data-l-en="Added delay"><span lang="fr">2 tampons ASIO + plugins</span><span lang="en">2 ASIO buffers + plugins</span></td>
+            </tr>
+            <tr>
+              <th scope="row">REKA <span lang="fr">(intégré)</span><span lang="en">(built-in)</span> <span class="badge new"><span lang="fr">nouveau</span><span lang="en">new</span></span></th>
+              <td><span lang="fr">Plugins VST2 / VST3 chargés par REKA, sans REAPER : ajout, bypass, interface, déplacement ; chaînes et réglages partagés dans le <code>.reka</code>.</span><span lang="en">VST2 / VST3 plugins loaded by REKA itself, no REAPER needed: add, bypass, interface, move; chains and settings travel in the <code>.reka</code> file.</span></td>
+              <td data-l-fr="Délai ajouté" data-l-en="Added delay"><span lang="fr">plugins seulement</span><span lang="en">plugins only</span></td>
+            </tr>
+            <tr>
+              <th scope="row">FL Studio</th>
+              <td><span lang="fr">Lancement et envoi du son ; les effets se règlent dans FL Studio.</span><span lang="en">Launching it and sending the audio; effects are set inside FL Studio.</span></td>
+              <td data-l-fr="Délai ajouté" data-l-en="Added delay"><span lang="fr">2 tampons ASIO + plugins</span><span lang="en">2 ASIO buffers + plugins</span></td>
+            </tr>
+            <tr>
+              <th scope="row">Equalizer APO</th>
+              <td><span lang="fr">Plugins VST2 64 bits, appliqués directement par Windows.</span><span lang="en">64-bit VST2 plugins, applied directly by Windows.</span></td>
+              <td data-l-fr="Délai ajouté" data-l-en="Added delay"><span lang="fr">plugins seulement</span><span lang="en">plugins only</span></td>
+            </tr>
+            <tr>
+              <th scope="row"><span lang="fr">Aucun</span><span lang="en">None</span></th>
+              <td><span lang="fr">Voicemeeter seul : volumes, routing, VU-mètres.</span><span lang="en">Voicemeeter alone: volumes, routing, VU meters.</span></td>
+              <td data-l-fr="Délai ajouté" data-l-en="Added delay"><span lang="fr">aucun</span><span lang="en">none</span></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <p style="margin-top:18px;color:var(--text-2);font-size:.96rem">
+        <a href="help.html#moteurs"><span lang="fr">Le détail de chaque moteur dans l'aide →</span><span lang="en">Details for each engine in the help →</span></a>
+      </p>
+    </div>
+  </section>
+
+  <!-- Démarrer -->
+  <section class="alt" id="demarrer">
+    <div class="wrap">
+      <div class="section-head">
+        <div class="eyebrow"><span lang="fr">Installation</span><span lang="en">Setup</span></div>
+        <h2 lang="fr">Démarrer en 3 étapes.</h2>
+        <h2 lang="en">Get started in 3 steps.</h2>
+      </div>
+
+      <ol class="steps">
+        <li><div class="card">
+          <h3 lang="fr">Installe les moteurs</h3><h3 lang="en">Install the engines</h3>
+          <p lang="fr"><a href="https://vb-audio.com/Voicemeeter/potato.htm" rel="noopener">Voicemeeter Potato</a> ou <a href="https://vb-audio.com/Voicemeeter/banana.htm" rel="noopener">Banana</a>, et pour les effets <a href="https://www.reaper.fm/download.php" rel="noopener">REAPER</a> (ou FL Studio, ou Equalizer APO).</p>
+          <p lang="en"><a href="https://vb-audio.com/Voicemeeter/potato.htm" rel="noopener">Voicemeeter Potato</a> or <a href="https://vb-audio.com/Voicemeeter/banana.htm" rel="noopener">Banana</a>, and for effects <a href="https://www.reaper.fm/download.php" rel="noopener">REAPER</a> (or FL Studio, or Equalizer APO).</p>
+        </div></li>
+        <li><div class="card">
+          <h3 lang="fr">Lance REKA</h3><h3 lang="en">Launch REKA</h3>
+          <p lang="fr"><a href="https://github.com/1337133713377/reka/releases/latest/download/REKA.exe">Télécharge <code>REKA.exe</code></a> et ouvre-le. Au premier lancement, tu choisis ton édition de Voicemeeter et ton moteur d'effets.</p>
+          <p lang="en"><a href="https://github.com/1337133713377/reka/releases/latest/download/REKA.exe">Download <code>REKA.exe</code></a> and open it. On first launch you pick your Voicemeeter edition and your effects engine.</p>
+        </div></li>
+        <li><div class="card">
+          <h3 lang="fr">Branche les effets <span class="once">une seule fois, avec REAPER</span></h3>
+          <h3 lang="en">Hook up the effects <span class="once">once only, with REAPER</span></h3>
+          <p lang="fr">⚙ → <strong>Ouvrir les préférences audio de REAPER</strong> → <em>Audio system</em> : <strong>ASIO</strong> → pilote : <strong>Voicemeeter Insert Virtual ASIO</strong>.</p>
+          <p lang="en">⚙ → <strong>Ouvrir les préférences audio de REAPER</strong> (open REAPER's audio preferences) → <em>Audio system</em>: <strong>ASIO</strong> → driver: <strong>Voicemeeter Insert Virtual ASIO</strong>.</p>
+        </div></li>
+      </ol>
+
+      <div class="note">
+        <div>
+          <p lang="fr"><strong>Tu veux juste voir à quoi ça ressemble ?</strong> Lance <span class="cmd"><span>REKA.exe --demo</span><button type="button">Copier</button></span> : la console s'ouvre avec des moteurs simulés, sans Voicemeeter ni REAPER.</p>
+          <p lang="en"><strong>Just want to see what it looks like?</strong> Run <span class="cmd"><span>REKA.exe --demo</span><button type="button">Copy</button></span>: the console opens with simulated engines, no Voicemeeter or REAPER needed.</p>
+          <p lang="fr">Il manque un moteur ? REKA te donne le lien de téléchargement, ou te laisse indiquer où il est installé.</p>
+          <p lang="en">An engine is missing? REKA gives you the download link, or lets you point to where it is installed.</p>
+          <p lang="en">Note: REKA's interface is in French. The <a href="help.html">help</a> gives each label with its translation.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Discord et sauvegarde -->
+  <section id="discord">
+    <div class="wrap">
+      <div class="section-head">
+        <div class="eyebrow">Discord</div>
+        <h2 lang="fr">Discord et sauvegarde.</h2>
+        <h2 lang="en">Discord and backup.</h2>
+      </div>
+      <div class="grid grid-3">
+        <article class="card">
+          <h3>Rich Presence</h3>
+          <p lang="fr">« Joue à REKA » sur ton profil, avec un bouton pour la télécharger. Marche sans rien régler, et une case suffit pour le couper.</p>
+          <p lang="en">“Playing REKA” on your profile, with a button to download it. Works out of the box, and one checkbox turns it off.</p>
+          <p class="num">⚙ → Discord</p>
+        </article>
+        <article class="card">
+          <h3 lang="fr">Micro synchronisé</h3><h3 lang="en">Synced microphone</h3>
+          <p lang="fr">Le Muet d'un canal et le micro de Discord se suivent, dans le sens que tu choisis. Demande une application Discord à ton nom (gratuite, 2 minutes).</p>
+          <p lang="en">A channel's mute and Discord's microphone follow each other, in the direction you choose. Needs a Discord application of your own (free, 2 minutes).</p>
+          <p class="num">⚙ → Discord</p>
+        </article>
+        <article class="card">
+          <h3 lang="fr">Export / import</h3><h3 lang="en">Export / import</h3>
+          <p lang="fr">Toute ta config dans un fichier <code>.reka</code> : pour changer de PC, réinstaller Windows ou partager tes réglages.</p>
+          <p lang="en">Your whole setup in one <code>.reka</code> file: to move to another PC, reinstall Windows or share your settings.</p>
+          <p class="num">⚙ → Général</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- Questions fréquentes -->
+  <section class="alt" id="aide">
+    <div class="wrap">
+      <div class="section-head">
+        <div class="eyebrow"><span lang="fr">Aide</span><span lang="en">Help</span></div>
+        <h2 lang="fr">Un souci ?</h2>
+        <h2 lang="en">Something wrong?</h2>
+        <p lang="fr">Les questions les plus fréquentes. Tout le reste est dans le <a href="help.html">centre d'aide</a>.</p>
+        <p lang="en">The most common questions. Everything else is in the <a href="help.html">help center</a>.</p>
+      </div>
+
+      <div class="faq-list">
+        <details class="faq">
+          <summary><span lang="fr">Windows affiche « Windows a protégé votre ordinateur »</span><span lang="en">Windows says “Windows protected your PC”</span></summary>
+          <div class="answer">
+            <p lang="fr"><code>REKA.exe</code> n'est pas signé numériquement, donc Windows SmartScreen prévient au premier lancement. Clique sur <strong>Informations complémentaires</strong>, puis <strong>Exécuter quand même</strong>.</p>
+            <p lang="en"><code>REKA.exe</code> is not digitally signed, so Windows SmartScreen warns you on first launch. Click <strong>More info</strong>, then <strong>Run anyway</strong>.</p>
+          </div>
+        </details>
+        <details class="faq">
+          <summary><span lang="fr">Mes effets ne changent pas le son</span><span lang="en">My effects don't change the sound</span></summary>
+          <div class="answer">
+            <p lang="fr">Ouvre ⚙ → <strong>Audio</strong> : la carte son de REAPER doit indiquer <strong>Voicemeeter Insert Virtual ASIO</strong>. Si ce n'est pas le cas, refais l'étape 3 du démarrage. Tant que ce pilote n'est pas choisi, REKA laisse passer le son sans effets plutôt que de le couper.</p>
+            <p lang="en">Open ⚙ → <strong>Audio</strong>: REAPER's sound card must read <strong>Voicemeeter Insert Virtual ASIO</strong>. If it doesn't, redo step 3 of the setup. Until that driver is selected, REKA lets the sound through without effects rather than cutting it.</p>
+          </div>
+        </details>
+        <details class="faq">
+          <summary><span lang="fr">« REAPER ne répond pas » au démarrage</span><span lang="en">“REAPER ne répond pas” (REAPER is not responding) at startup</span></summary>
+          <div class="answer">
+            <p lang="fr">Au tout premier lancement, REAPER analyse tes plugins et peut mettre une minute : clique sur <strong>Réessayer</strong>. Vérifie aussi qu'aucune fenêtre de REAPER (licence d'évaluation, message) n'attend une réponse.</p>
+            <p lang="en">On the very first launch REAPER scans your plugins, which can take a minute: click <strong>Réessayer</strong> (retry). Also check that no REAPER window (evaluation licence, message) is waiting for an answer.</p>
+          </div>
+        </details>
+        <details class="faq">
+          <summary><span lang="fr">Le son craque</span><span lang="en">The sound crackles</span></summary>
+          <div class="answer">
+            <p lang="fr">Remonte le tampon d'un cran dans ⚙ → <strong>Audio</strong> → <em>Tampon de Voicemeeter</em>, et regarde les jauges CPU / GPU du Master : un clic droit sur un effet → <strong>Mesurer sa charge CPU</strong> te dit lequel pèse le plus.</p>
+            <p lang="en">Raise the buffer one notch in ⚙ → <strong>Audio</strong> → <em>Tampon de Voicemeeter</em> (Voicemeeter buffer), and watch the CPU / GPU gauges in the Master: right-click an effect → <strong>Mesurer sa charge CPU</strong> (measure its CPU load) tells you which one weighs the most.</p>
+          </div>
+        </details>
+        <details class="faq">
+          <summary><span lang="fr">Comment se font les mises à jour ?</span><span lang="en">How do updates work?</span></summary>
+          <div class="answer">
+            <p lang="fr">Toutes seules. REKA vérifie au démarrage puis régulièrement ; quand une version est prête, une pill <strong>Mise à jour</strong> apparaît dans le Master. Un clic, et REKA se remplace puis redémarre en gardant tes réglages.</p>
+            <p lang="en">On their own. REKA checks at startup and then regularly; when a version is ready, a <strong>Mise à jour</strong> (update) pill appears in the Master. One click, and REKA replaces itself and restarts with your settings intact.</p>
+          </div>
+        </details>
+        <details class="faq">
+          <summary><span lang="fr">Où sont mes réglages et le journal ?</span><span lang="en">Where are my settings and the log?</span></summary>
+          <div class="answer">
+            <p lang="fr">Dans <code>%APPDATA%\REKA</code> : <code>config.json</code> pour les réglages, <code>app.log</code> pour le journal. Raccourci : ⚙ → <em>Ouvrir le dossier des journaux</em>. Pour les emporter sur un autre PC : ⚙ → <strong>Général</strong> → <em>Exporter…</em></p>
+            <p lang="en">In <code>%APPDATA%\REKA</code>: <code>config.json</code> for the settings, <code>app.log</code> for the log. Shortcut: ⚙ → <em>Ouvrir le dossier des journaux</em> (open the log folder). To take them to another PC: ⚙ → <strong>Général</strong> → <em>Exporter…</em></p>
+          </div>
+        </details>
+      </div>
+
+      <div class="cta" style="margin-top:28px">
+        <a class="btn btn-ghost" href="help.html"><span lang="fr">Toute l'aide</span><span lang="en">All help topics</span></a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Téléchargement -->
+  <section class="final">
+    <div class="wrap">
+      <div class="box">
+        <img src="assets/img/reka-mark-324.webp" alt="" width="150" height="75" loading="lazy">
+        <h2 lang="fr">Prêt à tout piloter d'une seule fenêtre ?</h2>
+        <h2 lang="en">Ready to run it all from one window?</h2>
+        <p lang="fr">Un seul fichier, rien à installer. REKA se met ensuite à jour toute seule.</p>
+        <p lang="en">One file, nothing to install. After that REKA keeps itself up to date.</p>
+        <div class="cta">
+          <a class="btn btn-primary" href="https://github.com/1337133713377/reka/releases/latest/download/REKA.exe">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 4v11M7 11l5 5 5-5M5 20h14"/></svg>
+            <span lang="fr">Télécharger REKA.exe</span><span lang="en">Download REKA.exe</span>
+          </a>
+          <a class="btn btn-ghost" href="https://github.com/1337133713377/reka" rel="noopener"><span lang="fr">Voir le code sur GitHub</span><span lang="en">View the code on GitHub</span></a>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer class="site-footer">
+  <div class="wrap">
+    <div class="cols">
+      <div>
+        <p lang="fr"><strong>REKA</strong> est développé par <strong>Regrettable</strong> et <strong>Zerka</strong>.</p>
+        <p lang="en"><strong>REKA</strong> is developed by <strong>Regrettable</strong> and <strong>Zerka</strong>.</p>
+        <p lang="fr">Merci à <strong>206</strong> pour sa contribution.</p>
+        <p lang="en">Thanks to <strong>206</strong> for their contribution.</p>
+      </div>
+      <nav aria-label="Liens">
+        <a href="help.html"><span lang="fr">Aide</span><span lang="en">Help</span></a>
+        <a href="help.html#nouveautes"><span lang="fr">Nouveautés</span><span lang="en">What's new</span></a>
+        <a href="https://github.com/1337133713377/reka/releases" rel="noopener"><span lang="fr">Versions</span><span lang="en">Releases</span></a>
+        <a href="https://github.com/1337133713377/reka" rel="noopener">GitHub</a>
+      </nav>
+    </div>
+    <p class="legal" lang="fr">Voicemeeter, REAPER, FL Studio, Equalizer APO, Discord, OBS et Windows appartiennent à leurs éditeurs respectifs. REKA est un projet indépendant, sans lien avec eux.</p>
+    <p class="legal" lang="en">Voicemeeter, REAPER, FL Studio, Equalizer APO, Discord, OBS and Windows belong to their respective publishers. REKA is an independent project with no ties to them.</p>
+  </div>
+</footer>
+
+<dialog class="lightbox" aria-label="Capture agrandie">
+  <form method="dialog"><button aria-label="Fermer">×</button></form>
+  <img src="" alt="">
+</dialog>
+
+<script src="assets/js/site.js" defer></script>
+</body>
+</html>

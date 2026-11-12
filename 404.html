@@ -1,0 +1,34 @@
+<!doctype html>
+<html lang="fr" data-lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title data-fr="Page introuvable — REKA" data-en="Page not found — REKA">Page introuvable — REKA</title>
+<meta name="robots" content="noindex">
+<meta name="theme-color" content="#0f1115">
+<script>
+/* Site de projet GitHub Pages (utilisateur.github.io/depot/) ou domaine à la racine : on fixe la base. */
+document.write('<base href="' + (/\.github\.io$/.test(location.hostname) ? "/" + location.pathname.split("/")[1] + "/" : "/") + '">');
+</script>
+<link rel="icon" href="favicon.ico" sizes="any">
+<link rel="stylesheet" href="assets/css/style.css">
+<script>
+(function(){var d=document.documentElement,l=null,t=null;try{l=localStorage.getItem("reka-lang");t=localStorage.getItem("reka-theme")}catch(e){}if(l!=="en"&&l!=="fr")l=(navigator.language||"fr").toLowerCase().indexOf("fr")===0?"fr":"en";d.setAttribute("data-lang",l);d.setAttribute("lang",l);if(t&&t!=="studio")d.setAttribute("data-theme",t)})();
+</script>
+</head>
+<body>
+<main class="notfound">
+  <div class="wrap">
+    <div class="code">404</div>
+    <h1 lang="fr">Cette page n'est pas branchée.</h1>
+    <h1 lang="en">This page isn't plugged in.</h1>
+    <p lang="fr">L'adresse a changé ou n'existe pas. L'accueil et l'aide, eux, répondent.</p>
+    <p lang="en">The address has changed or does not exist. The home page and the help still respond.</p>
+    <div class="cta" style="justify-content:center">
+      <a class="btn btn-primary" href="./"><span lang="fr">Retour à l'accueil</span><span lang="en">Back to home</span></a>
+      <a class="btn btn-ghost" href="help.html"><span lang="fr">Ouvrir l'aide</span><span lang="en">Open the help</span></a>
+    </div>
+  </div>
+</main>
+</body>
+</html>
