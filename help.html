@@ -8,7 +8,7 @@
   content="Le centre d'aide de REKA : installation, premier lancement, effets, routing, moteurs d'effets, Discord, sauvegarde et dépannage."
   data-fr="Le centre d'aide de REKA : installation, premier lancement, effets, routing, moteurs d'effets, Discord, sauvegarde et dépannage."
   data-en="The REKA help center: installation, first launch, effects, routing, effects engines, Discord, backup and troubleshooting.">
-<meta name="theme-color" content="#0f1115">
+<meta name="theme-color" content="#0b0d11">
 <meta property="og:type" content="website">
 <meta property="og:title" content="Aide REKA">
 <meta property="og:description" content="Installation, réglages et dépannage de la console de mixage REKA.">
@@ -16,11 +16,11 @@
 <link rel="icon" href="favicon.ico" sizes="any">
 <link rel="icon" type="image/png" href="assets/img/favicon.png">
 <link rel="apple-touch-icon" href="assets/img/apple-touch-icon.png">
-<link rel="preload" href="assets/fonts/Inter-SemiBold.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="assets/fonts/Unbounded-Variable.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="assets/fonts/Inter-Regular.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="stylesheet" href="assets/css/style.css">
 <script>
-(function(){var d=document.documentElement,l=null,t=null;try{l=localStorage.getItem("reka-lang");t=localStorage.getItem("reka-theme")}catch(e){}var q=new URLSearchParams(location.search).get("lang");if(q==="en"||q==="fr")l=q;if(l!=="en"&&l!=="fr")l=(navigator.language||"fr").toLowerCase().indexOf("fr")===0?"fr":"en";d.setAttribute("data-lang",l);d.setAttribute("lang",l);if(t&&t!=="studio")d.setAttribute("data-theme",t)})();
+(function(){var d=document.documentElement,l=null,t=null;d.className+=" js";try{l=localStorage.getItem("reka-lang");t=localStorage.getItem("reka-theme")}catch(e){}var q=new URLSearchParams(location.search).get("lang");if(q==="en"||q==="fr")l=q;if(l!=="en"&&l!=="fr")l=(navigator.language||"fr").toLowerCase().indexOf("fr")===0?"fr":"en";d.setAttribute("data-lang",l);d.setAttribute("lang",l);if(t&&t!=="studio")d.setAttribute("data-theme",t)})();
 </script>
 </head>
 <body>
@@ -32,9 +32,6 @@
       <img src="assets/img/reka-mark-324.webp" alt="" width="56" height="28">
       <b>REKA</b>
     </a>
-    <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="nav" aria-label="Menu">
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
-    </button>
     <nav class="nav" id="nav" aria-label="Navigation">
       <a href="./#fonctions"><span lang="fr">Fonctions</span><span lang="en">Features</span></a>
       <a href="./#themes"><span lang="fr">Thèmes</span><span lang="en">Themes</span></a>
@@ -51,6 +48,9 @@
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 4v11M7 11l5 5 5-5M5 20h14"/></svg>
         <span lang="fr">Télécharger</span><span lang="en">Download</span>
       </a>
+      <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="nav" aria-label="Menu">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M4 8h16M4 16h16"/></svg>
+      </button>
     </div>
   </div>
 </header>
@@ -153,20 +153,20 @@
           <h3>Ce qu'il te faut</h3>
           <ul>
             <li><strong>Windows 10 ou 11</strong>, 64 bits.</li>
-            <li><a href="https://vb-audio.com/Voicemeeter/potato.htm" rel="noopener">Voicemeeter Potato</a> ou <a href="https://vb-audio.com/Voicemeeter/banana.htm" rel="noopener">Voicemeeter Banana</a> : c'est lui qui transporte le son.</li>
-            <li>Pour les effets, un moteur au choix : <a href="https://www.reaper.fm/download.php" rel="noopener">REAPER</a> (6.37 ou plus récent conseillé), FL Studio, Equalizer APO, ou le moteur intégré de REKA, qui ne demande rien de plus. Sans effets, Voicemeeter suffit.</li>
+            <li><a href="https://vb-audio.com/Voicemeeter/potato.htm" rel="noopener">Voicemeeter Potato</a> ou <a href="https://vb-audio.com/Voicemeeter/banana.htm" rel="noopener">Voicemeeter Banana</a> : c'est lui qui transporte le son.</li>
+            <li>Pour les effets, un moteur au choix : <a href="https://www.reaper.fm/download.php" rel="noopener">REAPER</a> (6.37 ou plus récent conseillé), FL Studio, Equalizer APO, ou le moteur intégré de REKA, qui ne demande rien de plus. Sans effets, Voicemeeter suffit.</li>
           </ul>
           <p>Si un moteur manque, REKA affiche son lien de téléchargement, ou te laisse indiquer où il est installé.</p>
 
           <h3>Télécharger et lancer</h3>
           <ol>
-            <li><a href="https://github.com/1337133713377/reka/releases/latest/download/REKA.exe">Télécharge <code>REKA.exe</code></a>. C'est un seul fichier : il n'y a rien à installer, range-le où tu veux.</li>
-            <li>Ouvre-le. Si Windows affiche « Windows a protégé votre ordinateur », clique sur <strong>Informations complémentaires</strong>, puis <strong>Exécuter quand même</strong> : <code>REKA.exe</code> n'est pas signé numériquement, SmartScreen prévient donc au premier lancement.</li>
+            <li><a href="https://github.com/1337133713377/reka/releases/latest/download/REKA.exe">Télécharge <code>REKA.exe</code></a>. C'est un seul fichier : il n'y a rien à installer, range-le où tu veux.</li>
+            <li>Ouvre-le. Si Windows affiche « Windows a protégé votre ordinateur », clique sur <strong>Informations complémentaires</strong>, puis <strong>Exécuter quand même</strong> : <code>REKA.exe</code> n'est pas signé numériquement, SmartScreen prévient donc au premier lancement.</li>
             <li>Suis le <a href="#premier-lancement">premier lancement</a>.</li>
           </ol>
 
           <div class="note">
-            <p><strong>Juste pour voir ?</strong> <span class="cmd"><span>REKA.exe --demo</span><button type="button">Copier</button></span> ouvre la console avec des moteurs simulés, sans Voicemeeter ni REAPER.</p>
+            <p><strong>Juste pour voir ?</strong> <span class="cmd"><span>REKA.exe --demo</span><button type="button">Copier</button></span> ouvre la console avec des moteurs simulés, sans Voicemeeter ni REAPER.</p>
           </div>
         </div>
 
@@ -197,20 +197,20 @@
         <h2><span lang="fr">Premier lancement</span><span lang="en">First launch</span> <a class="anchor" href="#premier-lancement" aria-hidden="true" tabindex="-1">#</a></h2>
 
         <div lang="fr">
-          <p>Au premier lancement, REKA affiche un <strong>menu de sélection</strong> : ton édition de Voicemeeter (Potato ou Banana) et l'application qui applique les effets. Chaque choix indique s'il est installé sur ton PC et le délai qu'il ajoute à la voix. Tu retrouves ce menu dans ⚙ → <strong>Général</strong>, ou en lançant <code>REKA.exe --setup</code>.</p>
+          <p>Au premier lancement, REKA affiche un <strong>menu de sélection</strong> : ton édition de Voicemeeter (Potato ou Banana) et l'application qui applique les effets. Chaque choix indique s'il est installé sur ton PC et le délai qu'il ajoute à la voix. Tu retrouves ce menu dans ⚙ → <strong>Général</strong>, ou en lançant <code>REKA.exe --setup</code>.</p>
 
           <h3>Faire passer le son par les effets (REAPER)</h3>
-          <p>Les effets s'appliquent grâce à l'<strong>insert</strong> de Voicemeeter : chaque strip envoie son son à REAPER, qui le renvoie traité. Il y a une seule chose à régler, une seule fois :</p>
+          <p>Les effets s'appliquent grâce à l'<strong>insert</strong> de Voicemeeter : chaque strip envoie son son à REAPER, qui le renvoie traité. Il y a une seule chose à régler, une seule fois :</p>
           <ol>
             <li>Lance REKA.</li>
             <li>Clique sur ⚙ (panneau Master) → <strong>Ouvrir les préférences audio de REAPER</strong>.</li>
-            <li>Dans REAPER : <em>Audio system</em> = <strong>ASIO</strong>, pilote = <strong>Voicemeeter Insert Virtual ASIO</strong> (« Voicemeeter Potato Insert Virtual ASIO » selon la version). Valide, puis ferme les réglages : la fenêtre de REAPER se cache de nouveau.</li>
+            <li>Dans REAPER : <em>Audio system</em> = <strong>ASIO</strong>, pilote = <strong>Voicemeeter Insert Virtual ASIO</strong> (« Voicemeeter Potato Insert Virtual ASIO » selon la version). Valide, puis ferme les réglages : la fenêtre de REAPER se cache de nouveau.</li>
           </ol>
           <p>REKA active alors l'insert des strips qui ont une piste REAPER, et le remet comme avant en partant.</p>
           <div class="note warn">
-            <p>Tant que REAPER n'est pas sur ce pilote, l'insert n'est pas activé : <strong>le son passe sans effets</strong> plutôt que d'être coupé.</p>
+            <p>Tant que REAPER n'est pas sur ce pilote, l'insert n'est pas activé : <strong>le son passe sans effets</strong> plutôt que d'être coupé.</p>
           </div>
-          <p style="margin-top:18px">Avec un autre moteur, l'étape est différente ou inutile : vois <a href="#moteurs">Moteurs d'effets</a>.</p>
+          <p style="margin-top:18px">Avec un autre moteur, l'étape est différente ou inutile : vois <a href="#moteurs">Moteurs d'effets</a>.</p>
         </div>
 
         <div lang="en">
@@ -243,7 +243,7 @@
                  data-alt-en="The REKA console: six strips and the Master panel">
           </button>
           <figcaption>
-            <span lang="fr">De haut en bas sur chaque strip : effets, knobs d'envoi, Intellipan, Muet, fader et VU-mètre. À droite, le Master.</span>
+            <span lang="fr">De haut en bas sur chaque strip : effets, knobs d'envoi, Intellipan, Muet, fader et VU-mètre. À droite, le Master.</span>
             <span lang="en">Top to bottom on each strip: effects, send knobs, Intellipan, mute, fader and VU meter. On the right, the Master.</span>
           </figcaption>
         </figure>
@@ -264,23 +264,23 @@
               <tr><th scope="row">Muet</th>
                 <td><span lang="fr">Coupe la strip.</span><span lang="en">Mutes the strip.</span></td></tr>
               <tr><th scope="row">Apps</th>
-                <td><span lang="fr">Sur les strips virtuelles : volume, mute et niveau de chaque application.</span><span lang="en">On virtual strips: volume, mute and level of each application.</span></td></tr>
+                <td><span lang="fr">Sur les strips virtuelles : volume, mute et niveau de chaque application.</span><span lang="en">On virtual strips: volume, mute and level of each application.</span></td></tr>
               <tr><th scope="row"><span lang="fr">Effet</span><span lang="en">Effect</span></th>
                 <td><span lang="fr">Clic = ouvrir ou fermer son interface. Glisser = le déplacer (<kbd>Ctrl</kbd> = copier). Clic droit = bypass, mesurer sa charge CPU, supprimer.</span><span lang="en">Click = open or close its interface. Drag = move it (<kbd>Ctrl</kbd> = copy). Right-click = bypass, measure its CPU load, remove.</span></td></tr>
-              <tr><th scope="row"><span lang="fr">Emplacement « + »</span><span lang="en">“+” slot</span></th>
-                <td><span lang="fr">Ajouter un effet. Avec FL Studio : l'afficher.</span><span lang="en">Add an effect. With FL Studio: show it.</span></td></tr>
+              <tr><th scope="row"><span lang="fr">Emplacement « + »</span><span lang="en">“+” slot</span></th>
+                <td><span lang="fr">Ajouter un effet. Avec FL Studio : l'afficher.</span><span lang="en">Add an effect. With FL Studio: show it.</span></td></tr>
               <tr><th scope="row"><span lang="fr">Badge FX</span><span lang="en">FX badge</span></th>
                 <td><span lang="fr">Bypass de toute la chaîne d'effets de la strip.</span><span lang="en">Bypasses the strip's whole effect chain.</span></td></tr>
               <tr><th scope="row"><span lang="fr">Nom de la strip</span><span lang="en">Strip name</span></th>
-                <td><span lang="fr">Double-clic ou clic droit = renommer (renomme aussi la piste REAPER). Tous les noms d'un coup : ⚙ → <strong>Canaux</strong>.</span><span lang="en">Double-click or right-click = rename (also renames the REAPER track). All names at once: ⚙ → <strong>Canaux</strong> (channels).</span></td></tr>
+                <td><span lang="fr">Double-clic ou clic droit = renommer (renomme aussi la piste REAPER). Tous les noms d'un coup : ⚙ → <strong>Canaux</strong>.</span><span lang="en">Double-click or right-click = rename (also renames the REAPER track). All names at once: ⚙ → <strong>Canaux</strong> (channels).</span></td></tr>
               <tr><th scope="row"><span lang="fr">Knob Casque</span><span lang="en">Casque knob</span></th>
                 <td><span lang="fr">Volume du casque (bus A1), par pas de 0,5 dB. Double-clic = 0 dB.</span><span lang="en">Headphone volume (bus A1), in 0.5 dB steps. Double-click = 0 dB.</span></td></tr>
               <tr><th scope="row">Voicemeeter / REAPER</th>
-                <td><span lang="fr">Affiche la fenêtre du moteur au premier plan ; re-clic = la recacher. Ne la ferme pas avec la croix : le son ou les effets s'arrêteraient.</span><span lang="en">Brings the engine's window to the front; click again to hide it. Don't close it with the X: sound or effects would stop.</span></td></tr>
+                <td><span lang="fr">Affiche la fenêtre du moteur au premier plan ; re-clic = la recacher. Ne la ferme pas avec la croix : le son ou les effets s'arrêteraient.</span><span lang="en">Brings the engine's window to the front; click again to hide it. Don't close it with the X: sound or effects would stop.</span></td></tr>
               <tr><th scope="row">–</th>
                 <td><span lang="fr">Réduire REKA dans la barre des tâches, ou près de l'horloge si l'option est activée.</span><span lang="en">Minimize REKA to the taskbar, or next to the clock if the option is on.</span></td></tr>
               <tr><th scope="row">⚙</th>
-                <td><span lang="fr">Les réglages : Général, Canaux, Audio, Apparence, Couleurs, Discord, À propos.</span><span lang="en">Settings: Général (general), Canaux (channels), Audio, Apparence (appearance), Couleurs (colors), Discord, À propos (about).</span></td></tr>
+                <td><span lang="fr">Les réglages : Général, Canaux, Audio, Apparence, Couleurs, Discord, À propos.</span><span lang="en">Settings: Général (general), Canaux (channels), Audio, Apparence (appearance), Couleurs (colors), Discord, À propos (about).</span></td></tr>
             </tbody>
           </table>
         </div>
@@ -302,27 +302,27 @@
         <div lang="fr">
           <h3>Ajouter, ouvrir, couper</h3>
           <ul>
-            <li><strong>Clic sur un « + »</strong> : choisis un plugin dans la liste de tes VST.</li>
-            <li><strong>Clic sur l'effet</strong> : ouvre ou ferme son interface.</li>
-            <li><strong>Clic droit</strong> : bypass, mesure de sa charge CPU, suppression.</li>
-            <li><strong>Badge FX</strong> en haut de la strip : coupe toute la chaîne d'un coup.</li>
+            <li><strong>Clic sur un « + »</strong> : choisis un plugin dans la liste de tes VST.</li>
+            <li><strong>Clic sur l'effet</strong> : ouvre ou ferme son interface.</li>
+            <li><strong>Clic droit</strong> : bypass, mesure de sa charge CPU, suppression.</li>
+            <li><strong>Badge FX</strong> en haut de la strip : coupe toute la chaîne d'un coup.</li>
           </ul>
 
           <h3>Déplacer un effet à la souris</h3>
-          <p>Attrape un plugin et dépose-le où tu veux : plus haut ou plus bas dans sa chaîne (l'ordre des effets change le son), ou sur la liste d'effets d'une <strong>autre strip</strong>. Un trait montre où il sera inséré. Le plugin est déplacé <strong>avec ses réglages</strong> ; maintiens <kbd>Ctrl</kbd> en déposant pour le copier au lieu de le déplacer.</p>
+          <p>Attrape un plugin et dépose-le où tu veux : plus haut ou plus bas dans sa chaîne (l'ordre des effets change le son), ou sur la liste d'effets d'une <strong>autre strip</strong>. Un trait montre où il sera inséré. Le plugin est déplacé <strong>avec ses réglages</strong> ; maintiens <kbd>Ctrl</kbd> en déposant pour le copier au lieu de le déplacer.</p>
           <ul>
-            <li><strong>REAPER</strong> : si la strip d'arrivée n'a pas encore de piste, elle est créée comme à l'ajout d'un effet.</li>
-            <li><strong>Equalizer APO</strong> : la strip d'arrivée doit avoir son périphérique Windows (⚙ → Audio) ; les réglages faits dans l'éditeur d'Equalizer APO suivent le plugin.</li>
-            <li><strong>FL Studio</strong> : les effets se rangent dans FL Studio lui-même.</li>
+            <li><strong>REAPER</strong> : si la strip d'arrivée n'a pas encore de piste, elle est créée comme à l'ajout d'un effet.</li>
+            <li><strong>Equalizer APO</strong> : la strip d'arrivée doit avoir son périphérique Windows (⚙ → Audio) ; les réglages faits dans l'éditeur d'Equalizer APO suivent le plugin.</li>
+            <li><strong>FL Studio</strong> : les effets se rangent dans FL Studio lui-même.</li>
           </ul>
 
           <h3>Le délai ajouté à ta voix</h3>
-          <p>Chaque strip affiche à côté de <em>Effets</em> le délai ajouté par ses plugins actifs, par exemple <span class="num">+2.5 ms</span> ; il passe en ambre au-delà de 3 ms. Un <strong>point ambre</strong> sur un plugin signale un plugin à anticipation (limiteur, égaliseur en phase linéaire…) : sur le micro, préfère son mode « zéro latence ».</p>
+          <p>Chaque strip affiche à côté de <em>Effets</em> le délai ajouté par ses plugins actifs, par exemple <span class="num">+2.5 ms</span> ; il passe en ambre au-delà de 3 ms. Un <strong>point ambre</strong> sur un plugin signale un plugin à anticipation (limiteur, égaliseur en phase linéaire…) : sur le micro, préfère son mode « zéro latence ».</p>
 
           <h3>Savoir ce que coûte un plugin</h3>
-          <p>REAPER ne donne pas la charge plugin par plugin. Pour un plugin précis : <strong>clic droit sur l'effet → Mesurer sa charge CPU</strong>. REKA mesure le moteur avec le plugin, puis sans (il est désactivé environ 3 secondes, puis réactivé) et affiche la différence, rappelée ensuite au survol de l'effet.</p>
+          <p>REAPER ne donne pas la charge plugin par plugin. Pour un plugin précis : <strong>clic droit sur l'effet → Mesurer sa charge CPU</strong>. REKA mesure le moteur avec le plugin, puis sans (il est désactivé environ 3 secondes, puis réactivé) et affiche la différence, rappelée ensuite au survol de l'effet.</p>
           <div class="note">
-            <p>Fais passer du son pendant la mesure : beaucoup de plugins ne consomment presque rien en silence. C'est une estimation, à ± 1 % près.</p>
+            <p>Fais passer du son pendant la mesure : beaucoup de plugins ne consomment presque rien en silence. C'est une estimation, à ± 1 % près.</p>
           </div>
         </div>
 
@@ -358,7 +358,7 @@
       <section class="doc-section" id="routing" data-keywords="bus A1 A2 B1 B2 monitor mic out obs potato banana strip canaux channels insert">
         <h2><span lang="fr">Routing et canaux</span><span lang="en">Routing and channels</span> <a class="anchor" href="#routing" aria-hidden="true" tabindex="-1">#</a></h2>
 
-        <p lang="fr">Chaque strip a quatre knobs d'envoi. Un clic envoie ou coupe, un glisser dose le niveau. Chacun correspond à un bus de Voicemeeter :</p>
+        <p lang="fr">Chaque strip a quatre knobs d'envoi. Un clic envoie ou coupe, un glisser dose le niveau. Chacun correspond à un bus de Voicemeeter :</p>
         <p lang="en">Each strip has four send knobs. A click turns the send on or off, a drag sets its level. Each one maps to a Voicemeeter bus:</p>
 
         <div class="table-scroll" tabindex="0" role="region" aria-label="Knobs" data-label-fr="Tableau des knobs d'envoi" data-label-en="Send knobs table">
@@ -376,7 +376,7 @@
           </table>
         </div>
 
-        <p lang="fr">Sur <strong>Banana</strong>, les knobs d'envoi sont de simples interrupteurs on/off : Banana n'a pas de niveaux d'envoi par bus.</p>
+        <p lang="fr">Sur <strong>Banana</strong>, les knobs d'envoi sont de simples interrupteurs on/off : Banana n'a pas de niveaux d'envoi par bus.</p>
         <p lang="en">On <strong>Banana</strong>, the send knobs are plain on/off switches: Banana has no per-bus send levels.</p>
 
         <h3 lang="fr">Correspondance des strips</h3>
@@ -415,7 +415,7 @@
 
         <h3 lang="fr">Changer d'édition de Voicemeeter</h3>
         <h3 lang="en">Switching Voicemeeter edition</h3>
-        <p lang="fr">⚙ → <strong>Général</strong> → <em>Voicemeeter</em> : choisis Potato ou Banana, puis <strong>Redémarrer REKA</strong>. REKA lance la bonne édition et ouvre un projet vierge adapté. Ferme l'autre édition de Voicemeeter si elle tourne encore.</p>
+        <p lang="fr">⚙ → <strong>Général</strong> → <em>Voicemeeter</em> : choisis Potato ou Banana, puis <strong>Redémarrer REKA</strong>. REKA lance la bonne édition et ouvre un projet vierge adapté. Ferme l'autre édition de Voicemeeter si elle tourne encore.</p>
         <p lang="en">⚙ → <strong>Général</strong> → <em>Voicemeeter</em>: pick Potato or Banana, then <strong>Redémarrer REKA</strong> (restart REKA). REKA launches the right edition and opens a matching blank project. Close the other Voicemeeter edition if it is still running.</p>
       </section>
 
@@ -423,10 +423,10 @@
       <section class="doc-section" id="intellipan" data-keywords="pan panoramique voix position effets color panel cube">
         <h2>Intellipan <a class="anchor" href="#intellipan" aria-hidden="true" tabindex="-1">#</a></h2>
         <div lang="fr">
-          <p>Comme dans Voicemeeter, chaque strip a son <strong>Intellipan</strong> : un carré où l'on déplace un petit cube rouge.</p>
+          <p>Comme dans Voicemeeter, chaque strip a son <strong>Intellipan</strong> : un carré où l'on déplace un petit cube rouge.</p>
           <ul>
-            <li><strong>Entrées matérielles</strong> (Microphone, Musique, Autres 1) : trois modes, choisis en cliquant sur le titre du carré ou par un clic droit. <strong>VOIX</strong> règle la couleur du son (le « Color Panel » de Voicemeeter), <strong>POSITION</strong> le panoramique, <strong>EFFETS</strong> l'écho et la modulation.</li>
-            <li><strong>Entrées virtuelles</strong> (Appels, Bureau, Autres 2) : <strong>POSITION</strong>, un panoramique 5.1.</li>
+            <li><strong>Entrées matérielles</strong> (Microphone, Musique, Autres 1) : trois modes, choisis en cliquant sur le titre du carré ou par un clic droit. <strong>VOIX</strong> règle la couleur du son (le « Color Panel » de Voicemeeter), <strong>POSITION</strong> le panoramique, <strong>EFFETS</strong> l'écho et la modulation.</li>
+            <li><strong>Entrées virtuelles</strong> (Appels, Bureau, Autres 2) : <strong>POSITION</strong>, un panoramique 5.1.</li>
           </ul>
           <p>Le mode choisi est retenu pour chaque strip. Un double-clic ramène le cube au neutre.</p>
         </div>
@@ -444,10 +444,10 @@
       <section class="doc-section" id="apps" data-keywords="application volume spotify jeu game navigateur browser mixer melangeur">
         <h2><span lang="fr">Volume par application</span><span lang="en">Per-app volume</span> <a class="anchor" href="#apps" aria-hidden="true" tabindex="-1">#</a></h2>
         <div lang="fr">
-          <p>Sur les strips virtuelles (Appels, Bureau, Autres 2), le bouton <strong>Apps</strong> à côté de <strong>Muet</strong> affiche le nombre d'applications qui y jouent. Un clic ouvre la liste : pour chaque application (Discord, Spotify, navigateur, jeu…), son volume, son niveau en direct et un bouton pour la couper.</p>
-          <p>Ce sont les réglages Windows de l'application, les mêmes que dans le mélangeur de volume de Windows : Windows les conserve.</p>
+          <p>Sur les strips virtuelles (Appels, Bureau, Autres 2), le bouton <strong>Apps</strong> à côté de <strong>Muet</strong> affiche le nombre d'applications qui y jouent. Un clic ouvre la liste : pour chaque application (Discord, Spotify, navigateur, jeu…), son volume, son niveau en direct et un bouton pour la couper.</p>
+          <p>Ce sont les réglages Windows de l'application, les mêmes que dans le mélangeur de volume de Windows : Windows les conserve.</p>
           <h3>Faire apparaître une application sur une strip</h3>
-          <p>Choisis la sortie Voicemeeter correspondante dans l'application elle-même, ou dans Windows : <em>Paramètres › Son › Mélangeur de volume</em>. Les strips virtuelles sont les entrées <em>Voicemeeter Input</em>, <em>Voicemeeter AUX Input</em> et <em>Voicemeeter VAIO3 Input</em> de Windows.</p>
+          <p>Choisis la sortie Voicemeeter correspondante dans l'application elle-même, ou dans Windows : <em>Paramètres › Son › Mélangeur de volume</em>. Les strips virtuelles sont les entrées <em>Voicemeeter Input</em>, <em>Voicemeeter AUX Input</em> et <em>Voicemeeter VAIO3 Input</em> de Windows.</p>
           <p>Si tes périphériques portent d'autres noms, indique-les dans <code>config.json</code> (<code class="wrap-ok">voicemeeter.app_devices</code>, un morceau de nom par entrée virtuelle).</p>
         </div>
         <div lang="en">
@@ -474,19 +474,19 @@
 
         <div lang="fr">
           <ul>
-            <li><strong>Badge de connexion</strong> : vert, tout répond ; rouge, le moteur d'effets ou Voicemeeter ne répond plus.</li>
-            <li><strong>Projet</strong> : le projet REAPER ouvert ; clique pour en changer. Avec FL Studio ou Equalizer APO, le bouton l'ouvre.</li>
-            <li><strong>Voicemeeter / REAPER</strong> : affiche la fenêtre du moteur, re-clic pour la recacher.</li>
-            <li><strong>Casque</strong> : le volume du bus A1.</li>
+            <li><strong>Badge de connexion</strong> : vert, tout répond ; rouge, le moteur d'effets ou Voicemeeter ne répond plus.</li>
+            <li><strong>Projet</strong> : le projet REAPER ouvert ; clique pour en changer. Avec FL Studio ou Equalizer APO, le bouton l'ouvre.</li>
+            <li><strong>Voicemeeter / REAPER</strong> : affiche la fenêtre du moteur, re-clic pour la recacher.</li>
+            <li><strong>Casque</strong> : le volume du bus A1.</li>
           </ul>
 
           <h3>Charge CPU et GPU</h3>
-          <p>Deux jauges montrent le <strong>CPU</strong> et le <strong>GPU</strong> utilisés par le moteur d'effets et tous ses plugins (REAPER et ses plugins pontés, FL Studio, ou le moteur audio de Windows pour Equalizer APO). Elles passent à l'ambre puis au rouge quand la charge monte. Au survol : part d'un seul cœur, mémoire, nombre de processus.</p>
-          <p>Le GPU est celui que montre le Gestionnaire des tâches (interfaces de plugins accélérées, analyseurs…) ; la jauge n'apparaît que si Windows fournit cette mesure. Pour les masquer : ⚙ → Apparence → <em>Afficher la charge CPU / GPU</em>.</p>
+          <p>Deux jauges montrent le <strong>CPU</strong> et le <strong>GPU</strong> utilisés par le moteur d'effets et tous ses plugins (REAPER et ses plugins pontés, FL Studio, ou le moteur audio de Windows pour Equalizer APO). Elles passent à l'ambre puis au rouge quand la charge monte. Au survol : part d'un seul cœur, mémoire, nombre de processus.</p>
+          <p>Le GPU est celui que montre le Gestionnaire des tâches (interfaces de plugins accélérées, analyseurs…) ; la jauge n'apparaît que si Windows fournit cette mesure. Pour les masquer : ⚙ → Apparence → <em>Afficher la charge CPU / GPU</em>.</p>
 
           <h3>Musique en cours</h3>
-          <p>Le Master affiche la pochette de la musique qui joue, son titre et son artiste, avec <strong>précédent</strong>, <strong>lecture / pause</strong> et <strong>suivant</strong>. Ce sont les contrôles média de Windows : ça marche avec Spotify, Deezer, les navigateurs (YouTube…) et le Lecteur multimédia, sans rien régler. S'il y a plusieurs lecteurs, c'est celui que Windows considère comme « en cours » qui s'affiche.</p>
-          <p>Pour le masquer : ⚙ → Apparence → <em>Afficher la musique en cours dans le Master</em>.</p>
+          <p>Le Master affiche la pochette de la musique qui joue, son titre et son artiste, avec <strong>précédent</strong>, <strong>lecture / pause</strong> et <strong>suivant</strong>. Ce sont les contrôles média de Windows : ça marche avec Spotify, Deezer, les navigateurs (YouTube…) et le Lecteur multimédia, sans rien régler. S'il y a plusieurs lecteurs, c'est celui que Windows considère comme « en cours » qui s'affiche.</p>
+          <p>Pour le masquer : ⚙ → Apparence → <em>Afficher la musique en cours dans le Master</em>.</p>
         </div>
 
         <div lang="en">
@@ -522,20 +522,20 @@
 
         <div lang="fr">
           <h3>Entrées et sorties</h3>
-          <p>⚙ → <strong>Audio</strong> → <em>Entrées et sorties</em> : le périphérique de chaque entrée matérielle (micro, carte son, entrée ligne) et de chaque sortie (bus A1, A2…), sans ouvrir Voicemeeter. Chaque périphérique est proposé par pilote :</p>
+          <p>⚙ → <strong>Audio</strong> → <em>Entrées et sorties</em> : le périphérique de chaque entrée matérielle (micro, carte son, entrée ligne) et de chaque sortie (bus A1, A2…), sans ouvrir Voicemeeter. Chaque périphérique est proposé par pilote :</p>
           <ul>
-            <li><strong>WDM</strong> : le plus rapide ;</li>
-            <li><strong>MME</strong> : le plus compatible ;</li>
-            <li><strong>KS</strong> et <strong>ASIO</strong> : pour les cartes son qui les gèrent (ASIO en sortie : sur A1 seulement).</li>
+            <li><strong>WDM</strong> : le plus rapide ;</li>
+            <li><strong>MME</strong> : le plus compatible ;</li>
+            <li><strong>KS</strong> et <strong>ASIO</strong> : pour les cartes son qui les gèrent (ASIO en sortie : sur A1 seulement).</li>
           </ul>
           <p><em>Aucun périphérique</em> libère l'entrée ou la sortie. Clique sur <em>Actualiser la liste</em> après avoir branché un appareil. Le changement est immédiat et Voicemeeter le retient.</p>
 
           <h3>Délai de la voix et tampon</h3>
-          <p>⚙ → <strong>Audio</strong> → <em>Délai de la voix</em> affiche le délai total du moteur d'effets (tampons + plugins), et le <strong>Tampon de Voicemeeter</strong> : 512, 256 ou 128 échantillons (WDM et Kernel Streaming).</p>
+          <p>⚙ → <strong>Audio</strong> → <em>Délai de la voix</em> affiche le délai total du moteur d'effets (tampons + plugins), et le <strong>Tampon de Voicemeeter</strong> : 512, 256 ou 128 échantillons (WDM et Kernel Streaming).</p>
           <ul>
-            <li>Plus petit = voix plus rapide : environ 2,7 ms de moins par tranche de 128 échantillons à 48 kHz.</li>
-            <li>Mais plus de CPU : si le son craque, remonte d'un cran.</li>
-            <li>Le moteur le plus rapide avec effets est <strong>Equalizer APO</strong> (pas d'aller-retour par l'insert) ; sans effets, <strong>Aucun</strong>.</li>
+            <li>Plus petit = voix plus rapide : environ 2,7 ms de moins par tranche de 128 échantillons à 48 kHz.</li>
+            <li>Mais plus de CPU : si le son craque, remonte d'un cran.</li>
+            <li>Le moteur le plus rapide avec effets est <strong>Equalizer APO</strong> (pas d'aller-retour par l'insert) ; sans effets, <strong>Aucun</strong>.</li>
           </ul>
         </div>
 
@@ -575,19 +575,19 @@
             </tr></thead>
             <tbody>
               <tr><th scope="row">REAPER</th>
-                <td><span lang="fr">VST2 / VST3 / CLAP gérés depuis REKA : ajout, bypass, interface, projets.</span><span lang="en">VST2 / VST3 / CLAP managed from REKA: add, bypass, interface, projects.</span></td>
+                <td><span lang="fr">VST2 / VST3 / CLAP gérés depuis REKA : ajout, bypass, interface, projets.</span><span lang="en">VST2 / VST3 / CLAP managed from REKA: add, bypass, interface, projects.</span></td>
                 <td data-l-fr="Délai ajouté" data-l-en="Added delay"><span lang="fr">2 tampons ASIO (insert) + plugins</span><span lang="en">2 ASIO buffers (insert) + plugins</span></td></tr>
               <tr><th scope="row">REKA <span lang="fr">(intégré)</span><span lang="en">(built-in)</span></th>
-                <td><span lang="fr">VST2 / VST3 64 bits chargés par REKA : ajout, bypass, interface, déplacement.</span><span lang="en">64-bit VST2 / VST3 loaded by REKA: add, bypass, interface, move.</span></td>
+                <td><span lang="fr">VST2 / VST3 64 bits chargés par REKA : ajout, bypass, interface, déplacement.</span><span lang="en">64-bit VST2 / VST3 loaded by REKA: add, bypass, interface, move.</span></td>
                 <td data-l-fr="Délai ajouté" data-l-en="Added delay"><span lang="fr">plugins seulement</span><span lang="en">plugins only</span></td></tr>
               <tr><th scope="row">FL Studio</th>
-                <td><span lang="fr">Réglés dans FL Studio (le « + » d'une strip l'affiche).</span><span lang="en">Set inside FL Studio (a strip's “+” brings it up).</span></td>
+                <td><span lang="fr">Réglés dans FL Studio (le « + » d'une strip l'affiche).</span><span lang="en">Set inside FL Studio (a strip's “+” brings it up).</span></td>
                 <td data-l-fr="Délai ajouté" data-l-en="Added delay"><span lang="fr">2 tampons ASIO (insert) + plugins</span><span lang="en">2 ASIO buffers (insert) + plugins</span></td></tr>
               <tr><th scope="row">Equalizer APO</th>
                 <td><span lang="fr">Plugins VST2 64 bits gérés depuis REKA, appliqués par Windows.</span><span lang="en">64-bit VST2 plugins managed from REKA, applied by Windows.</span></td>
                 <td data-l-fr="Délai ajouté" data-l-en="Added delay"><span lang="fr">plugins seulement</span><span lang="en">plugins only</span></td></tr>
               <tr><th scope="row"><span lang="fr">Aucun</span><span lang="en">Aucun (none)</span></th>
-                <td><span lang="fr">Voicemeeter seul : volumes, routing, VU-mètres.</span><span lang="en">Voicemeeter alone: volumes, routing, VU meters.</span></td>
+                <td><span lang="fr">Voicemeeter seul : volumes, routing, VU-mètres.</span><span lang="en">Voicemeeter alone: volumes, routing, VU meters.</span></td>
                 <td data-l-fr="Délai ajouté" data-l-en="Added delay"><span lang="fr">aucun</span><span lang="en">none</span></td></tr>
             </tbody>
           </table>
@@ -595,15 +595,15 @@
 
         <div lang="fr">
           <h3>REAPER</h3>
-          <p>Le choix conseillé. REAPER tourne caché ; REKA y ajoute, coupe, ouvre et déplace les plugins, et change de projet à chaud. Il demande le réglage ASIO du <a href="#premier-lancement">premier lancement</a>.</p>
+          <p>Le choix conseillé. REAPER tourne caché ; REKA y ajoute, coupe, ouvre et déplace les plugins, et change de projet à chaud. Il demande le réglage ASIO du <a href="#premier-lancement">premier lancement</a>.</p>
 
           <h3>REKA (intégré)</h3>
-          <p>Rien à installer ni à régler. REKA lance <code>reka-host.exe</code> (livré dans <code>REKA.exe</code>), qui charge les plugins et se branche directement dans Voicemeeter : le son de chaque entrée passe par sa chaîne d'effets dans le même bloc, sans pilote ASIO.</p>
+          <p>Rien à installer ni à régler. REKA lance <code>reka-host.exe</code> (livré dans <code>REKA.exe</code>), qui charge les plugins et se branche directement dans Voicemeeter : le son de chaque entrée passe par sa chaîne d'effets dans le même bloc, sans pilote ASIO.</p>
           <ul>
-            <li>Les plugins proposés sont ceux des dossiers VST3 et VST standards, plus ceux de <code>vst.extra_dirs</code> ; <em>Parcourir…</em> pour un autre.</li>
+            <li>Les plugins proposés sont ceux des dossiers VST3 et VST standards, plus ceux de <code>vst.extra_dirs</code> ; <em>Parcourir…</em> pour un autre.</li>
             <li>Les chaînes et les réglages de chaque plugin sont enregistrés dans <code class="wrap-ok">%APPDATA%\REKA\chains.json</code> et partent dans les fichiers <code>.reka</code>.</li>
             <li>Un seul programme à la fois peut utiliser l'<em>audio callback</em> de Voicemeeter.</li>
-            <li>Si un plugin plante, REKA relance le moteur avec les dernières chaînes. Après plusieurs plantages rapprochés, il s'arrête et le signale : retire le plugin fautif. Journal : <code>reka-host.log</code>.</li>
+            <li>Si un plugin plante, REKA relance le moteur avec les dernières chaînes. Après plusieurs plantages rapprochés, il s'arrête et le signale : retire le plugin fautif. Journal : <code>reka-host.log</code>.</li>
           </ul>
 
           <h3>FL Studio</h3>
@@ -611,15 +611,15 @@
           <ol>
             <li>Dans FL Studio, choisis <em>Voicemeeter Insert Virtual ASIO</em> (<em>Options → Audio settings</em>).</li>
             <li>Crée une piste du mixer par strip, entrée et sortie sur les canaux d'insert de la strip (rappelés dans ⚙ → Audio).</li>
-            <li>Allume le <strong>badge FX</strong> de la strip : il envoie son son à FL Studio.</li>
+            <li>Allume le <strong>badge FX</strong> de la strip : il envoie son son à FL Studio.</li>
           </ol>
           <div class="note warn">
             <p>Laisse le badge FX éteint tant que la piste n'est pas câblée dans FL Studio, sinon la strip est muette.</p>
           </div>
 
           <h3>Equalizer APO</h3>
-          <p>Installe Equalizer APO sur les périphériques Windows des strips, avec son <em>Configurator</em>. Les entrées virtuelles ont leur périphérique (<em>Voicemeeter Input</em>, <em>AUX</em>, <em>VAIO3</em>). Pour le micro, choisis-le au premier ajout d'effet ou dans ⚙ → Audio, et coche <em>Entrées WDM en mode partagé</em> : sinon Windows, donc APO, ne voit pas le son du micro.</p>
-          <p>REKA écrit <code>reka.txt</code> dans le dossier <code>config</code> d'Equalizer APO et ajoute une seule ligne <code>Include: reka.txt</code> à <code>config.txt</code> : le reste de ta configuration n'est pas touché. Les réglages des plugins faits dans l'éditeur d'Equalizer APO sont conservés.</p>
+          <p>Installe Equalizer APO sur les périphériques Windows des strips, avec son <em>Configurator</em>. Les entrées virtuelles ont leur périphérique (<em>Voicemeeter Input</em>, <em>AUX</em>, <em>VAIO3</em>). Pour le micro, choisis-le au premier ajout d'effet ou dans ⚙ → Audio, et coche <em>Entrées WDM en mode partagé</em> : sinon Windows, donc APO, ne voit pas le son du micro.</p>
+          <p>REKA écrit <code>reka.txt</code> dans le dossier <code>config</code> d'Equalizer APO et ajoute une seule ligne <code>Include: reka.txt</code> à <code>config.txt</code> : le reste de ta configuration n'est pas touché. Les réglages des plugins faits dans l'éditeur d'Equalizer APO sont conservés.</p>
         </div>
 
         <div lang="en">
@@ -656,7 +656,7 @@
       <section class="doc-section" id="projets" data-keywords="rpp projet project piste track cablage wiring">
         <h2><span lang="fr">Projets REAPER</span><span lang="en">REAPER projects</span> <a class="anchor" href="#projets" aria-hidden="true" tabindex="-1">#</a></h2>
         <div lang="fr">
-          <p>Au premier lancement, REKA ouvre un <strong>projet vierge</strong> : une piste câblée par strip, aucun effet. Pour ouvrir ton propre projet, avec ton traitement et tes VST :</p>
+          <p>Au premier lancement, REKA ouvre un <strong>projet vierge</strong> : une piste câblée par strip, aucun effet. Pour ouvrir ton propre projet, avec ton traitement et tes VST :</p>
           <ol>
             <li>Clique sur le bouton <strong>Projet</strong> du Master (ou ⚙ → <em>Changer de projet…</em>).</li>
             <li>Choisis un projet récent, ou <strong>Parcourir…</strong> un fichier <code>.rpp</code>.</li>
@@ -664,7 +664,7 @@
           </ol>
           <p>Le projet s'ouvre tout de suite dans REAPER, sans redémarrer.</p>
           <div class="note">
-            <p><strong>Le câblage de ton projet n'est jamais modifié.</strong> Chaque strip affiche la piste du projet qui écoute ses canaux Voicemeeter : par exemple, une piste dont l'entrée est « Input 1 » ou « Input 1 / Input 2 » va sur Microphone. Si une strip n'a pas de piste, ajouter un effet dessus en crée une, câblée sur son insert (désactivable dans les réglages).</p>
+            <p><strong>Le câblage de ton projet n'est jamais modifié.</strong> Chaque strip affiche la piste du projet qui écoute ses canaux Voicemeeter : par exemple, une piste dont l'entrée est « Input 1 » ou « Input 1 / Input 2 » va sur Microphone. Si une strip n'a pas de piste, ajouter un effet dessus en crée une, câblée sur son insert (désactivable dans les réglages).</p>
           </div>
           <p style="margin-top:18px">Le projet ouvert est sauvegardé à chaque changement d'effet, toutes les 30 secondes s'il a été modifié, et à la fermeture.</p>
         </div>
@@ -699,20 +699,20 @@
         <div lang="fr">
           <h3>Onglet Apparence</h3>
           <ul>
-            <li><strong>Thèmes prédéfinis</strong> : douze thèmes complets à appliquer d'un clic. Dark Studio Pro, Néon, Synthwave, Braise, Glace, Matrix, Or noir, Sakura, Océan, Rubis, Arcade (une couleur par canal) et Monochrome. Un thème règle la couleur d'accent, les couleurs de chaque élément et le style des faders et des VU-mètres ; l'arrière-plan et la police sont conservés. Si tu avais choisi des couleurs à la main, REKA demande confirmation avant de les remplacer.</li>
-            <li><strong>Thème de couleur</strong> : vert néon, cyan, bleu, violet, rose, rouge, orange, or, blanc, ou la pastille arc-en-ciel pour n'importe quelle couleur. Le rouge du Muet et du petit cube reste rouge.</li>
-            <li><strong>Arrière-plan</strong> : <em>Choisir une image…</em> (PNG, JPG, WebP…). L'image est cadrée pour remplir la fenêtre et peut être assombrie (<em>Assombrir l'image</em>). <em>Fond d'origine</em> revient au fond REKA.</li>
-            <li><strong>Opacité des panneaux</strong> : baisse-la pour voir l'image à travers les strips.</li>
+            <li><strong>Thèmes prédéfinis</strong> : douze thèmes complets à appliquer d'un clic. Dark Studio Pro, Néon, Synthwave, Braise, Glace, Matrix, Or noir, Sakura, Océan, Rubis, Arcade (une couleur par canal) et Monochrome. Un thème règle la couleur d'accent, les couleurs de chaque élément et le style des faders et des VU-mètres ; l'arrière-plan et la police sont conservés. Si tu avais choisi des couleurs à la main, REKA demande confirmation avant de les remplacer.</li>
+            <li><strong>Thème de couleur</strong> : vert néon, cyan, bleu, violet, rose, rouge, orange, or, blanc, ou la pastille arc-en-ciel pour n'importe quelle couleur. Le rouge du Muet et du petit cube reste rouge.</li>
+            <li><strong>Arrière-plan</strong> : <em>Choisir une image…</em> (PNG, JPG, WebP…). L'image est cadrée pour remplir la fenêtre et peut être assombrie (<em>Assombrir l'image</em>). <em>Fond d'origine</em> revient au fond REKA.</li>
+            <li><strong>Opacité des panneaux</strong> : baisse-la pour voir l'image à travers les strips.</li>
             <li><strong>Style des faders</strong> (console, rond, fin, vintage), <strong>style des VU-mètres</strong> (LED fines, LED larges, continu) et <strong>police</strong> de l'interface.</li>
-            <li><strong>Fenêtre</strong> : REKA s'ouvre en fenêtre compacte ; sa taille et sa position sont mémorisées. <em>Taille compacte</em> la remet à sa taille d'origine, centrée.</li>
-            <li><strong>Réduire dans la zone de notification</strong> : le bouton <strong>–</strong> envoie alors REKA à côté de l'horloge. Le son continue ; clique sur l'icône REKA pour la rouvrir, clic droit → <em>Quitter REKA</em>.</li>
+            <li><strong>Fenêtre</strong> : REKA s'ouvre en fenêtre compacte ; sa taille et sa position sont mémorisées. <em>Taille compacte</em> la remet à sa taille d'origine, centrée.</li>
+            <li><strong>Réduire dans la zone de notification</strong> : le bouton <strong>–</strong> envoie alors REKA à côté de l'horloge. Le son continue ; clique sur l'icône REKA pour la rouvrir, clic droit → <em>Quitter REKA</em>.</li>
           </ul>
 
           <h3>Onglet Couleurs</h3>
-          <p>La couleur de <strong>chaque élément</strong>, indépendamment du thème : chaque knob d'envoi, fader, VU-mètres, bouton Muet, badge FX, effets, petit cube de l'Intellipan, bouton Apps, nom et fond du canal, knob Casque, boutons Voicemeeter / REAPER, lecteur de musique.</p>
+          <p>La couleur de <strong>chaque élément</strong>, indépendamment du thème : chaque knob d'envoi, fader, VU-mètres, bouton Muet, badge FX, effets, petit cube de l'Intellipan, bouton Apps, nom et fond du canal, knob Casque, boutons Voicemeeter / REAPER, lecteur de musique.</p>
           <ul>
-            <li><em>Appliquer à</em> : toute la console, <strong>un seul canal</strong> (prioritaire sur toute la console) ou le Master.</li>
-            <li><em>Défaut</em> revient à la couleur du thème ; <em>Tout réinitialiser</em> efface toutes les couleurs choisies.</li>
+            <li><em>Appliquer à</em> : toute la console, <strong>un seul canal</strong> (prioritaire sur toute la console) ou le Master.</li>
+            <li><em>Défaut</em> revient à la couleur du thème ; <em>Tout réinitialiser</em> efface toutes les couleurs choisies.</li>
           </ul>
         </div>
 
@@ -742,23 +742,23 @@
         <h2>Discord <a class="anchor" href="#discord" aria-hidden="true" tabindex="-1">#</a></h2>
 
         <div lang="fr">
-          <p>Tout se règle dans ⚙ → <strong>Discord</strong>. REKA parle au client Discord installé sur ton PC, par son canal local : rien ne passe par un serveur de REKA.</p>
+          <p>Tout se règle dans ⚙ → <strong>Discord</strong>. REKA parle au client Discord installé sur ton PC, par son canal local : rien ne passe par un serveur de REKA.</p>
 
           <h3>Rich Presence</h3>
-          <p>Ton profil affiche « Joue à REKA », deux lignes de texte (<em>Ligne 1</em> et <em>Ligne 2</em>, « Vst » et « talking » par défaut), depuis combien de temps, et un bouton <em>Télécharger REKA</em>. Une ligne 2 vide montre les moteurs utilisés, par exemple « Voicemeeter Potato · REAPER ». Rien d'autre n'est envoyé.</p>
-          <p>Elle <strong>marche sans rien régler</strong>. Décoche la case pour la couper : l'activité disparaît tout de suite.</p>
+          <p>Ton profil affiche « Joue à REKA », deux lignes de texte (<em>Ligne 1</em> et <em>Ligne 2</em>, « Vst » et « talking » par défaut), depuis combien de temps, et un bouton <em>Télécharger REKA</em>. Une ligne 2 vide montre les moteurs utilisés, par exemple « Voicemeeter Potato · REAPER ». Rien d'autre n'est envoyé.</p>
+          <p>Elle <strong>marche sans rien régler</strong>. Décoche la case pour la couper : l'activité disparaît tout de suite.</p>
 
           <h3>Micro synchronisé</h3>
-          <p>Le <strong>Muet</strong> d'un canal (le micro par défaut) et le micro barré de Discord se suivent. Tu choisis le <em>Sens</em> : dans les deux sens, REKA → Discord seulement, ou Discord → REKA seulement. Au lancement, c'est l'état de REKA qui est repris, sauf dans le dernier sens.</p>
-          <p>Cette fonction demande <strong>ta propre application Discord</strong> (gratuite, 2 minutes) :</p>
+          <p>Le <strong>Muet</strong> d'un canal (le micro par défaut) et le micro barré de Discord se suivent. Tu choisis le <em>Sens</em> : dans les deux sens, REKA → Discord seulement, ou Discord → REKA seulement. Au lancement, c'est l'état de REKA qui est repris, sauf dans le dernier sens.</p>
+          <p>Cette fonction demande <strong>ta propre application Discord</strong> (gratuite, 2 minutes) :</p>
           <ol>
-            <li>Va sur <a href="https://discord.com/developers/applications" rel="noopener">discord.com/developers</a> → <strong>New Application</strong>, et nomme-la « REKA ». Copie son <strong>Application ID</strong> dans ⚙ → Discord. Pour l'image du profil, ajoute une image nommée <code>reka</code> dans <em>Rich Presence → Art Assets</em>.</li>
-            <li>Onglet <strong>OAuth2</strong> : ajoute la redirection <code>http://localhost</code>, puis <strong>Reset Secret</strong> et copie le <strong>Client Secret</strong> dans ⚙ → Discord.</li>
-            <li>Coche <em>Synchroniser le Muet…</em> : Discord ouvre une fenêtre pour autoriser REKA, une seule fois. Le jeton est gardé dans <code>config.json</code> et renouvelé tout seul.</li>
+            <li>Va sur <a href="https://discord.com/developers/applications" rel="noopener">discord.com/developers</a> → <strong>New Application</strong>, et nomme-la « REKA ». Copie son <strong>Application ID</strong> dans ⚙ → Discord. Pour l'image du profil, ajoute une image nommée <code>reka</code> dans <em>Rich Presence → Art Assets</em>.</li>
+            <li>Onglet <strong>OAuth2</strong> : ajoute la redirection <code>http://localhost</code>, puis <strong>Reset Secret</strong> et copie le <strong>Client Secret</strong> dans ⚙ → Discord.</li>
+            <li>Coche <em>Synchroniser le Muet…</em> : Discord ouvre une fenêtre pour autoriser REKA, une seule fois. Le jeton est gardé dans <code>config.json</code> et renouvelé tout seul.</li>
           </ol>
           <div class="note">
-            <p><strong>Pourquoi ta propre application ?</strong> Discord réserve la lecture et le réglage du micro aux applications qu'il a approuvées, et au propriétaire d'une application (plus les testeurs qu'il y inscrit, dans <em>App Testers</em>).</p>
-            <p>Le Client Secret reste sur ton PC : il n'est jamais exporté avec la config. Un refus ou un réglage manquant est expliqué dans l'onglet, avec le bouton <strong>Autoriser dans Discord</strong> pour réessayer.</p>
+            <p><strong>Pourquoi ta propre application ?</strong> Discord réserve la lecture et le réglage du micro aux applications qu'il a approuvées, et au propriétaire d'une application (plus les testeurs qu'il y inscrit, dans <em>App Testers</em>).</p>
+            <p>Le Client Secret reste sur ton PC : il n'est jamais exporté avec la config. Un refus ou un réglage manquant est expliqué dans l'onglet, avec le bouton <strong>Autoriser dans Discord</strong> pour réessayer.</p>
           </div>
         </div>
 
@@ -791,21 +791,21 @@
         <div lang="fr">
           <p>⚙ → <strong>Général</strong> → <em>Sauvegarde de la config</em>.</p>
           <ul>
-            <li><strong>Exporter…</strong> écrit un seul fichier <code>.reka</code> : thème et couleurs, image d'arrière-plan, noms des canaux, routing, état de la console (faders, Muets, envois, Intellipan), options, et le <strong>projet REAPER</strong> ouvert, enregistré juste avant, donc avec ses chaînes d'effets et les réglages des plugins. Avec le moteur intégré, les chaînes et les réglages de chaque plugin partent aussi.</li>
+            <li><strong>Exporter…</strong> écrit un seul fichier <code>.reka</code> : thème et couleurs, image d'arrière-plan, noms des canaux, routing, état de la console (faders, Muets, envois, Intellipan), options, et le <strong>projet REAPER</strong> ouvert, enregistré juste avant, donc avec ses chaînes d'effets et les réglages des plugins. Avec le moteur intégré, les chaînes et les réglages de chaque plugin partent aussi.</li>
             <li><strong>Importer…</strong> montre ce que contient le fichier, demande confirmation, remplace les réglages puis redémarre REKA.</li>
           </ul>
           <div class="note">
-            <p><strong>Revenir en arrière :</strong> les réglages d'avant l'import sont gardés dans <code class="wrap-ok">%APPDATA%\REKA\avant-import.reka</code>, que tu peux réimporter.</p>
+            <p><strong>Revenir en arrière :</strong> les réglages d'avant l'import sont gardés dans <code class="wrap-ok">%APPDATA%\REKA\avant-import.reka</code>, que tu peux réimporter.</p>
           </div>
 
           <h3>Ce qui ne voyage pas</h3>
-          <p>Ce qui est propre au PC n'est ni exporté, ni touché par un import : chemins de Voicemeeter, REAPER et FL Studio, taille de la fenêtre, et les secrets Discord. Un fichier <code>.reka</code> peut donc être partagé.</p>
+          <p>Ce qui est propre au PC n'est ni exporté, ni touché par un import : chemins de Voicemeeter, REAPER et FL Studio, taille de la fenêtre, et les secrets Discord. Un fichier <code>.reka</code> peut donc être partagé.</p>
 
           <h3>À l'import</h3>
           <ul>
-            <li>Le projet REAPER est copié dans le dossier de REKA sous le nom « … (importé) » et devient le projet par défaut ; ses plugins doivent être installés sur le PC.</li>
+            <li>Le projet REAPER est copié dans le dossier de REKA sous le nom « … (importé) » et devient le projet par défaut ; ses plugins doivent être installés sur le PC.</li>
             <li>Si l'édition de Voicemeeter de la sauvegarde (Potato ou Banana) n'est pas installée, REKA garde l'édition actuelle et n'importe pas le projet REAPER, câblé pour l'autre édition.</li>
-            <li>Le projet FL Studio n'est pas dans la sauvegarde : il reste géré par FL Studio.</li>
+            <li>Le projet FL Studio n'est pas dans la sauvegarde : il reste géré par FL Studio.</li>
           </ul>
         </div>
 
@@ -835,13 +835,13 @@
       <section class="doc-section" id="mises-a-jour" data-keywords="update version sha-256 build ignorer">
         <h2><span lang="fr">Mises à jour</span><span lang="en">Updates</span> <a class="anchor" href="#mises-a-jour" aria-hidden="true" tabindex="-1">#</a></h2>
         <div lang="fr">
-          <p>REKA vérifie au démarrage, puis toutes les 6 heures, si une nouvelle version est en ligne. Si oui, une pill <strong>Mise à jour</strong> apparaît dans le Master :</p>
+          <p>REKA vérifie au démarrage, puis toutes les 6 heures, si une nouvelle version est en ligne. Si oui, une pill <strong>Mise à jour</strong> apparaît dans le Master :</p>
           <ul>
-            <li><strong>Mettre à jour</strong> : REKA télécharge le nouvel exe, vérifie qu'il est complet (empreinte SHA-256), le met à la place de l'ancien, puis redémarre dessus. Réglages et projet REAPER sont conservés.</li>
-            <li><strong>Navigateur</strong> : télécharge <code>REKA.exe</code> à la main.</li>
-            <li><strong>Plus tard</strong>, ou <strong>Ignorer cette version</strong> : REKA ne la propose plus, sauf recherche manuelle.</li>
+            <li><strong>Mettre à jour</strong> : REKA télécharge le nouvel exe, vérifie qu'il est complet (empreinte SHA-256), le met à la place de l'ancien, puis redémarre dessus. Réglages et projet REAPER sont conservés.</li>
+            <li><strong>Navigateur</strong> : télécharge <code>REKA.exe</code> à la main.</li>
+            <li><strong>Plus tard</strong>, ou <strong>Ignorer cette version</strong> : REKA ne la propose plus, sauf recherche manuelle.</li>
           </ul>
-          <p>⚙ → <strong>À propos</strong> : version et numéro de build, <strong>Rechercher une mise à jour</strong>, et l'option <strong>Vérifier les mises à jour au démarrage</strong>.</p>
+          <p>⚙ → <strong>À propos</strong> : version et numéro de build, <strong>Rechercher une mise à jour</strong>, et l'option <strong>Vérifier les mises à jour au démarrage</strong>.</p>
         </div>
         <div lang="en">
           <p>REKA checks at startup, then every 6 hours, whether a new version is online. If so, a <strong>Mise à jour</strong> (update) pill appears in the Master:</p>
@@ -860,7 +860,7 @@
 
         <div class="faq-list">
           <details class="faq" id="faq-smartscreen" data-keywords="smartscreen antivirus signature unsigned">
-            <summary><span lang="fr">Windows affiche « Windows a protégé votre ordinateur »</span><span lang="en">Windows says “Windows protected your PC”</span></summary>
+            <summary><span lang="fr">Windows affiche « Windows a protégé votre ordinateur »</span><span lang="en">Windows says “Windows protected your PC”</span></summary>
             <div class="answer">
               <p lang="fr"><code>REKA.exe</code> n'est pas signé numériquement, donc Windows SmartScreen prévient au premier lancement. Clique sur <strong>Informations complémentaires</strong>, puis <strong>Exécuter quand même</strong>.</p>
               <p lang="en"><code>REKA.exe</code> is not digitally signed, so Windows SmartScreen warns you on first launch. Click <strong>More info</strong>, then <strong>Run anyway</strong>.</p>
@@ -872,9 +872,9 @@
             <div class="answer">
               <div lang="fr">
                 <ol>
-                  <li>Ouvre ⚙ → <strong>Audio</strong> : la carte son de REAPER doit indiquer <strong>Voicemeeter Insert Virtual ASIO</strong>. Sinon, refais le réglage du <a href="#premier-lancement">premier lancement</a>. Tant que ce pilote n'est pas choisi, REKA laisse passer le son sans effets plutôt que de le couper.</li>
-                  <li>Vérifie que la piste de la strip est armée en écoute : sinon, le badge FX l'indique au survol.</li>
-                  <li>Si REAPER affiche « [audio device closed] », décoche dans ses préférences <em>Audio → Close audio device when stopped and application is inactive</em>.</li>
+                  <li>Ouvre ⚙ → <strong>Audio</strong> : la carte son de REAPER doit indiquer <strong>Voicemeeter Insert Virtual ASIO</strong>. Sinon, refais le réglage du <a href="#premier-lancement">premier lancement</a>. Tant que ce pilote n'est pas choisi, REKA laisse passer le son sans effets plutôt que de le couper.</li>
+                  <li>Vérifie que la piste de la strip est armée en écoute : sinon, le badge FX l'indique au survol.</li>
+                  <li>Si REAPER affiche « [audio device closed] », décoche dans ses préférences <em>Audio → Close audio device when stopped and application is inactive</em>.</li>
                 </ol>
               </div>
               <div lang="en">
@@ -888,9 +888,9 @@
           </details>
 
           <details class="faq" id="faq-reaper" data-keywords="reaper not responding retry licence evaluation scan">
-            <summary><span lang="fr">« REAPER ne répond pas » au démarrage</span><span lang="en">“REAPER ne répond pas” (REAPER is not responding) at startup</span></summary>
+            <summary><span lang="fr">« REAPER ne répond pas » au démarrage</span><span lang="en">“REAPER ne répond pas” (REAPER is not responding) at startup</span></summary>
             <div class="answer">
-              <p lang="fr">Au tout premier lancement, REAPER analyse tes plugins, ce qui peut prendre une minute : clique sur <strong>Réessayer</strong>. Vérifie aussi qu'aucune fenêtre de REAPER (licence d'évaluation, message) n'attend une réponse : le bouton <strong>REAPER</strong> du Master affiche sa fenêtre.</p>
+              <p lang="fr">Au tout premier lancement, REAPER analyse tes plugins, ce qui peut prendre une minute : clique sur <strong>Réessayer</strong>. Vérifie aussi qu'aucune fenêtre de REAPER (licence d'évaluation, message) n'attend une réponse : le bouton <strong>REAPER</strong> du Master affiche sa fenêtre.</p>
               <p lang="en">On the very first launch REAPER scans your plugins, which can take a minute: click <strong>Réessayer</strong> (retry). Also check that no REAPER window (evaluation licence, message) is waiting for an answer: the <strong>REAPER</strong> button in the Master brings up its window.</p>
             </div>
           </details>
@@ -908,7 +908,7 @@
             <div class="answer">
               <div lang="fr">
                 <ul>
-                  <li>Regarde le délai affiché à côté de <em>Effets</em> sur la strip du micro. Un plugin marqué d'un <strong>point ambre</strong> ajoute de l'anticipation : passe-le en mode « zéro latence » ou retire-le.</li>
+                  <li>Regarde le délai affiché à côté de <em>Effets</em> sur la strip du micro. Un plugin marqué d'un <strong>point ambre</strong> ajoute de l'anticipation : passe-le en mode « zéro latence » ou retire-le.</li>
                   <li>Baisse le <strong>Tampon de Voicemeeter</strong> dans ⚙ → Audio (256 ou 128), tant que le son ne craque pas.</li>
                   <li>REAPER et FL Studio ajoutent 2 tampons ASIO. Le moteur intégré et Equalizer APO n'ajoutent que le délai des plugins.</li>
                 </ul>
@@ -926,7 +926,7 @@
           <details class="faq" id="faq-rouge" data-keywords="badge rouge red connexion connection deconnecte disconnected">
             <summary><span lang="fr">Le badge de connexion est rouge</span><span lang="en">The connection badge is red</span></summary>
             <div class="answer">
-              <p lang="fr">Le moteur d'effets ou Voicemeeter ne répond plus. Affiche leur fenêtre avec les boutons <strong>Voicemeeter</strong> et <strong>REAPER</strong> du Master pour voir si l'un d'eux attend une réponse ou s'est fermé, puis consulte le journal : ⚙ → <em>Ouvrir le dossier des journaux</em>.</p>
+              <p lang="fr">Le moteur d'effets ou Voicemeeter ne répond plus. Affiche leur fenêtre avec les boutons <strong>Voicemeeter</strong> et <strong>REAPER</strong> du Master pour voir si l'un d'eux attend une réponse ou s'est fermé, puis consulte le journal : ⚙ → <em>Ouvrir le dossier des journaux</em>.</p>
               <p lang="en">The effects engine or Voicemeeter has stopped responding. Bring up their windows with the <strong>Voicemeeter</strong> and <strong>REAPER</strong> buttons in the Master to see whether one of them is waiting for an answer or has closed, then check the log: ⚙ → <em>Ouvrir le dossier des journaux</em> (open the log folder).</p>
             </div>
           </details>
@@ -934,7 +934,7 @@
           <details class="faq" id="faq-apps" data-keywords="application apps absente missing spotify discord jeu game volume">
             <summary><span lang="fr">Une application n'apparaît pas dans Apps</span><span lang="en">An application does not show up under Apps</span></summary>
             <div class="answer">
-              <p lang="fr">Une application n'apparaît que sur la strip dont elle utilise la sortie. Choisis la sortie Voicemeeter voulue dans l'application, ou dans Windows : <em>Paramètres › Son › Mélangeur de volume</em>. Si tes périphériques ont été renommés, renseigne <code class="wrap-ok">voicemeeter.app_devices</code> dans <code>config.json</code>. Détails : <a href="#apps">Volume par application</a>.</p>
+              <p lang="fr">Une application n'apparaît que sur la strip dont elle utilise la sortie. Choisis la sortie Voicemeeter voulue dans l'application, ou dans Windows : <em>Paramètres › Son › Mélangeur de volume</em>. Si tes périphériques ont été renommés, renseigne <code class="wrap-ok">voicemeeter.app_devices</code> dans <code>config.json</code>. Détails : <a href="#apps">Volume par application</a>.</p>
               <p lang="en">An application only shows up on the strip whose output it uses. Select the Voicemeeter output you want in the application, or in Windows: <em>Settings › Sound › Volume mixer</em>. If your devices were renamed, fill in <code class="wrap-ok">voicemeeter.app_devices</code> in <code>config.json</code>. Details: <a href="#apps">Per-app volume</a>.</p>
             </div>
           </details>
@@ -950,7 +950,7 @@
           <details class="faq" id="faq-apo" data-keywords="equalizer apo micro microphone wdm partage shared">
             <summary><span lang="fr">Avec Equalizer APO, le micro n'a pas d'effets</span><span lang="en">With Equalizer APO, the microphone gets no effects</span></summary>
             <div class="answer">
-              <p lang="fr">Choisis le périphérique du micro dans ⚙ → <strong>Audio</strong> et coche <em>Entrées WDM en mode partagé</em> : sinon Windows, donc APO, ne voit pas le son du micro. Vérifie aussi qu'Equalizer APO est installé sur ce périphérique, avec son <em>Configurator</em>.</p>
+              <p lang="fr">Choisis le périphérique du micro dans ⚙ → <strong>Audio</strong> et coche <em>Entrées WDM en mode partagé</em> : sinon Windows, donc APO, ne voit pas le son du micro. Vérifie aussi qu'Equalizer APO est installé sur ce périphérique, avec son <em>Configurator</em>.</p>
               <p lang="en">Pick the microphone's device in ⚙ → <strong>Audio</strong> and tick <em>Entrées WDM en mode partagé</em> (WDM inputs in shared mode): otherwise Windows, and therefore APO, cannot see the microphone's sound. Also check that Equalizer APO is installed on that device, using its <em>Configurator</em>.</p>
             </div>
           </details>
@@ -958,7 +958,7 @@
           <details class="faq" id="faq-plante" data-keywords="crash plante plantage reka-host integre built-in plugin">
             <summary><span lang="fr">Le moteur intégré s'arrête à cause d'un plugin</span><span lang="en">The built-in engine stops because of a plugin</span></summary>
             <div class="answer">
-              <p lang="fr">Quand un plugin plante, REKA relance le moteur avec tes dernières chaînes. Après plusieurs plantages rapprochés, il s'arrête et le signale : retire le plugin fautif. Le détail est dans <code>reka-host.log</code>.</p>
+              <p lang="fr">Quand un plugin plante, REKA relance le moteur avec tes dernières chaînes. Après plusieurs plantages rapprochés, il s'arrête et le signale : retire le plugin fautif. Le détail est dans <code>reka-host.log</code>.</p>
               <p lang="en">When a plugin crashes, REKA restarts the engine with your latest chains. After several crashes in a row it stops and tells you: remove the faulty plugin. Details are in <code>reka-host.log</code>.</p>
             </div>
           </details>
@@ -966,7 +966,7 @@
           <details class="faq" id="faq-discord" data-keywords="discord micro sync autoriser authorize refus application">
             <summary><span lang="fr">Le micro synchronisé avec Discord ne marche pas</span><span lang="en">Mic sync with Discord does not work</span></summary>
             <div class="answer">
-              <p lang="fr">Il faut ta propre application Discord, avec son Application ID, son Client Secret et la redirection <code>http://localhost</code> : vois <a href="#discord">Discord</a>. L'onglet ⚙ → Discord explique ce qui manque ou a été refusé ; le bouton <strong>Autoriser dans Discord</strong> relance l'autorisation.</p>
+              <p lang="fr">Il faut ta propre application Discord, avec son Application ID, son Client Secret et la redirection <code>http://localhost</code> : vois <a href="#discord">Discord</a>. L'onglet ⚙ → Discord explique ce qui manque ou a été refusé ; le bouton <strong>Autoriser dans Discord</strong> relance l'autorisation.</p>
               <p lang="en">You need your own Discord application, with its Application ID, its Client Secret and the <code>http://localhost</code> redirect: see <a href="#discord">Discord</a>. The ⚙ → Discord tab explains what is missing or was refused; the <strong>Autoriser dans Discord</strong> (authorize in Discord) button starts the authorization again.</p>
             </div>
           </details>
@@ -974,7 +974,7 @@
           <details class="faq" id="faq-cachee" data-keywords="fenetre window cachee hidden tray horloge clock disparue relancer">
             <summary><span lang="fr">REKA a disparu de l'écran</span><span lang="en">REKA has vanished from the screen</span></summary>
             <div class="answer">
-              <p lang="fr">Avec <em>Réduire dans la zone de notification</em>, le bouton <strong>–</strong> l'envoie à côté de l'horloge : clique sur l'icône REKA. Tu peux aussi relancer <code>REKA.exe</code> : si REKA tourne déjà, elle ré-affiche simplement sa fenêtre.</p>
+              <p lang="fr">Avec <em>Réduire dans la zone de notification</em>, le bouton <strong>–</strong> l'envoie à côté de l'horloge : clique sur l'icône REKA. Tu peux aussi relancer <code>REKA.exe</code> : si REKA tourne déjà, elle ré-affiche simplement sa fenêtre.</p>
               <p lang="en">With <em>Réduire dans la zone de notification</em> (minimize to the notification area), the <strong>–</strong> button sends it next to the clock: click the REKA icon. You can also run <code>REKA.exe</code> again: if REKA is already running, it simply shows its window.</p>
             </div>
           </details>
@@ -982,7 +982,7 @@
           <details class="faq" id="faq-edition" data-keywords="potato banana edition autre other voicemeeter">
             <summary><span lang="fr">J'ai l'autre édition de Voicemeeter</span><span lang="en">I have the other Voicemeeter edition</span></summary>
             <div class="answer">
-              <p lang="fr">Si une autre édition de Voicemeeter est ouverte au démarrage, ou si seule l'autre édition est installée, REKA propose de l'utiliser directement. Pour changer plus tard : ⚙ → <strong>Général</strong> → <em>Voicemeeter</em>, puis <strong>Redémarrer REKA</strong>.</p>
+              <p lang="fr">Si une autre édition de Voicemeeter est ouverte au démarrage, ou si seule l'autre édition est installée, REKA propose de l'utiliser directement. Pour changer plus tard : ⚙ → <strong>Général</strong> → <em>Voicemeeter</em>, puis <strong>Redémarrer REKA</strong>.</p>
               <p lang="en">If another Voicemeeter edition is open at startup, or if only the other edition is installed, REKA offers to use it directly. To change later: ⚙ → <strong>Général</strong> → <em>Voicemeeter</em>, then <strong>Redémarrer REKA</strong> (restart REKA).</p>
             </div>
           </details>
@@ -996,9 +996,9 @@
           </details>
 
           <details class="faq" id="faq-quitter" data-keywords="quitter fermer close exit shutdown">
-            <summary><span lang="fr">Que se passe-t-il quand je ferme REKA ?</span><span lang="en">What happens when I close REKA?</span></summary>
+            <summary><span lang="fr">Que se passe-t-il quand je ferme REKA ?</span><span lang="en">What happens when I close REKA?</span></summary>
             <div class="answer">
-              <p lang="fr">REKA sauvegarde le projet, rend les inserts à Voicemeeter, arrête REAPER, puis éteint proprement Voicemeeter. Un Voicemeeter que tu avais ouvert avant REKA n'est pas fermé : il est simplement ré-affiché.</p>
+              <p lang="fr">REKA sauvegarde le projet, rend les inserts à Voicemeeter, arrête REAPER, puis éteint proprement Voicemeeter. Un Voicemeeter que tu avais ouvert avant REKA n'est pas fermé : il est simplement ré-affiché.</p>
               <p lang="en">REKA saves the project, hands the inserts back to Voicemeeter, stops REAPER, then shuts Voicemeeter down cleanly. A Voicemeeter you had opened before REKA is not closed: it is simply shown again.</p>
             </div>
           </details>
@@ -1009,7 +1009,7 @@
       <section class="doc-section" id="fichiers" data-keywords="appdata config.json app.log journal log debug demo setup ligne de commande command line">
         <h2><span lang="fr">Fichiers et commandes</span><span lang="en">Files and commands</span> <a class="anchor" href="#fichiers" aria-hidden="true" tabindex="-1">#</a></h2>
 
-        <p lang="fr">Tout est dans <code>%APPDATA%\REKA</code>. Raccourci : ⚙ → <em>Ouvrir le dossier des journaux</em>.</p>
+        <p lang="fr">Tout est dans <code>%APPDATA%\REKA</code>. Raccourci : ⚙ → <em>Ouvrir le dossier des journaux</em>.</p>
         <p lang="en">Everything lives in <code>%APPDATA%\REKA</code>. Shortcut: ⚙ → <em>Ouvrir le dossier des journaux</em> (open the log folder).</p>
 
 <pre lang="fr">%APPDATA%\REKA\
@@ -1044,9 +1044,9 @@
               <tr><th scope="row"><code>REKA.exe --demo</code></th>
                 <td><span lang="fr">Ouvre la console avec des moteurs simulés, sans Voicemeeter ni REAPER.</span><span lang="en">Opens the console with simulated engines, no Voicemeeter or REAPER needed.</span></td></tr>
               <tr><th scope="row"><code>REKA.exe --demo --host flstudio</code></th>
-                <td><span lang="fr">La démo avec un autre moteur d'effets : <code>reka</code>, <code>flstudio</code>, <code>apo</code> ou <code>none</code>.</span><span lang="en">The demo with another effects engine: <code>reka</code>, <code>flstudio</code>, <code>apo</code> or <code>none</code>.</span></td></tr>
+                <td><span lang="fr">La démo avec un autre moteur d'effets : <code>reka</code>, <code>flstudio</code>, <code>apo</code> ou <code>none</code>.</span><span lang="en">The demo with another effects engine: <code>reka</code>, <code>flstudio</code>, <code>apo</code> or <code>none</code>.</span></td></tr>
               <tr><th scope="row"><code>REKA.exe --setup</code></th>
-                <td><span lang="fr">Rouvre le menu de sélection : édition de Voicemeeter et moteur d'effets.</span><span lang="en">Reopens the selection menu: Voicemeeter edition and effects engine.</span></td></tr>
+                <td><span lang="fr">Rouvre le menu de sélection : édition de Voicemeeter et moteur d'effets.</span><span lang="en">Reopens the selection menu: Voicemeeter edition and effects engine.</span></td></tr>
             </tbody>
           </table>
         </div>
@@ -1062,8 +1062,8 @@
         <div class="release">
           <h3><span lang="fr">Prochaine version</span><span lang="en">Next version</span></h3>
           <ul lang="fr">
-            <li><strong>Moteur d'effets intégré, sans REAPER</strong> (optionnel) : REKA charge lui-même tes plugins VST2 et VST3 64 bits et se branche directement dans Voicemeeter, sans pilote ASIO ni tampon ajouté. Si un plugin plante, le moteur redémarre tout seul avec tes chaînes.</li>
-            <li><strong>Chaînes d'effets dans le <code>.reka</code></strong> : avec le moteur intégré, l'export emporte chaque chaîne et les réglages de chaque plugin. À l'import, REKA retrouve les plugins installés ailleurs sur le disque, et garde les réglages de ceux qui manquent.</li>
+            <li><strong>Moteur d'effets intégré, sans REAPER</strong> (optionnel) : REKA charge lui-même tes plugins VST2 et VST3 64 bits et se branche directement dans Voicemeeter, sans pilote ASIO ni tampon ajouté. Si un plugin plante, le moteur redémarre tout seul avec tes chaînes.</li>
+            <li><strong>Chaînes d'effets dans le <code>.reka</code></strong> : avec le moteur intégré, l'export emporte chaque chaîne et les réglages de chaque plugin. À l'import, REKA retrouve les plugins installés ailleurs sur le disque, et garde les réglages de ceux qui manquent.</li>
           </ul>
           <ul lang="en">
             <li><strong>Built-in effects engine, no REAPER</strong> (optional): REKA loads your 64-bit VST2 and VST3 plugins itself and plugs straight into Voicemeeter, with no ASIO driver and no added buffer. If a plugin crashes, the engine restarts on its own with your chains.</li>
@@ -1074,8 +1074,8 @@
         <div class="release">
           <h3><span class="num">0.8.0</span></h3>
           <ul lang="fr">
-            <li><strong>Rich Presence Discord</strong> : « Joue à REKA » sur ton profil, avec deux lignes de texte que tu choisis.</li>
-            <li><strong>Micro synchronisé avec Discord</strong> : le Muet de REKA et le micro barré de Discord se suivent.</li>
+            <li><strong>Rich Presence Discord</strong> : « Joue à REKA » sur ton profil, avec deux lignes de texte que tu choisis.</li>
+            <li><strong>Micro synchronisé avec Discord</strong> : le Muet de REKA et le micro barré de Discord se suivent.</li>
             <li><strong>Export / import de toute la config</strong> dans un seul fichier <code>.reka</code>.</li>
           </ul>
           <ul lang="en">
@@ -1114,7 +1114,7 @@
 
       <div class="support">
         <div>
-          <h2 lang="fr">Tu n'as pas trouvé ?</h2>
+          <h2 lang="fr">Tu n'as pas trouvé ?</h2>
           <h2 lang="en">Didn't find it?</h2>
           <p lang="fr">Décris ton souci sur GitHub, avec ton fichier <code>app.log</code> si possible.</p>
           <p lang="en">Describe your problem on GitHub, with your <code>app.log</code> file if you can.</p>

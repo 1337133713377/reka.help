@@ -10,8 +10,9 @@ help.html             centre d'aide (recherche, sommaire, dépannage)
 404.html              page introuvable
 assets/css/style.css  styles (palette du thème « Dark Studio Pro » de REKA)
 assets/js/site.js     langue, thèmes, recherche, visionneuse
+assets/js/fx.js       effets de l'accueil : apparitions, spectre animé, mini-console interactive
 assets/img/           captures et logo, repris du dépôt reka
-assets/fonts/         Inter (licence OFL, voir Inter-OFL.txt)
+assets/fonts/         Inter et Unbounded (licence OFL, voir les fichiers *-OFL.txt)
 ```
 
 ## Voir le site en local
@@ -36,6 +37,8 @@ Pour un domaine personnalisé, renseigne-le dans le même écran (GitHub crée a
 - **Rubrique d'aide** : une `<section class="doc-section" id="…">` dans `help.html`, plus son lien
   dans le sommaire (`<aside class="toc">`). `data-keywords` ajoute des mots pour la recherche.
 - **Question fréquente** : un `<details class="faq" id="faq-…">` dans la rubrique `#depannage`.
+- **Mini-console de l'accueil** : les strips, leurs niveaux de départ et le signal simulé sont en haut
+  de la partie « Mini-console interactive » de `assets/js/fx.js`. Aucun son n'est joué.
 - **Captures** : remplace les fichiers de `assets/img/` en gardant les mêmes noms et dimensions.
 - **Thèmes de la page d'accueil** : les pastilles sous la capture changent la capture
   (`assets/img/theme-<nom>.webp`) et les couleurs du site (`html[data-theme="<nom>"]` dans `style.css`).
