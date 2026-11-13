@@ -18,10 +18,11 @@
 <link rel="icon" type="image/png" href="assets/img/favicon.png">
 <link rel="apple-touch-icon" href="assets/img/apple-touch-icon.png">
 <link rel="preload" href="assets/fonts/Unbounded-Variable.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="assets/img/mic.webp" as="image">
 <link rel="preload" href="assets/fonts/Inter-Regular.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="stylesheet" href="assets/css/style.css">
 <script>
-(function(){var d=document.documentElement,l=null,t=null;d.className+=" js";try{l=localStorage.getItem("reka-lang");t=localStorage.getItem("reka-theme")}catch(e){}var q=new URLSearchParams(location.search).get("lang");if(q==="en"||q==="fr")l=q;if(l!=="en"&&l!=="fr")l=(navigator.language||"fr").toLowerCase().indexOf("fr")===0?"fr":"en";d.setAttribute("data-lang",l);d.setAttribute("lang",l);if(t&&t!=="studio")d.setAttribute("data-theme",t)})();
+(function(){var d=document.documentElement,l=null,t=null;d.className+=" js";if(!(window.matchMedia&&matchMedia("(prefers-reduced-motion: reduce)").matches))d.className+=" mic3d";try{l=localStorage.getItem("reka-lang");t=localStorage.getItem("reka-theme")}catch(e){}var q=new URLSearchParams(location.search).get("lang");if(q==="en"||q==="fr")l=q;if(l!=="en"&&l!=="fr")l=(navigator.language||"fr").toLowerCase().indexOf("fr")===0?"fr":"en";d.setAttribute("data-lang",l);d.setAttribute("lang",l);if(t&&t!=="studio")d.setAttribute("data-theme",t)})();
 </script>
 </head>
 <body>
@@ -58,29 +59,84 @@
 
 <main id="contenu">
 
+  <!-- Micro 3D -->
+  <section class="mic-scrolly" id="apercu">
+    <div class="mic-stage">
+      <div class="mic-word" aria-hidden="true">XLR</div>
+      <img class="mic-poster" src="assets/img/mic.webp" width="900" height="1200" fetchpriority="high" alt="">
+      <canvas class="mic-canvas" aria-hidden="true"></canvas>
+      <div class="mic-scroll-hint" aria-hidden="true"><i></i><span lang="fr">Fais défiler</span><span lang="en">Scroll</span></div>
+      <div class="mic-copy">
+        <div class="mic-panels">
+          <div class="mic-step mic-intro on">
+          <div class="hero-badge">
+            <i class="live"></i>
+            <span lang="fr">Pour Windows 10 et 11</span><span lang="en">For Windows 10 and 11</span>
+            <b class="version-tag" data-latest-version></b>
+          </div>
+          <h1 lang="fr">La console de mixage <em class="grad">tout-en-un</em> pour Windows.</h1>
+          <h1 lang="en">The <em class="grad">all-in-one</em> mixing console for Windows.</h1>
+          <p class="lead" lang="fr">Voicemeeter pour le son, tes plugins VST pour les effets, <strong>une seule fenêtre</strong> pour tout piloter.</p>
+          <p class="lead" lang="en">Voicemeeter for the sound, your VST plugins for the effects, <strong>one window</strong> to run it all.</p>
+          <div class="cta">
+            <a class="btn btn-primary" href="https://github.com/1337133713377/reka/releases/latest/download/REKA.exe">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 4v11M7 11l5 5 5-5M5 20h14"/></svg>
+              <span lang="fr">Télécharger REKA.exe</span><span lang="en">Download REKA.exe</span>
+            </a>
+            <a class="btn btn-ghost" href="help.html"><span lang="fr">Ouvrir l'aide</span><span lang="en">Open the help</span></a>
+          </div>
+          <div class="hero-meta">
+            <span lang="fr">Un seul fichier, rien à installer</span><span lang="en">One file, nothing to install</span>
+            <span lang="fr">Mises à jour automatiques</span><span lang="en">Automatic updates</span>
+            <span lang="fr">64 bits</span><span lang="en">64-bit</span>
+          </div>
+          </div>
+          <div class="mic-story">
+          <div class="eyebrow"><span lang="fr">Du micro à tes sorties</span><span lang="en">From mic to outputs</span></div>
+          <h2 lang="fr">Tout commence <em class="grad">au micro.</em></h2>
+          <h2 lang="en">It all starts <em class="grad">at the mic.</em></h2>
+          <ol class="mic-steps">
+          <li class="mic-step">
+            <span class="k">01</span>
+            <h3 lang="fr">Branche ton micro</h3><h3 lang="en">Plug in your mic</h3>
+            <p lang="fr">Dans ⚙ → <strong>Audio</strong>, choisis le micro de l'entrée Microphone : <strong>WDM</strong> (le plus rapide), <strong>MME</strong> (le plus compatible), <strong>KS</strong> ou <strong>ASIO</strong>.</p>
+            <p lang="en">In ⚙ → <strong>Audio</strong>, pick the device for the Microphone input: <strong>WDM</strong> (fastest), <strong>MME</strong> (most compatible), <strong>KS</strong> or <strong>ASIO</strong>.</p>
+          </li>
+          <li class="mic-step">
+            <span class="k">02</span>
+            <h3 lang="fr">Traite ta voix</h3><h3 lang="en">Shape your voice</h3>
+            <p lang="fr">Ajoute tes plugins VST sur la strip Microphone, dans l'ordre que tu veux. Le délai qu'ils ajoutent s'affiche à côté de <em>Effets</em>.</p>
+            <p lang="en">Add your VST plugins to the Microphone strip, in any order. The delay they add shows up next to <em>Effets</em>.</p>
+          </li>
+          <li class="mic-step">
+            <span class="k">03</span>
+            <h3 lang="fr">Coupe-la d'un clic</h3><h3 lang="en">Mute it in one click</h3>
+            <p lang="fr"><strong>Muet</strong> coupe la strip. Avec le micro synchronisé, le micro barré s'affiche aussi dans Discord.</p>
+            <p lang="en"><strong>Muet</strong> (mute) silences the strip. With mic sync on, the muted-mic icon shows up in Discord too.</p>
+          </li>
+          <li class="mic-step">
+            <span class="k">04</span>
+            <h3 lang="fr">Envoie-la partout</h3><h3 lang="en">Send it everywhere</h3>
+            <p lang="fr"><strong>Monitor, Mic Out, Discord, Obs</strong> : un clic pour envoyer, un glisser pour doser.</p>
+            <p lang="en"><strong>Monitor, Mic Out, Discord, Obs</strong>: click to send, drag to set the level.</p>
+          </li>
+          </ol>
+          </div>
+        </div>
+        <div class="mic-rail off" aria-hidden="true"><i></i><i></i><i></i><i></i></div>
+      </div>
+    </div>
+  </section>
+
   <!-- Présentation -->
-  <section class="hero" id="apercu">
+  <section class="hero" id="console-apercu">
     <div class="wrap">
-      <div class="hero-badge reveal">
-        <i class="live"></i>
-        <span lang="fr">Pour Windows 10 et 11</span><span lang="en">For Windows 10 and 11</span>
-        <b class="version-tag" data-latest-version></b>
-      </div>
-      <h1 lang="fr">La console de mixage <em class="grad">tout-en-un</em> pour Windows.</h1>
-      <h1 lang="en">The <em class="grad">all-in-one</em> mixing console for Windows.</h1>
-      <p class="lead reveal" style="--delay:.12s" lang="fr">Voicemeeter pour le son, tes plugins VST pour les effets, <strong>une seule fenêtre</strong> pour tout piloter.</p>
-      <p class="lead reveal" style="--delay:.12s" lang="en">Voicemeeter for the sound, your VST plugins for the effects, <strong>one window</strong> to run it all.</p>
-      <div class="cta reveal" style="--delay:.18s">
-        <a class="btn btn-primary" href="https://github.com/1337133713377/reka/releases/latest/download/REKA.exe">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 4v11M7 11l5 5 5-5M5 20h14"/></svg>
-          <span lang="fr">Télécharger REKA.exe</span><span lang="en">Download REKA.exe</span>
-        </a>
-        <a class="btn btn-ghost" href="help.html"><span lang="fr">Ouvrir l'aide</span><span lang="en">Open the help</span></a>
-      </div>
-      <div class="hero-meta reveal" style="--delay:.24s">
-        <span lang="fr">Un seul fichier, rien à installer</span><span lang="en">One file, nothing to install</span>
-        <span lang="fr">Mises à jour automatiques</span><span lang="en">Automatic updates</span>
-        <span lang="fr">64 bits</span><span lang="en">64-bit</span>
+      <div class="section-head center reveal">
+        <div class="eyebrow"><span lang="fr">La console</span><span lang="en">The console</span></div>
+        <h2 lang="fr">Une seule fenêtre <em class="grad">pour tout piloter.</em></h2>
+        <h2 lang="en">One window <em class="grad">to run it all.</em></h2>
+        <p lang="fr">Faders, routing, effets, volume par application et musique en cours. Essaie un thème sous la capture.</p>
+        <p lang="en">Faders, routing, effects, per-app volume and now playing. Try a theme under the screenshot.</p>
       </div>
 
       <div class="hero-stage reveal" style="--delay:.3s">
@@ -134,47 +190,6 @@
       </ul>
     </div>
   </div>
-
-  <!-- Micro 3D -->
-  <section class="mic-scrolly" id="micro" aria-labelledby="micro-title-fr">
-    <div class="mic-stage">
-      <div class="mic-word" aria-hidden="true">XLR</div>
-      <img class="mic-poster" src="assets/img/mic.webp" width="900" height="1200" loading="lazy" alt="">
-      <canvas class="mic-canvas" aria-hidden="true"></canvas>
-      <div class="mic-copy">
-        <div class="eyebrow"><span lang="fr">Du micro à tes sorties</span><span lang="en">From mic to outputs</span></div>
-        <h2 id="micro-title-fr" lang="fr">Tout commence <em class="grad">au micro.</em></h2>
-        <h2 lang="en">It all starts <em class="grad">at the mic.</em></h2>
-        <ol class="mic-steps">
-          <li class="mic-step on">
-            <span class="k">01</span>
-            <h3 lang="fr">Branche ton micro</h3><h3 lang="en">Plug in your mic</h3>
-            <p lang="fr">Dans ⚙ → <strong>Audio</strong>, choisis le micro de l'entrée Microphone : <strong>WDM</strong> (le plus rapide), <strong>MME</strong> (le plus compatible), <strong>KS</strong> ou <strong>ASIO</strong>.</p>
-            <p lang="en">In ⚙ → <strong>Audio</strong>, pick the device for the Microphone input: <strong>WDM</strong> (fastest), <strong>MME</strong> (most compatible), <strong>KS</strong> or <strong>ASIO</strong>.</p>
-          </li>
-          <li class="mic-step">
-            <span class="k">02</span>
-            <h3 lang="fr">Traite ta voix</h3><h3 lang="en">Shape your voice</h3>
-            <p lang="fr">Ajoute tes plugins VST sur la strip Microphone, dans l'ordre que tu veux. Le délai qu'ils ajoutent s'affiche à côté de <em>Effets</em>.</p>
-            <p lang="en">Add your VST plugins to the Microphone strip, in any order. The delay they add shows up next to <em>Effets</em>.</p>
-          </li>
-          <li class="mic-step">
-            <span class="k">03</span>
-            <h3 lang="fr">Coupe-la d'un clic</h3><h3 lang="en">Mute it in one click</h3>
-            <p lang="fr"><strong>Muet</strong> coupe la strip. Avec le micro synchronisé, le micro barré s'affiche aussi dans Discord.</p>
-            <p lang="en"><strong>Muet</strong> (mute) silences the strip. With mic sync on, the muted-mic icon shows up in Discord too.</p>
-          </li>
-          <li class="mic-step">
-            <span class="k">04</span>
-            <h3 lang="fr">Envoie-la partout</h3><h3 lang="en">Send it everywhere</h3>
-            <p lang="fr"><strong>Monitor, Mic Out, Discord, Obs</strong> : un clic pour envoyer, un glisser pour doser.</p>
-            <p lang="en"><strong>Monitor, Mic Out, Discord, Obs</strong>: click to send, drag to set the level.</p>
-          </li>
-        </ol>
-        <div class="mic-rail" aria-hidden="true"><i></i><i></i><i></i><i></i></div>
-      </div>
-    </div>
-  </section>
 
   <!-- En bref -->
   <section id="fonctions" data-n="01">

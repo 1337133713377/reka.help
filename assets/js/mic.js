@@ -16,11 +16,17 @@ function webglOk() {
   }
 }
 
-if (section && !reduce && webglOk()) {
+/* La mise en page animée est demandée dès le <head> (classe « mic3d ») pour éviter un saut
+   à l'affichage ; on la retire si la 3D ne peut pas tourner ici. */
+const fallback = () => document.documentElement.classList.remove("mic3d");
+
+if (!section || reduce || !webglOk()) {
+  fallback();
+} else {
   const start = () => {
     import("../vendor/three.module.min.js")
       .then((THREE) => import("../vendor/RoomEnvironment.js").then((env) => build(THREE, env.RoomEnvironment)))
-      .catch(() => { /* la version fixe reste affichée */ });
+      .catch(fallback);
   };
   if ("IntersectionObserver" in window) {
     const io = new IntersectionObserver((entries) => {
@@ -37,7 +43,9 @@ if (section && !reduce && webglOk()) {
 function build(THREE, RoomEnvironment) {
   const stage = section.querySelector(".mic-stage");
   const canvas = section.querySelector(".mic-canvas");
-  const steps = Array.from(section.querySelectorAll(".mic-step"));
+  const steps = Array.from(section.querySelectorAll(".mic-step"));        /* l'ouverture, puis les quatre étapes */
+  const story = section.querySelector(".mic-story");
+  const rail = section.querySelector(".mic-rail");
   const dots = Array.from(section.querySelectorAll(".mic-rail i"));
   const root = document.documentElement;
 
@@ -51,6 +59,7 @@ function build(THREE, RoomEnvironment) {
   try {
     renderer = new THREE.WebGLRenderer({ canvas, antialias: true, alpha: true, powerPreference: "high-performance" });
   } catch (e) {
+    fallback();
     return;
   }
   renderer.setClearColor(0x000000, 0);
@@ -311,7 +320,10 @@ function build(THREE, RoomEnvironment) {
     if (step !== shown) {
       shown = step;
       steps.forEach((s, i) => s.classList.toggle("on", i === step));
-      dots.forEach((d, i) => d.classList.toggle("on", i <= step));
+      dots.forEach((d, i) => d.classList.toggle("on", i < step));
+      if (story) story.classList.toggle("on", step > 0);
+      if (rail) rail.classList.toggle("off", step === 0);
+      section.classList.toggle("past-intro", step > 0);
     }
     section.style.setProperty("--mic-p", progress.toFixed(4));
     dirty = true;
@@ -329,7 +341,7 @@ function build(THREE, RoomEnvironment) {
 
   /* ---------- Animation ---------- */
 
-  let eased = 0, last = 0, running = 0, visible = false;
+  let eased = 0, last = 0, running = 0, visible = false, idle = 0, first = true;
   function frame(t) {
     running = 0;
     if (!visible || document.hidden) return;
@@ -340,17 +352,20 @@ function build(THREE, RoomEnvironment) {
     look.x += (look.tx - look.x) * 0.06;
     look.y += (look.ty - look.y) * 0.06;
     const p = eased;
+    /* Le premier cinquième sert d'ouverture : le micro tourne seul, doucement. */
+    const q = clamp((p - 0.2) / 0.8, 0, 1);
+    idle += dt * 0.32 * (1 - smooth(0.1, 0.2, p));
 
     /* Étapes : brancher, ouvrir la tête, couper, envoyer. */
-    const plugged = smooth(0.02, 0.15, p);
-    const open = smooth(0.27, 0.4, p) - smooth(0.5, 0.6, p);
-    const mute = smooth(0.55, 0.62, p) - smooth(0.76, 0.8, p);
-    const send = smooth(0.78, 0.86, p);
-    const voice = smooth(0.12, 0.2, p) * (1 - mute) * (1 - open) * (1 - send);
+    const plugged = smooth(0.02, 0.15, q);
+    const open = smooth(0.27, 0.4, q) - smooth(0.5, 0.6, q);
+    const mute = smooth(0.55, 0.62, q) - smooth(0.76, 0.8, q);
+    const send = smooth(0.78, 0.86, q);
+    const voice = smooth(0.12, 0.2, q) * (1 - mute) * (1 - open) * (1 - send);
 
-    spin.rotation.y = -0.65 + p * Math.PI * 2 + Math.sin(t * 0.0004) * 0.04;
-    tilt.rotation.z = (wide ? 0.13 : 0.08) - p * 0.05;
-    tilt.rotation.x = 0.14 - Math.sin(p * Math.PI) * 0.22 + look.y;
+    spin.rotation.y = -0.65 + q * Math.PI * 2 + idle;
+    tilt.rotation.z = (wide ? 0.13 : 0.08) - q * 0.05;
+    tilt.rotation.x = 0.14 - Math.sin(q * Math.PI) * 0.22 + look.y;
     tilt.rotation.y = look.x;
     tilt.position.y = Math.sin(t * 0.0011) * 0.18;
 
@@ -391,6 +406,7 @@ function build(THREE, RoomEnvironment) {
 
     renderer.render(scene, camera);
     dirty = false;
+    if (first) { first = false; section.classList.add("ready"); }
     running = requestAnimationFrame(frame);
   }
   function kick() {
@@ -399,7 +415,6 @@ function build(THREE, RoomEnvironment) {
 
   /* ---------- Démarrage ---------- */
 
-  section.classList.add("is-3d");
   resize();
   readTheme();
   readScroll();

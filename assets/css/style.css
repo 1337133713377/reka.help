@@ -950,7 +950,7 @@ details.faq .answer > :last-child { margin-bottom: 0; }
   background: linear-gradient(to top, var(--accent) 0 62%, var(--vu-yellow) 62% 85%, var(--vu-red) 85%);
   animation: vu var(--d, 1.7s) ease-in-out infinite alternate; animation-delay: var(--dl, 0s);
 }
-.fl-cube { left: 11%; top: -7%; --z: 200px; --d: 8s; --dl: -4s; background: none; border: 0; box-shadow: none; padding: 0; }
+.fl-cube { left: -5%; top: 47%; --z: 200px; --d: 8s; --dl: -4s; background: none; border: 0; box-shadow: none; padding: 0; }
 
 /* Le petit cube rouge de l'Intellipan, en vrai volume. */
 .cube { --s: 34px; width: var(--s); height: var(--s); position: relative; transform-style: preserve-3d; animation: spin 11s linear infinite; }
@@ -1109,16 +1109,16 @@ details.faq .answer > :last-child { margin-bottom: 0; }
 }
 
 /* Titre : les mots se lèvent un à un, le dégradé glisse. */
-html.js .hero h1 { opacity: 0; animation: appear .01s 1.4s forwards; perspective: 900px; }
-html.js .hero h1.words { opacity: 1; animation: none; }
+html.js .hero h1, html.js .mic-intro h1 { opacity: 0; animation: appear .01s 1.4s forwards; perspective: 900px; }
+html.js .hero h1.words, html.js .mic-intro h1.words { opacity: 1; animation: none; }
 @keyframes appear { to { opacity: 1; } }
-.hero h1 .w { display: inline-block; transform-origin: 50% 100%; animation: word .95s var(--ease) both; animation-delay: calc(var(--i) * 75ms + .05s); }
+.hero h1 .w, .mic-intro h1 .w { display: inline-block; transform-origin: 50% 100%; animation: word .95s var(--ease) both; animation-delay: calc(var(--i) * 75ms + .05s); }
 @keyframes word { from { opacity: 0; transform: translateY(.55em) rotateX(-75deg); } }
-.hero h1 em.grad, .final h2 em.grad {
+.hero h1 em.grad, .mic-intro h1 em.grad, .final h2 em.grad {
   background-image: linear-gradient(100deg, var(--grad-a), var(--grad-b), var(--grad-a)); background-size: 220% 100%;
 }
-.hero h1 em.grad { animation: sheen 7s linear infinite; }
-.hero h1 em.grad.w { animation: word .95s var(--ease) both, sheen 7s linear infinite; animation-delay: calc(var(--i) * 75ms + .05s), 0s; }
+.hero h1 em.grad, .mic-intro h1 em.grad { animation: sheen 7s linear infinite; }
+.hero h1 em.grad.w, .mic-intro h1 em.grad.w { animation: word .95s var(--ease) both, sheen 7s linear infinite; animation-delay: calc(var(--i) * 75ms + .05s), 0s; }
 .final h2 em.grad { animation: sheen 7s linear infinite; }
 @keyframes sheen { to { background-position: -220% 0; } }
 
@@ -1238,8 +1238,8 @@ section[data-n]::after {
   .marquee { padding: 20px 0; }
 }
 @media (prefers-reduced-motion: reduce) {
-  html.js .hero h1 { opacity: 1; animation: none; }
-  .hero h1 .w, .hero h1 em.grad, .final h2 em.grad, .hero::after, .steps::after, .led.blink { animation: none; }
+  html.js .hero h1, html.js .mic-intro h1 { opacity: 1; animation: none; }
+  .hero h1 .w, .hero h1 em.grad, .mic-intro h1 .w, .mic-intro h1 em.grad, .mic-scroll-hint i::after, .final h2 em.grad, .hero::after, .steps::after, .led.blink { animation: none; }
   .steps::after { display: none; }
 }
 @media print { .mega, .cursor-light { display: none; } }
@@ -1279,52 +1279,90 @@ section[data-n]::after {
 .mic-rail { display: none; }
 
 /* Version animée : la section devient longue, la scène reste collée à l'écran. */
-.mic-scrolly.is-3d { height: 470vh; }
-.mic-scrolly.is-3d .mic-stage {
+html.mic3d .mic-scrolly { height: 560vh; margin-top: -72px; }  /* passe sous l'en-tête flottant (60px + 12px) */
+html.mic3d .mic-scrolly .mic-stage {
   position: sticky; top: 0; height: 100vh; height: 100svh; max-width: none; padding: 0; display: block; overflow: hidden;
 }
-.mic-scrolly.is-3d .mic-poster { display: none; }
-.mic-scrolly.is-3d .mic-stage::before {
+html.mic3d .mic-scrolly .mic-poster {
+  position: absolute; z-index: 0; left: 30%; top: 54%; height: 84vh; width: auto; max-width: none; transform: translate(-50%, -50%);
+  transition: opacity .8s var(--ease);
+}
+html.mic3d .mic-scrolly.ready .mic-poster { opacity: 0; pointer-events: none; }
+html.mic3d .mic-scrolly .mic-canvas { opacity: 0; transition: opacity .8s var(--ease); }
+html.mic3d .mic-scrolly.ready .mic-canvas { opacity: 1; }
+html.mic3d .mic-scrolly .mic-stage::before {
   content: ""; position: absolute; z-index: 0; pointer-events: none; left: 30%; top: 50%; width: min(760px, 70vw); aspect-ratio: 1; transform: translate(-50%, -50%);
   background: radial-gradient(closest-side, color-mix(in srgb, var(--grad-a) 30%, transparent), color-mix(in srgb, var(--grad-b) 8%, transparent) 55%, transparent);
   filter: blur(10px);
 }
-.mic-scrolly.is-3d .mic-stage::after {
+html.mic3d .mic-scrolly .mic-stage::after {
   content: ""; position: absolute; z-index: 0; pointer-events: none; left: 30%; top: 0; width: min(560px, 50vw); height: 92%; transform: translateX(-50%);
   background: linear-gradient(180deg, #ffffff12, transparent 78%); clip-path: polygon(42% 0, 58% 0, 100% 100%, 0 100%); filter: blur(18px);
 }
-.mic-scrolly.is-3d .mic-canvas { z-index: 0; }
-.mic-scrolly.is-3d .mic-canvas { display: block; position: absolute; inset: 0; width: 100%; height: 100%; }
-.mic-scrolly.is-3d .mic-word {
+html.mic3d .mic-scrolly .mic-canvas { z-index: 0; }
+html.mic3d .mic-scrolly .mic-canvas { display: block; position: absolute; inset: 0; width: 100%; height: 100%; }
+html.mic3d .mic-scrolly .mic-word {
   padding-left: 0; text-align: center;
   transform: translate(calc((0.5 - var(--mic-p, 0)) * 18vw), -50%);
 }
-.mic-scrolly.is-3d .mic-copy {
+html.mic3d .mic-scrolly .mic-copy {
   position: absolute; z-index: 1; top: 50%; transform: translateY(-50%);
-  right: max(var(--gutter), calc((100vw - var(--wrap)) / 2)); width: min(470px, 40vw);
+  right: max(var(--gutter), calc((100vw - var(--wrap)) / 2)); width: min(560px, 44vw);
 }
-.mic-scrolly.is-3d .mic-steps { display: grid; gap: 0; }
-.mic-scrolly.is-3d .mic-step {
+html.mic3d .mic-scrolly .mic-panels { display: grid; }
+html.mic3d .mic-scrolly .mic-intro, html.mic3d .mic-scrolly .mic-story { grid-area: 1 / 1; align-self: center; }
+html.mic3d .mic-scrolly .mic-story { opacity: 0; transform: translateY(30px); pointer-events: none; transition: opacity .5s var(--ease), transform .6s var(--ease); }
+html.mic3d .mic-scrolly .mic-story.on { opacity: 1; transform: none; pointer-events: auto; }
+html.mic3d .mic-scrolly .mic-rail { transition: opacity .4s; }
+html.mic3d .mic-scrolly .mic-rail.off { opacity: 0; }
+html.mic3d .mic-scrolly .mic-steps { display: grid; gap: 0; }
+html.mic3d .mic-scrolly .mic-step {
   grid-area: 1 / 1; opacity: 0; transform: translateY(26px) scale(.98); pointer-events: none;
   transition: opacity .5s var(--ease), transform .6s var(--ease);
 }
-.mic-scrolly.is-3d .mic-step.on { opacity: 1; transform: none; pointer-events: auto; transition-delay: .08s; }
-.mic-scrolly.is-3d .mic-rail { display: flex; gap: 8px; margin-top: 22px; }
+html.mic3d .mic-scrolly .mic-step.on { opacity: 1; transform: none; pointer-events: auto; transition-delay: .08s; }
+html.mic3d .mic-scrolly .mic-rail { display: flex; gap: 8px; margin-top: 22px; }
 .mic-rail i { flex: 1; height: 4px; border-radius: 2px; background: #ffffff14; overflow: hidden; position: relative; }
 .mic-rail i::after { content: ""; position: absolute; inset: 0; background: linear-gradient(90deg, var(--grad-a), var(--grad-b)); transform: scaleX(0); transform-origin: 0 50%; transition: transform .5s var(--ease); }
 .mic-rail i.on::after { transform: scaleX(1); }
 
+/* Ouverture de page : titre et téléchargement à côté du micro. */
+.mic-step.mic-intro { margin-bottom: 40px; padding: 0; background: none; border: 0; box-shadow: none; backdrop-filter: none; -webkit-backdrop-filter: none; border-radius: 0; }
+.mic-poster { align-self: start; position: sticky; top: 110px; }
+.mic-intro h1 { font-size: clamp(2.1rem, 4.4vw, 4rem); font-weight: 700; letter-spacing: -0.045em; line-height: 1.06; }
+.mic-intro h1 em { white-space: nowrap; }
+.mic-intro .lead { color: var(--text-2); font-size: clamp(1.05rem, 1.4vw, 1.22rem); margin: 22px 0 30px; max-width: 30em; }
+.mic-intro .lead strong { color: var(--text); }
+.mic-intro .hero-meta { justify-content: flex-start; }
+html.mic3d .mic-scrolly .mic-intro { margin: 0; transition: opacity .5s var(--ease), transform .6s var(--ease); }
+html.mic3d .mic-scrolly .mic-intro:not(.on) { opacity: 0; transform: translateY(-30px); pointer-events: none; }
+.mic-scroll-hint {
+  position: absolute; z-index: 1; left: 50%; bottom: 24px; transform: translateX(-50%); display: none; flex-direction: column; align-items: center; gap: 8px;
+  font: 600 0.68rem/1 var(--font); letter-spacing: 0.16em; text-transform: uppercase; color: var(--muted); transition: opacity .4s;
+}
+.mic-scroll-hint i { width: 22px; height: 34px; border-radius: 12px; border: 1.5px solid var(--border); position: relative; }
+.mic-scroll-hint i::after { content: ""; position: absolute; left: 50%; top: 7px; width: 3px; height: 7px; margin-left: -1.5px; border-radius: 2px; background: var(--accent-2); animation: wheel 1.6s ease-in-out infinite; }
+@keyframes wheel { 0% { transform: translateY(0); opacity: 1; } 80% { transform: translateY(10px); opacity: 0; } 100% { opacity: 0; } }
+html.mic3d .mic-scroll-hint { display: flex; }
+html.mic3d .mic-scrolly.past-intro .mic-scroll-hint { opacity: 0; }
+
 @media (max-width: 860px) {
   .mic-stage { grid-template-columns: minmax(0, 1fr); }
   .mic-poster { max-width: 320px; }
-  .mic-scrolly.is-3d { height: 440vh; }
-  .mic-scrolly.is-3d .mic-copy { top: auto; bottom: max(18px, env(safe-area-inset-bottom)); transform: none; left: var(--gutter); right: var(--gutter); width: auto; }
-  .mic-scrolly.is-3d .mic-copy .eyebrow, .mic-scrolly.is-3d .mic-copy h2 { display: none; }
-  .mic-scrolly.is-3d .mic-step { padding: 18px 18px 18px 66px; }
-  .mic-scrolly.is-3d .mic-step .k { left: 18px; top: 18px; }
+  html.mic3d .mic-scrolly { height: 520vh; }
+  html.mic3d .mic-scrolly .mic-poster { left: 50%; top: 32%; height: 52vh; }
+  html.mic3d .mic-scrolly .mic-intro .hero-meta, html.mic3d .mic-scrolly .mic-intro .lead,
+  html.mic3d .mic-scrolly .mic-intro .hero-badge, html.mic3d .mic-scrolly .mic-intro .btn-ghost { display: none; }
+  html.mic3d .mic-scrolly .mic-intro h1 { font-size: clamp(1.7rem, 7.6vw, 2.3rem); margin-bottom: 18px; }
+  .mic-poster { position: static; }
+  .mic-scroll-hint { display: none !important; }
+  html.mic3d .mic-scrolly .mic-copy { top: auto; bottom: max(18px, env(safe-area-inset-bottom)); transform: none; left: var(--gutter); right: var(--gutter); width: auto; }
+  html.mic3d .mic-scrolly .mic-copy .eyebrow, html.mic3d .mic-scrolly .mic-copy h2 { display: none; }
+  html.mic3d .mic-scrolly .mic-step { padding: 18px 18px 18px 66px; }
+  html.mic3d .mic-scrolly .mic-step .k { left: 18px; top: 18px; }
   .mic-word { font-size: clamp(8rem, 44vw, 14rem); }
-  .mic-scrolly.is-3d .mic-word { top: 34%; }
-  .mic-scrolly.is-3d .mic-stage::before, .mic-scrolly.is-3d .mic-stage::after { left: 50%; top: 36%; }
-  .mic-scrolly.is-3d .mic-stage::after { top: 0; height: 66%; }
+  html.mic3d .mic-scrolly .mic-word { top: 34%; }
+  html.mic3d .mic-scrolly .mic-stage::before, html.mic3d .mic-scrolly .mic-stage::after { left: 50%; top: 36%; }
+  html.mic3d .mic-scrolly .mic-stage::after { top: 0; height: 66%; }
 }
 @media print { .mic-canvas, .mic-word, .mic-rail { display: none !important; } }

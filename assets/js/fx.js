@@ -296,7 +296,7 @@
 
   /* ---------- Titre : les mots se lèvent un à un ---------- */
 
-  document.querySelectorAll(".hero h1").forEach(function (h1) {
+  document.querySelectorAll(".hero h1, .mic-intro h1").forEach(function (h1) {
     if (!reduce) {
       var i = 0;
       Array.prototype.slice.call(h1.childNodes).forEach(function (node) {
