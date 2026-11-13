@@ -10,7 +10,8 @@ help.html             centre d'aide (recherche, sommaire, dépannage)
 404.html              page introuvable
 assets/css/style.css  styles (palette du thème « Dark Studio Pro » de REKA)
 assets/js/site.js     langue, thèmes, recherche, visionneuse
-assets/js/fx.js       effets de l'accueil : apparitions, spectre animé, mini-console interactive
+assets/js/fx.js       effets : relief 3D sous le pointeur, console et égaliseur 3D du haut de page,
+                      carrousel de thèmes, vue éclatée d'une strip, mini-console interactive
 assets/img/           captures et logo, repris du dépôt reka
 assets/fonts/         Inter et Unbounded (licence OFL, voir les fichiers *-OFL.txt)
 ```

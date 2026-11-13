@@ -86,16 +86,27 @@
       <div class="hero-stage reveal" style="--delay:.3s">
         <canvas class="spectrum" aria-hidden="true"></canvas>
         <div class="hero-shot">
-          <figure class="shot">
-            <button class="zoom" type="button" data-full="assets/img/console.webp" data-label-fr="Agrandir la capture de la console" data-label-en="Enlarge the console screenshot" aria-label="Agrandir la capture de la console">
-              <div class="stack" data-base="assets/img/console.webp">
-                <img class="top" src="assets/img/console.webp" width="2068" height="1720" fetchpriority="high"
-                     alt="La console REKA : six strips avec leurs effets, le routing, les faders, et le panneau Master"
-                     data-alt-fr="La console REKA : six strips avec leurs effets, le routing, les faders, et le panneau Master"
-                     data-alt-en="The REKA console: six strips with their effects, routing and faders, and the Master panel">
-              </div>
-            </button>
-          </figure>
+          <div class="rig">
+            <div class="flipper">
+              <figure class="shot">
+                <button class="zoom" type="button" data-full="assets/img/console.webp" data-label-fr="Agrandir la capture de la console" data-label-en="Enlarge the console screenshot" aria-label="Agrandir la capture de la console">
+                  <div class="stack" data-base="assets/img/console.webp">
+                    <img class="top" src="assets/img/console.webp" width="2068" height="1720" fetchpriority="high"
+                         alt="La console REKA : six strips avec leurs effets, le routing, les faders, et le panneau Master"
+                         data-alt-fr="La console REKA : six strips avec leurs effets, le routing, les faders, et le panneau Master"
+                         data-alt-en="The REKA console: six strips with their effects, routing and faders, and the Master panel">
+                  </div>
+                </button>
+              </figure>
+            </div>
+            <div class="floaters" aria-hidden="true">
+              <div class="fl fl-cube"><div class="cube"><i></i><i></i><i></i><i></i><i></i><i></i></div></div>
+              <div class="fl fl-fx"><span>Effets <b>+2.5 ms</b></span><i class="fxb">FX</i></div>
+              <div class="fl fl-knob"><i class="kn"></i><span><b>0.0 dB</b>Casque</span></div>
+              <div class="fl fl-mute">Muet</div>
+              <div class="fl fl-vu"><i class="vu-m" style="--d:1.3s"></i><i class="vu-m" style="--d:1.6s;--dl:-.5s"></i></div>
+            </div>
+          </div>
         </div>
         <div class="themes-bar" role="radiogroup" aria-label="Thème" data-label-fr="Thème de la console" data-label-en="Console theme">
           <span class="label"><span lang="fr">Essaie un thème :</span><span lang="en">Try a theme:</span></span>
@@ -286,6 +297,49 @@
         <h2 lang="en">What you can <em class="grad">do with it.</em></h2>
       </div>
 
+      <div class="split anatomy">
+        <div class="iso-stage reveal" aria-hidden="true">
+          <div class="iso">
+            <div class="plate p-fader" data-layer="4" style="--k:0">
+              <div class="db">2.0 dB</div>
+              <i class="rail"></i>
+              <div class="bars"><i class="vu-m" style="--d:1.4s"></i><i class="vu-m" style="--d:1.8s;--dl:-.6s"></i></div>
+            </div>
+            <div class="plate p-mute" data-layer="3" style="--k:1"><span>Muet</span><span>Apps 2</span></div>
+            <div class="plate p-pan" data-layer="2" style="--k:2">
+              <div class="ph"><span>VOIX</span><span>+0.18 +0.62</span></div>
+              <div class="pad"><div class="cube"><i></i><i></i><i></i><i></i><i></i><i></i></div></div>
+            </div>
+            <div class="plate p-send" data-layer="1" style="--k:3">
+              <div><b style="--v:.72"></b>Monitor</div><div><b style="--v:.6"></b>Mic Out</div>
+              <div><b style="--v:0"></b>Discord</div><div><b style="--v:.45"></b>Obs</div>
+            </div>
+            <div class="plate p-fx" data-layer="0" style="--k:4">
+              <div class="ph"><span>Effets<b>+2.5 ms</b></span><i></i></div>
+              <span class="pl">Gate</span><span class="pl">EQ</span><span class="pl">Limiter</span>
+            </div>
+          </div>
+        </div>
+        <div class="reveal" style="--delay:.1s">
+          <h3 lang="fr">Une strip, de haut en bas</h3>
+          <h3 lang="en">A strip, from top to bottom</h3>
+          <ol class="layers" lang="fr">
+            <li data-layer="0" tabindex="0"><strong>Effets</strong> : tes plugins, dans l'ordre que tu veux, et le délai qu'ils ajoutent.</li>
+            <li data-layer="1" tabindex="0"><strong>Envois</strong> : Monitor, Mic Out, Discord et Obs.</li>
+            <li data-layer="2" tabindex="0"><strong>Intellipan</strong> : un carré où tu déplaces le petit cube rouge.</li>
+            <li data-layer="3" tabindex="0"><strong>Muet et Apps</strong> : couper la strip, régler chaque application.</li>
+            <li data-layer="4" tabindex="0"><strong>Fader et VU-mètre</strong> : de −60 à +12 dB, comme Voicemeeter.</li>
+          </ol>
+          <ol class="layers" lang="en">
+            <li data-layer="0" tabindex="0"><strong>Effets</strong> (effects): your plugins, in the order you want, and the delay they add.</li>
+            <li data-layer="1" tabindex="0"><strong>Sends</strong>: Monitor, Mic Out, Discord and Obs.</li>
+            <li data-layer="2" tabindex="0"><strong>Intellipan</strong>: a square in which you move the small red cube.</li>
+            <li data-layer="3" tabindex="0"><strong>Muet and Apps</strong>: mute the strip, set each application.</li>
+            <li data-layer="4" tabindex="0"><strong>Fader and VU meter</strong>: from −60 to +12 dB, like Voicemeeter.</li>
+          </ol>
+        </div>
+      </div>
+
       <div class="split">
         <figure class="shot reveal">
           <button class="zoom" type="button" aria-label="Agrandir" data-label-fr="Agrandir la capture" data-label-en="Enlarge the screenshot">
@@ -390,37 +444,43 @@
         <p lang="en">One click in ⚙ → <strong>Apparence</strong> (appearance) and the whole console changes: colors, faders, VU meters. Click a theme to try it on this site.</p>
       </div>
 
+      <div class="theme-stage reveal">
       <div class="theme-wall">
-        <button class="theme-card reveal" type="button" data-pick="synthwave" aria-pressed="false" style="--c1:#ff4fb8">
+        <button class="theme-card" type="button" data-pick="synthwave" aria-pressed="false" style="--c1:#ff4fb8">
           <img src="assets/img/theme-synthwave.webp" width="1034" height="860" loading="lazy" alt="">
           <span class="on"><span lang="fr">Actif</span><span lang="en">Active</span></span>
           <span class="meta"><span><b>Synthwave</b><span lang="fr">Violet, rose et cyan, années 80.</span><span lang="en">Purple, pink and cyan, straight from the 80s.</span></span><span class="dots"><i style="--c:#ff4fb8"></i><i style="--c:#00e5ff"></i><i style="--c:#ffd23f"></i></span></span>
         </button>
-        <button class="theme-card reveal" type="button" data-pick="braise" aria-pressed="false" style="--c1:#ff6a3d;--delay:.08s">
+        <button class="theme-card" type="button" data-pick="braise" aria-pressed="false" style="--c1:#ff6a3d">
           <img src="assets/img/theme-braise.webp" width="1034" height="860" loading="lazy" alt="">
           <span class="on"><span lang="fr">Actif</span><span lang="en">Active</span></span>
           <span class="meta"><span><b>Braise</b><span lang="fr">Orange et rouge, chaleureux.</span><span lang="en">Orange and red, warm.</span></span><span class="dots"><i style="--c:#ff6a3d"></i><i style="--c:#ffb347"></i><i style="--c:#ffd23f"></i></span></span>
         </button>
-        <button class="theme-card reveal" type="button" data-pick="glace" aria-pressed="false" style="--c1:#00e5ff;--delay:.16s">
+        <button class="theme-card" type="button" data-pick="glace" aria-pressed="false" style="--c1:#00e5ff">
           <img src="assets/img/theme-glace.webp" width="1034" height="860" loading="lazy" alt="">
           <span class="on"><span lang="fr">Actif</span><span lang="en">Active</span></span>
           <span class="meta"><span><b>Glace</b><span lang="fr">Cyan et blanc givré.</span><span lang="en">Cyan and frosted white.</span></span><span class="dots"><i style="--c:#00e5ff"></i><i style="--c:#7dd3fc"></i><i style="--c:#e9f7ff"></i></span></span>
         </button>
-        <button class="theme-card reveal" type="button" data-pick="matrix" aria-pressed="false" style="--c1:#39ff14">
+        <button class="theme-card" type="button" data-pick="matrix" aria-pressed="false" style="--c1:#39ff14">
           <img src="assets/img/theme-matrix.webp" width="1034" height="860" loading="lazy" alt="">
           <span class="on"><span lang="fr">Actif</span><span lang="en">Active</span></span>
           <span class="meta"><span><b>Matrix</b><span lang="fr">Noir et vert terminal.</span><span lang="en">Black and terminal green.</span></span><span class="dots"><i style="--c:#39ff14"></i><i style="--c:#7dff6a"></i></span></span>
         </button>
-        <button class="theme-card reveal" type="button" data-pick="sakura" aria-pressed="false" style="--c1:#ff8fc7;--delay:.08s">
+        <button class="theme-card" type="button" data-pick="sakura" aria-pressed="false" style="--c1:#ff8fc7">
           <img src="assets/img/theme-sakura.webp" width="1034" height="860" loading="lazy" alt="">
           <span class="on"><span lang="fr">Actif</span><span lang="en">Active</span></span>
           <span class="meta"><span><b>Sakura</b><span lang="fr">Rose pastel et blanc.</span><span lang="en">Pastel pink and white.</span></span><span class="dots"><i style="--c:#ff8fc7"></i><i style="--c:#ffb3d9"></i><i style="--c:#ffffff"></i></span></span>
         </button>
-        <button class="theme-card reveal" type="button" data-pick="arcade" aria-pressed="false" style="--c1:#a855f7;--delay:.16s">
+        <button class="theme-card" type="button" data-pick="arcade" aria-pressed="false" style="--c1:#a855f7">
           <img src="assets/img/theme-arcade.webp" width="1034" height="860" loading="lazy" alt="">
           <span class="on"><span lang="fr">Actif</span><span lang="en">Active</span></span>
           <span class="meta"><span><b>Arcade</b><span lang="fr">Une couleur par canal.</span><span lang="en">One color per channel.</span></span><span class="dots"><i style="--c:#22c55e"></i><i style="--c:#f59e0b"></i><i style="--c:#5865f2"></i><i style="--c:#ec4899"></i></span></span>
         </button>
+      </div>
+      </div>
+      <div class="ring-nav js-only">
+        <button type="button" data-ring="-1" aria-label="Thème précédent" data-label-fr="Thème précédent" data-label-en="Previous theme"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m14 6-6 6 6 6"/></svg></button>
+        <button type="button" data-ring="1" aria-label="Thème suivant" data-label-fr="Thème suivant" data-label-en="Next theme"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m10 6 6 6-6 6"/></svg></button>
       </div>
 
       <div class="theme-more reveal">

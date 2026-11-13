@@ -1,6 +1,7 @@
-/* REKA — effets de la page d'accueil : apparitions, reflets, spectre animé,
-   galerie de thèmes et mini-console interactive. Aucune dépendance.
-   Tout est décoratif : sans ce script, la page reste complète. */
+/* REKA — effets visuels : apparitions, relief 3D sous le pointeur, console du haut
+   de page, champ d'égaliseur en perspective, carrousel de thèmes, vue éclatée d'une
+   strip et mini-console interactive. Aucune dépendance.
+   Tout est décoratif : sans ce script, les pages restent complètes. */
 (function () {
   "use strict";
 
@@ -8,6 +9,10 @@
   var reduce = !!(window.matchMedia && matchMedia("(prefers-reduced-motion: reduce)").matches);
 
   function clamp(v, a, b) { return Math.max(a, Math.min(b, v)); }
+  function onTheme(fn) {
+    new MutationObserver(fn).observe(root, { attributes: true, attributeFilter: ["data-theme"] });
+  }
+  function theme() { return root.getAttribute("data-theme") || "studio"; }
 
   /* ---------- Apparition au défilement ---------- */
 
@@ -23,7 +28,7 @@
         setTimeout(function () {
           el.classList.remove("reveal", "in");
           el.style.removeProperty("--delay");
-        }, 1000 + delay * 1000);
+        }, 1100 + delay * 1000);
       });
     }, { rootMargin: "0px 0px -6% 0px", threshold: 0.06 });
     reveals.forEach(function (el) { seen.observe(el); });
@@ -31,112 +36,263 @@
     reveals.forEach(function (el) { el.classList.remove("reveal"); });
   }
 
-  /* ---------- Reflet qui suit le pointeur sur les cartes ---------- */
+  /* ---------- Cartes : inclinaison 3D et reflet sous le pointeur ---------- */
 
+  var TILTABLE = ".card, .tile, .quick a, .final .box, .support";
+  var tilted = null;
+  function untilt(el) {
+    el.style.removeProperty("--rx");
+    el.style.removeProperty("--ry");
+  }
   document.addEventListener("pointermove", function (e) {
-    var card = e.target.closest && e.target.closest(".card");
-    if (!card) return;
-    var r = card.getBoundingClientRect();
-    card.style.setProperty("--mx", (e.clientX - r.left) + "px");
-    card.style.setProperty("--my", (e.clientY - r.top) + "px");
+    if (e.pointerType === "touch") return;
+    var el = e.target.closest ? e.target.closest(TILTABLE) : null;
+    if (tilted && tilted !== el) untilt(tilted);
+    tilted = el;
+    if (!el) return;
+    var r = el.getBoundingClientRect();
+    var px = clamp((e.clientX - r.left) / r.width, 0, 1), py = clamp((e.clientY - r.top) / r.height, 0, 1);
+    el.style.setProperty("--mx", (px * r.width).toFixed(0) + "px");
+    el.style.setProperty("--my", (py * r.height).toFixed(0) + "px");
+    if (reduce) return;
+    var max = clamp(5200 / r.width, 3, 12);          /* les grands blocs penchent moins */
+    el.style.setProperty("--ry", ((px - 0.5) * 2 * max).toFixed(2));
+    el.style.setProperty("--rx", ((0.5 - py) * 2 * max).toFixed(2));
   }, { passive: true });
+  document.addEventListener("pointerleave", function () { if (tilted) { untilt(tilted); tilted = null; } });
+  root.addEventListener("mouseleave", function () { if (tilted) { untilt(tilted); tilted = null; } });
 
-  /* ---------- Capture du haut de page : se redresse au défilement ---------- */
+  /* ---------- Console du haut de page : suit le pointeur, se redresse au défilement ---------- */
 
-  var shot = document.querySelector(".hero-shot .shot");
-  if (shot && !reduce) {
-    var queued = false;
-    var tilt = function () {
-      queued = false;
-      var top = shot.getBoundingClientRect().top;
-      var p = clamp((top - innerHeight * 0.1) / (innerHeight * 0.6), 0, 1);
-      shot.style.setProperty("--tilt", (p * 14).toFixed(2));
+  var hero = document.querySelector(".hero"), rig = document.querySelector(".rig");
+  if (hero && rig && !reduce) {
+    var want = { rx: 0, ry: 0 }, now = { rx: 0, ry: 0 }, easing = 0, queued = false;
+    var ease = function () {
+      easing = 0;
+      now.rx += (want.rx - now.rx) * 0.09;
+      now.ry += (want.ry - now.ry) * 0.09;
+      rig.style.setProperty("--rx", now.rx.toFixed(2));
+      rig.style.setProperty("--ry", now.ry.toFixed(2));
+      if (Math.abs(want.rx - now.rx) + Math.abs(want.ry - now.ry) > 0.02) easing = requestAnimationFrame(ease);
     };
-    addEventListener("scroll", function () {
-      if (!queued) { queued = true; requestAnimationFrame(tilt); }
+    var go = function () { if (!easing) easing = requestAnimationFrame(ease); };
+    hero.addEventListener("pointermove", function (e) {
+      if (e.pointerType === "touch") return;
+      var r = hero.getBoundingClientRect();
+      want.ry = ((e.clientX - r.left) / r.width - 0.5) * 16;
+      want.rx = (0.5 - (e.clientY - r.top) / r.height) * 9;
+      go();
     }, { passive: true });
-    addEventListener("resize", tilt);
-    tilt();
+    hero.addEventListener("pointerleave", function () { want.rx = want.ry = 0; go(); });
+
+    var lean = function () {
+      queued = false;
+      var top = rig.getBoundingClientRect().top;
+      rig.style.setProperty("--tilt", (clamp((top - innerHeight * 0.1) / (innerHeight * 0.6), 0, 1) * 15).toFixed(2));
+    };
+    addEventListener("scroll", function () { if (!queued) { queued = true; requestAnimationFrame(lean); } }, { passive: true });
+    addEventListener("resize", lean);
+    lean();
   }
 
-  /* ---------- Spectre animé derrière la capture ---------- */
+  /* Changement de thème : la console fait un demi-tour sur elle-même. */
+  var flipper = document.querySelector(".flipper");
+  if (flipper && !reduce) {
+    onTheme(function () {
+      flipper.classList.remove("flip");
+      void flipper.offsetWidth;                       /* relance l'animation */
+      flipper.classList.add("flip");
+    });
+    flipper.addEventListener("animationend", function () { flipper.classList.remove("flip"); });
+  }
+
+  /* ---------- Champ d'égaliseur 3D derrière la console ---------- */
 
   var canvas = document.querySelector(".spectrum");
   if (canvas && canvas.getContext && !reduce) {
     var ctx = canvas.getContext("2d");
-    var W = 0, H = 0, bars = [], colors = ["#3b82f6", "#22d3ee"], onScreen = true, raf = 0;
-    var STEP = 16, BAR = 9;
+    var W = 0, H = 0, focal = 600, horizon = 0, visible = true, frame = 0;
+    var colA = [59, 130, 246], colB = [34, 211, 238], hideL = 0, hideR = 0;
+    var COLS = 44, ROWS = 9, SX = 74, SZ = 112, BW = 40, BD = 46, MAXH = 270, CAM_Y = 310, CAM_Z = -430;
+    var seeds = [], order = [];
+    for (var c = 0; c < COLS; c++) { seeds.push(Math.random() * 6.28); order.push(c); }
+    var centerX = function (col) { return (col - (COLS - 1) / 2) * SX; };
+    order.sort(function (a, b) { return Math.abs(centerX(b)) - Math.abs(centerX(a)); });   /* de l'extérieur vers le centre */
 
+    var hex = function (value, fallback) {
+      var m = /^#?([0-9a-f]{3}|[0-9a-f]{6})$/i.exec(value.trim());
+      if (!m) return fallback;
+      var h = m[1].length === 3 ? m[1].replace(/./g, "$&$&") : m[1];
+      var n = parseInt(h, 16);
+      return [(n >> 16) & 255, (n >> 8) & 255, n & 255];
+    };
     var readColors = function () {
       var cs = getComputedStyle(root);
-      colors = [cs.getPropertyValue("--grad-a").trim() || colors[0], cs.getPropertyValue("--grad-b").trim() || colors[1]];
+      colA = hex(cs.getPropertyValue("--grad-a"), colA);
+      colB = hex(cs.getPropertyValue("--grad-b"), colB);
     };
     var resize = function () {
       var dpr = Math.min(window.devicePixelRatio || 1, 2);
       W = canvas.clientWidth; H = canvas.clientHeight;
       canvas.width = Math.round(W * dpr); canvas.height = Math.round(H * dpr);
       ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
-      var n = Math.ceil(W / STEP);
-      bars = [];
-      for (var i = 0; i < n; i++) bars.push({ v: 0, pk: 0, seed: Math.random() * 100 });
+      focal = H * 1.1; horizon = H * 0.28;
+      /* Zone cachée par la capture : inutile d'y dessiner. */
+      var shot = document.querySelector(".hero-shot"), box = canvas.getBoundingClientRect();
+      if (shot) { var s = shot.getBoundingClientRect(); hideL = s.left - box.left + 90; hideR = s.right - box.left - 90; }
     };
+    var px = function (x, z) { return W / 2 + x * focal / (z - CAM_Z); };
+    var py = function (y, z) { return horizon + (CAM_Y - y) * focal / (z - CAM_Z); };
+    var quad = function (x1, y1, x2, y2, x3, y3, x4, y4, r, g, b, a) {
+      ctx.fillStyle = "rgba(" + (r | 0) + "," + (g | 0) + "," + (b | 0) + "," + a.toFixed(3) + ")";
+      ctx.beginPath(); ctx.moveTo(x1, y1); ctx.lineTo(x2, y2); ctx.lineTo(x3, y3); ctx.lineTo(x4, y4); ctx.closePath(); ctx.fill();
+    };
+
     var draw = function (t) {
-      raf = 0;
-      if (!onScreen || document.hidden || !W) return;
+      frame = 0;
+      if (!visible || document.hidden || !W) return;
       ctx.clearRect(0, 0, W, H);
-      var g = ctx.createLinearGradient(0, H, 0, 0);
-      g.addColorStop(0, colors[0]); g.addColorStop(1, colors[1]);
-      ctx.fillStyle = g;
-      for (var i = 0; i < bars.length; i++) {
-        var b = bars[i];
-        var n1 = Math.sin(t * 0.0013 + b.seed) * 0.5 + 0.5;
-        var n2 = Math.sin(t * 0.0034 + i * 0.47) * 0.5 + 0.5;
-        var n3 = Math.sin(t * 0.0008 + i * 0.11 + 2) * 0.5 + 0.5;
-        var target = (0.12 + 0.88 * n1 * n2) * (0.4 + 0.6 * n3);
-        b.v += (target - b.v) * 0.14;
-        b.pk = Math.max(b.pk - 0.0035, b.v);
-        var h = b.v * H * 0.92, x = i * STEP;
-        ctx.globalAlpha = 0.62;
-        ctx.fillRect(x, H - h, BAR, h);
-        ctx.globalAlpha = 0.95;
-        ctx.fillRect(x, H - b.pk * H * 0.92 - 5, BAR, 2);
+
+      /* Sol quadrillé qui fuit vers l'horizon. */
+      var zFar = (ROWS - 1) * SZ + BD, half = COLS / 2 * SX;
+      ctx.lineWidth = 1;
+      ctx.strokeStyle = "rgba(" + colA[0] + "," + colA[1] + "," + colA[2] + ",0.16)";
+      ctx.beginPath();
+      for (var i = 0; i <= COLS; i += 2) {
+        var gx = (i - COLS / 2) * SX;
+        ctx.moveTo(px(gx, -SZ), py(0, -SZ)); ctx.lineTo(px(gx, zFar), py(0, zFar));
       }
-      raf = requestAnimationFrame(draw);
+      for (var j = -1; j <= ROWS; j++) {
+        var gz = j * SZ - (SZ - BD) / 2;
+        ctx.moveTo(px(-half, gz), py(0, gz)); ctx.lineTo(px(half, gz), py(0, gz));
+      }
+      ctx.stroke();
+
+      for (var row = ROWS - 1; row >= 0; row--) {
+        var z0 = row * SZ, z1 = z0 + BD, fog = 1 - row / ROWS * 0.78;
+        for (var k = 0; k < COLS; k++) {
+          var col = order[k], cx = centerX(col), x0 = cx - BW / 2, x1 = cx + BW / 2;
+          var fl = px(x0, z0), fr = px(x1, z0);
+          if (fr < -40 || fl > W + 40) continue;
+          if (fl > hideL && fr < hideR) continue;
+
+          var a = 0.5 + 0.5 * Math.sin(t * 0.0016 + row * 0.7 + col * 0.33);
+          var b = 0.5 + 0.5 * Math.sin(t * 0.0027 - col * 0.52 + row * 0.2);
+          var d = 0.5 + 0.5 * Math.sin(t * 0.0009 + col * 0.17 + seeds[col] + row);
+          var lvl = 0.05 + 0.95 * a * b * (0.45 + 0.55 * d), h = lvl * MAXH;
+          var r = colA[0] + (colB[0] - colA[0]) * lvl, g = colA[1] + (colB[1] - colA[1]) * lvl, bl = colA[2] + (colB[2] - colA[2]) * lvl;
+
+          var bl0 = px(x0, z1), br0 = px(x1, z1);
+          var gy0 = py(0, z0), ty0 = py(h, z0), ty1 = py(h, z1), gy1 = py(0, z1);
+          /* Flanc tourné vers le centre, puis face avant, puis dessus. */
+          if (x0 > 0) quad(fl, gy0, fl, ty0, bl0, ty1, bl0, gy1, r * 0.42, g * 0.42, bl * 0.42, fog * 0.85);
+          else if (x1 < 0) quad(fr, gy0, fr, ty0, br0, ty1, br0, gy1, r * 0.42, g * 0.42, bl * 0.42, fog * 0.85);
+          quad(fl, gy0, fr, gy0, fr, ty0, fl, ty0, r * 0.8, g * 0.8, bl * 0.8, fog * 0.72);
+          quad(fl, ty0, fr, ty0, br0, ty1, bl0, ty1, Math.min(255, r * 1.25 + 30), Math.min(255, g * 1.25 + 30), Math.min(255, bl * 1.25 + 30), fog * 0.95);
+        }
+      }
+      frame = requestAnimationFrame(draw);
     };
-    var kick = function () { if (!raf) raf = requestAnimationFrame(draw); };
+    var kick = function () { if (!frame) frame = requestAnimationFrame(draw); };
 
     readColors(); resize(); kick();
     addEventListener("resize", function () { resize(); kick(); });
     document.addEventListener("visibilitychange", kick);
-    new MutationObserver(readColors).observe(root, { attributes: true, attributeFilter: ["data-theme"] });
+    onTheme(readColors);
     if ("IntersectionObserver" in window) {
-      new IntersectionObserver(function (entries) {
-        onScreen = entries[0].isIntersecting;
-        kick();
-      }).observe(canvas);
+      new IntersectionObserver(function (entries) { visible = entries[0].isIntersecting; kick(); }).observe(canvas);
     }
   }
 
-  /* ---------- Galerie de thèmes ---------- */
+  /* ---------- Vue éclatée d'une strip ---------- */
 
-  var picks = document.querySelectorAll("[data-pick]");
-  if (picks.length) {
-    var current = function () { return root.getAttribute("data-theme") || "studio"; };
-    var sync = function () {
-      picks.forEach(function (el) {
-        if (el.hasAttribute("aria-pressed")) el.setAttribute("aria-pressed", String(el.dataset.pick === current()));
-      });
+  var iso = document.querySelector(".iso");
+  if (iso) {
+    var plates = iso.querySelectorAll(".plate"), items = document.querySelectorAll(".layers li");
+    var light = function (layer) {
+      iso.classList.toggle("dim", layer !== null);
+      plates.forEach(function (p) { p.classList.toggle("on", p.dataset.layer === layer); });
+      items.forEach(function (li) { li.classList.toggle("on", li.dataset.layer === layer); });
     };
-    picks.forEach(function (el) {
-      el.addEventListener("click", function () {
-        var want = el.dataset.pick === current() ? "studio" : el.dataset.pick;
-        var chip = document.querySelector('.theme-chip[data-theme="' + want + '"]');
-        if (chip) chip.click();
+    items.forEach(function (li) {
+      li.addEventListener("pointerenter", function () { light(li.dataset.layer); });
+      li.addEventListener("pointerleave", function () { light(null); });
+      li.addEventListener("focus", function () { light(li.dataset.layer); });
+      li.addEventListener("blur", function () { light(null); });
+    });
+    if (!reduce) {
+      /* Les étages s'écartent à mesure que le bloc entre dans l'écran. */
+      var stageEl = iso.parentNode, waiting = false;
+      var spread = function () {
+        waiting = false;
+        var r = stageEl.getBoundingClientRect();
+        var p = clamp(1 - (r.top - innerHeight * 0.2) / (innerHeight * 0.65), 0, 1);
+        iso.style.setProperty("--gap", (14 + p * 80).toFixed(1) + "px");
+      };
+      addEventListener("scroll", function () { if (!waiting) { waiting = true; requestAnimationFrame(spread); } }, { passive: true });
+      addEventListener("resize", spread);
+      spread();
+    }
+  }
+
+  /* ---------- Thèmes : carrousel en anneau ---------- */
+
+  function applyTheme(name) {
+    var chip = document.querySelector('.theme-chip[data-theme="' + name + '"]');
+    if (chip) chip.click();
+  }
+  var stage = document.querySelector(".theme-stage");
+  var cards = stage ? Array.prototype.slice.call(stage.querySelectorAll(".theme-card")) : [];
+  if (cards.length) {
+    var wall = stage.querySelector(".theme-wall");
+    var count = cards.length, turn = 360 / count, index = 0, angle = 0, touched = false, inView = false, auto = 0, pressedFront = null;
+    stage.classList.add("ring");
+    cards.forEach(function (card, i) { card.style.setProperty("--i", i); });
+
+    var rotateTo = function (i) {
+      i = ((i % count) + count) % count;
+      var delta = ((i - index) % count + count) % count;
+      if (delta > count / 2) delta -= count;        /* par le chemin le plus court */
+      index = i; angle -= delta * turn;
+      wall.style.setProperty("--angle", angle);
+      cards.forEach(function (card, n) { card.classList.toggle("front", n === index); });
+    };
+    var sync = function () {
+      cards.forEach(function (card) { card.setAttribute("aria-pressed", String(card.dataset.pick === theme())); });
+    };
+
+    cards.forEach(function (card, i) {
+      card.addEventListener("pointerdown", function () { pressedFront = card.classList.contains("front"); });
+      card.addEventListener("focus", function () { touched = true; rotateTo(i); });
+      card.addEventListener("click", function () {
+        var wasFront = pressedFront === null ? true : pressedFront;
+        pressedFront = null; touched = true;
+        rotateTo(i);
+        applyTheme(wasFront && theme() === card.dataset.pick ? "studio" : card.dataset.pick);
       });
     });
-    new MutationObserver(sync).observe(root, { attributes: true, attributeFilter: ["data-theme"] });
+    document.querySelectorAll("[data-ring]").forEach(function (btn) {
+      btn.addEventListener("click", function () { touched = true; rotateTo(index + Number(btn.dataset.ring)); });
+    });
+    onTheme(sync);
     sync();
+
+    var start = cards.findIndex(function (card) { return card.dataset.pick === theme(); });
+    rotateTo(start < 0 ? 0 : start);
+
+    /* Un tour de présentation, tant que personne n'y a touché. */
+    if (!reduce && "IntersectionObserver" in window) {
+      new IntersectionObserver(function (entries) { inView = entries[0].isIntersecting; }, { threshold: 0.4 }).observe(stage);
+      var timer = setInterval(function () {
+        if (touched || auto >= count) { clearInterval(timer); return; }
+        if (!inView || document.hidden || stage.matches(":hover")) return;
+        auto++; rotateTo(index + 1);
+      }, 3200);
+    }
   }
+  document.querySelectorAll('[data-pick="studio"]').forEach(function (btn) {
+    btn.addEventListener("click", function () { applyTheme("studio"); });
+  });
 
   /* ---------- Mini-console interactive ---------- */
 
@@ -179,7 +335,8 @@
     return '<div class="mc-vu"><div class="bar"><i class="lvl"></i><i class="pk"></i></div><div class="bar"><i class="lvl"></i><i class="pk"></i></div></div>';
   }
 
-  /* Glisser vertical, à la souris, au doigt ou au stylet. */
+  /* Glisser vertical, à la souris, au doigt ou au stylet. Pendant le geste, la
+     console reste à plat (classe « busy ») pour que le pointeur tombe juste. */
   function dragY(el, onStart, onMove) {
     el.addEventListener("pointerdown", function (e) {
       if (e.button) return;
@@ -187,11 +344,13 @@
       el.focus({ preventScroll: true });
       try { el.setPointerCapture(e.pointerId); } catch (err) { /* pointeur déjà relâché */ }
       el.classList.add("drag");
+      host.classList.add("busy");
       var last = e.clientY;
       if (onStart) onStart(e);
       var move = function (ev) { var dy = ev.clientY - last; last = ev.clientY; onMove(dy, ev.shiftKey); };
       var up = function () {
         el.classList.remove("drag");
+        host.classList.remove("busy");
         el.removeEventListener("pointermove", move);
         el.removeEventListener("pointerup", up);
         el.removeEventListener("pointercancel", up);
@@ -342,14 +501,14 @@
     paint(master.bars, master.lv, master.pk);
   }
 
-  var running = 0, inView = true;
+  var running = 0, consoleInView = true;
   function loop(t) {
     running = 0;
-    if (!inView || document.hidden) return;
+    if (!consoleInView || document.hidden) return;
     step(t, false);
     running = requestAnimationFrame(loop);
   }
-  function start() { if (!reduce && !running) running = requestAnimationFrame(loop); }
+  function startLoop() { if (!reduce && !running) running = requestAnimationFrame(loop); }
   /* Animations réduites : pas de mouvement continu, un niveau fixe mis à jour à chaque geste. */
   function still() { if (reduce && master.bars) step(0, true); }
 
@@ -357,8 +516,8 @@
   setMaster(0);
   if (reduce) step(0, true);
   if ("IntersectionObserver" in window) {
-    new IntersectionObserver(function (entries) { inView = entries[0].isIntersecting; start(); }).observe(host);
+    new IntersectionObserver(function (entries) { consoleInView = entries[0].isIntersecting; startLoop(); }).observe(host);
   }
-  document.addEventListener("visibilitychange", start);
-  start();
+  document.addEventListener("visibilitychange", startLoop);
+  startLoop();
 })();
