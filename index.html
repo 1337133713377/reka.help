@@ -66,8 +66,8 @@
         <span lang="fr">Pour Windows 10 et 11</span><span lang="en">For Windows 10 and 11</span>
         <b class="version-tag" data-latest-version></b>
       </div>
-      <h1 class="reveal" style="--delay:.06s" lang="fr">La console de mixage <em class="grad">tout-en-un</em> pour Windows.</h1>
-      <h1 class="reveal" style="--delay:.06s" lang="en">The <em class="grad">all-in-one</em> mixing console for Windows.</h1>
+      <h1 lang="fr">La console de mixage <em class="grad">tout-en-un</em> pour Windows.</h1>
+      <h1 lang="en">The <em class="grad">all-in-one</em> mixing console for Windows.</h1>
       <p class="lead reveal" style="--delay:.12s" lang="fr">Voicemeeter pour le son, tes plugins VST pour les effets, <strong>une seule fenêtre</strong> pour tout piloter.</p>
       <p class="lead reveal" style="--delay:.12s" lang="en">Voicemeeter for the sound, your VST plugins for the effects, <strong>one window</strong> to run it all.</p>
       <div class="cta reveal" style="--delay:.18s">
@@ -136,7 +136,7 @@
   </div>
 
   <!-- En bref -->
-  <section id="fonctions">
+  <section id="fonctions" data-n="01">
     <div class="wrap">
       <div class="section-head reveal">
         <div class="eyebrow"><span lang="fr">En bref</span><span lang="en">At a glance</span></div>
@@ -253,11 +253,18 @@
           </div>
         </article>
       </div>
-    </div>
+    
+      <div class="stats">
+        <div class="stat reveal"><b data-count="6">6</b><span lang="fr">strips</span><span lang="en">strips</span><small lang="fr">avec Voicemeeter Potato, 5 avec Banana</small><small lang="en">with Voicemeeter Potato, 5 with Banana</small></div>
+        <div class="stat reveal" style="--delay:.08s"><b data-count="4">4</b><span lang="fr">envois par strip</span><span lang="en">sends per strip</span><small>Monitor, Mic Out, Discord, Obs</small></div>
+        <div class="stat reveal" style="--delay:.16s"><b data-count="12">12</b><span lang="fr">thèmes</span><span lang="en">themes</span><small lang="fr">ou le tien, élément par élément</small><small lang="en">or your own, element by element</small></div>
+        <div class="stat reveal" style="--delay:.24s"><b data-count="5">5</b><span lang="fr">moteurs d'effets</span><span lang="en">effects engines</span><small lang="fr">REAPER, intégré, FL Studio, Equalizer APO, ou aucun</small><small lang="en">REAPER, built-in, FL Studio, Equalizer APO, or none</small></div>
+      </div>
+</div>
   </section>
 
   <!-- Mini-console -->
-  <section class="alt try js-only" id="essai">
+  <section class="alt try js-only" id="essai" data-n="02">
     <div class="wrap">
       <div class="split">
         <div class="reveal">
@@ -289,7 +296,7 @@
   </section>
 
   <!-- Dans le détail -->
-  <section id="console">
+  <section id="console" data-n="03">
     <div class="wrap">
       <div class="section-head reveal">
         <div class="eyebrow"><span lang="fr">Dans le détail</span><span lang="en">Up close</span></div>
@@ -434,7 +441,7 @@
   </section>
 
   <!-- Thèmes -->
-  <section class="alt" id="themes">
+  <section class="alt" id="themes" data-n="04">
     <div class="wrap">
       <div class="section-head center reveal">
         <div class="eyebrow"><span lang="fr">Apparence</span><span lang="en">Appearance</span></div>
@@ -501,7 +508,7 @@
   </section>
 
   <!-- Moteurs d'effets -->
-  <section id="moteurs">
+  <section id="moteurs" data-n="05">
     <div class="wrap">
       <div class="section-head reveal">
         <div class="eyebrow"><span lang="fr">Effets</span><span lang="en">Effects</span></div>
@@ -511,43 +518,62 @@
         <p lang="en">Switch engines whenever you like in ⚙ → <strong>Général</strong> (general); REKA restarts to apply it.</p>
       </div>
 
-      <div class="table-scroll reveal" tabindex="0" role="region" aria-label="Moteurs d'effets" data-label-fr="Tableau des moteurs d'effets" data-label-en="Effects engines table">
-        <table class="engines">
-          <thead>
-            <tr>
-              <th scope="col"><span lang="fr">Moteur</span><span lang="en">Engine</span></th>
-              <th scope="col"><span lang="fr">Ce que REKA pilote</span><span lang="en">What REKA controls</span></th>
-              <th scope="col"><span lang="fr">Délai ajouté à la voix</span><span lang="en">Delay added to your voice</span></th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <th scope="row">REAPER <span class="badge"><span lang="fr">conseillé</span><span lang="en">recommended</span></span></th>
-              <td><span lang="fr">Plugins VST2 / VST3 / CLAP : ajout, bypass, interface, déplacement, projets.</span><span lang="en">VST2 / VST3 / CLAP plugins: add, bypass, interface, move, projects.</span></td>
-              <td data-l-fr="Délai ajouté" data-l-en="Added delay"><span class="lat" data-n="3" aria-hidden="true"><i></i><i></i><i></i></span><span lang="fr">2 tampons ASIO + plugins</span><span lang="en">2 ASIO buffers + plugins</span></td>
-            </tr>
-            <tr>
-              <th scope="row">REKA <span lang="fr">(intégré)</span><span lang="en">(built-in)</span> <span class="badge new"><span lang="fr">nouveau</span><span lang="en">new</span></span></th>
-              <td><span lang="fr">Plugins VST2 / VST3 chargés par REKA, sans REAPER : ajout, bypass, interface, déplacement ; chaînes et réglages partagés dans le <code>.reka</code>.</span><span lang="en">VST2 / VST3 plugins loaded by REKA itself, no REAPER needed: add, bypass, interface, move; chains and settings travel in the <code>.reka</code> file.</span></td>
-              <td data-l-fr="Délai ajouté" data-l-en="Added delay"><span class="lat" data-n="1" aria-hidden="true"><i></i><i></i><i></i></span><span lang="fr">plugins seulement</span><span lang="en">plugins only</span></td>
-            </tr>
-            <tr>
-              <th scope="row">FL Studio</th>
-              <td><span lang="fr">Lancement et envoi du son ; les effets se règlent dans FL Studio.</span><span lang="en">Launching it and sending the audio; effects are set inside FL Studio.</span></td>
-              <td data-l-fr="Délai ajouté" data-l-en="Added delay"><span class="lat" data-n="3" aria-hidden="true"><i></i><i></i><i></i></span><span lang="fr">2 tampons ASIO + plugins</span><span lang="en">2 ASIO buffers + plugins</span></td>
-            </tr>
-            <tr>
-              <th scope="row">Equalizer APO</th>
-              <td><span lang="fr">Plugins VST2 64 bits, appliqués directement par Windows.</span><span lang="en">64-bit VST2 plugins, applied directly by Windows.</span></td>
-              <td data-l-fr="Délai ajouté" data-l-en="Added delay"><span class="lat" data-n="1" aria-hidden="true"><i></i><i></i><i></i></span><span lang="fr">plugins seulement</span><span lang="en">plugins only</span></td>
-            </tr>
-            <tr>
-              <th scope="row"><span lang="fr">Aucun</span><span lang="en">None</span></th>
-              <td><span lang="fr">Voicemeeter seul : volumes, routing, VU-mètres.</span><span lang="en">Voicemeeter alone: volumes, routing, VU meters.</span></td>
-              <td data-l-fr="Délai ajouté" data-l-en="Added delay"><span class="lat" data-n="0" aria-hidden="true"><i></i><i></i><i></i></span><span lang="fr">aucun</span><span lang="en">none</span></td>
-            </tr>
-          </tbody>
-        </table>
+      <div class="rack">
+        <article class="unit reveal">
+          <span class="ear" aria-hidden="true"></span>
+          <div class="u-name"><i class="led on" aria-hidden="true"></i><h3>REAPER <span class="badge"><span lang="fr">conseillé</span><span lang="en">recommended</span></span></h3></div>
+          <p class="u-desc"><span lang="fr">Plugins VST2 / VST3 / CLAP : ajout, bypass, interface, déplacement, projets.</span><span lang="en">VST2 / VST3 / CLAP plugins: add, bypass, interface, move, projects.</span></p>
+          <div class="u-delay">
+            <small><span lang="fr">Délai ajouté à la voix</span><span lang="en">Delay added to your voice</span></small>
+            <span class="meter" data-n="5" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i></span>
+            <b><span lang="fr">2 tampons ASIO + plugins</span><span lang="en">2 ASIO buffers + plugins</span></b>
+          </div>
+          <span class="ear" aria-hidden="true"></span>
+        </article>
+        <article class="unit reveal" style="--delay:.06s">
+          <span class="ear" aria-hidden="true"></span>
+          <div class="u-name"><i class="led on blink" aria-hidden="true"></i><h3>REKA <span lang="fr">(intégré)</span><span lang="en">(built-in)</span> <span class="badge new"><span lang="fr">nouveau</span><span lang="en">new</span></span></h3></div>
+          <p class="u-desc"><span lang="fr">Plugins VST2 / VST3 chargés par REKA, sans REAPER : ajout, bypass, interface, déplacement ; chaînes et réglages partagés dans le <code>.reka</code>.</span><span lang="en">VST2 / VST3 plugins loaded by REKA itself, no REAPER needed: add, bypass, interface, move; chains and settings travel in the <code>.reka</code> file.</span></p>
+          <div class="u-delay">
+            <small><span lang="fr">Délai ajouté à la voix</span><span lang="en">Delay added to your voice</span></small>
+            <span class="meter" data-n="2" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i></span>
+            <b><span lang="fr">plugins seulement</span><span lang="en">plugins only</span></b>
+          </div>
+          <span class="ear" aria-hidden="true"></span>
+        </article>
+        <article class="unit reveal" style="--delay:.12s">
+          <span class="ear" aria-hidden="true"></span>
+          <div class="u-name"><i class="led on" aria-hidden="true"></i><h3>FL Studio</h3></div>
+          <p class="u-desc"><span lang="fr">Lancement et envoi du son ; les effets se règlent dans FL Studio.</span><span lang="en">Launching it and sending the audio; effects are set inside FL Studio.</span></p>
+          <div class="u-delay">
+            <small><span lang="fr">Délai ajouté à la voix</span><span lang="en">Delay added to your voice</span></small>
+            <span class="meter" data-n="5" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i></span>
+            <b><span lang="fr">2 tampons ASIO + plugins</span><span lang="en">2 ASIO buffers + plugins</span></b>
+          </div>
+          <span class="ear" aria-hidden="true"></span>
+        </article>
+        <article class="unit reveal" style="--delay:.18s">
+          <span class="ear" aria-hidden="true"></span>
+          <div class="u-name"><i class="led on" aria-hidden="true"></i><h3>Equalizer APO</h3></div>
+          <p class="u-desc"><span lang="fr">Plugins VST2 64 bits, appliqués directement par Windows.</span><span lang="en">64-bit VST2 plugins, applied directly by Windows.</span></p>
+          <div class="u-delay">
+            <small><span lang="fr">Délai ajouté à la voix</span><span lang="en">Delay added to your voice</span></small>
+            <span class="meter" data-n="2" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i></span>
+            <b><span lang="fr">plugins seulement</span><span lang="en">plugins only</span></b>
+          </div>
+          <span class="ear" aria-hidden="true"></span>
+        </article>
+        <article class="unit reveal" style="--delay:.24s">
+          <span class="ear" aria-hidden="true"></span>
+          <div class="u-name"><i class="led " aria-hidden="true"></i><h3><span lang="fr">Aucun</span><span lang="en">None</span></h3></div>
+          <p class="u-desc"><span lang="fr">Voicemeeter seul : volumes, routing, VU-mètres.</span><span lang="en">Voicemeeter alone: volumes, routing, VU meters.</span></p>
+          <div class="u-delay">
+            <small><span lang="fr">Délai ajouté à la voix</span><span lang="en">Delay added to your voice</span></small>
+            <span class="meter" data-n="0" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i></span>
+            <b><span lang="fr">aucun</span><span lang="en">none</span></b>
+          </div>
+          <span class="ear" aria-hidden="true"></span>
+        </article>
       </div>
       <p style="margin-top:20px;font-size:.96rem">
         <a href="help.html#moteurs"><span lang="fr">Le détail de chaque moteur dans l'aide →</span><span lang="en">Details for each engine in the help →</span></a>
@@ -556,7 +582,7 @@
   </section>
 
   <!-- Démarrer -->
-  <section class="alt" id="demarrer">
+  <section class="alt" id="demarrer" data-n="06">
     <div class="wrap">
       <div class="section-head center reveal">
         <div class="eyebrow"><span lang="fr">Installation</span><span lang="en">Setup</span></div>
@@ -565,20 +591,17 @@
       </div>
 
       <ol class="steps">
-        <li class="reveal"><div class="card">
-          <span class="n" aria-hidden="true"></span>
+        <li class="reveal"><span class="n" aria-hidden="true"></span><div class="card">
           <h3 lang="fr">Installe les moteurs</h3><h3 lang="en">Install the engines</h3>
           <p lang="fr"><a href="https://vb-audio.com/Voicemeeter/potato.htm" rel="noopener">Voicemeeter Potato</a> ou <a href="https://vb-audio.com/Voicemeeter/banana.htm" rel="noopener">Banana</a>, et pour les effets <a href="https://www.reaper.fm/download.php" rel="noopener">REAPER</a> (ou FL Studio, ou Equalizer APO).</p>
           <p lang="en"><a href="https://vb-audio.com/Voicemeeter/potato.htm" rel="noopener">Voicemeeter Potato</a> or <a href="https://vb-audio.com/Voicemeeter/banana.htm" rel="noopener">Banana</a>, and for effects <a href="https://www.reaper.fm/download.php" rel="noopener">REAPER</a> (or FL Studio, or Equalizer APO).</p>
         </div></li>
-        <li class="reveal" style="--delay:.1s"><div class="card">
-          <span class="n" aria-hidden="true"></span>
+        <li class="reveal" style="--delay:.1s"><span class="n" aria-hidden="true"></span><div class="card">
           <h3 lang="fr">Lance REKA</h3><h3 lang="en">Launch REKA</h3>
           <p lang="fr"><a href="https://github.com/1337133713377/reka/releases/latest/download/REKA.exe">Télécharge <code>REKA.exe</code></a> et ouvre-le. Au premier lancement, tu choisis ton édition de Voicemeeter et ton moteur d'effets.</p>
           <p lang="en"><a href="https://github.com/1337133713377/reka/releases/latest/download/REKA.exe">Download <code>REKA.exe</code></a> and open it. On first launch you pick your Voicemeeter edition and your effects engine.</p>
         </div></li>
-        <li class="reveal" style="--delay:.2s"><div class="card">
-          <span class="n" aria-hidden="true"></span>
+        <li class="reveal" style="--delay:.2s"><span class="n" aria-hidden="true"></span><div class="card">
           <h3 lang="fr">Branche les effets <span class="once">une seule fois, avec REAPER</span></h3>
           <h3 lang="en">Hook up the effects <span class="once">once only, with REAPER</span></h3>
           <p lang="fr">⚙ → <strong>Ouvrir les préférences audio de REAPER</strong> → <em>Audio system</em> : <strong>ASIO</strong> → pilote : <strong>Voicemeeter Insert Virtual ASIO</strong>.</p>
@@ -599,7 +622,7 @@
   </section>
 
   <!-- Questions fréquentes -->
-  <section id="aide">
+  <section id="aide" data-n="07">
     <div class="wrap">
       <div class="section-head reveal">
         <div class="eyebrow"><span lang="fr">Aide</span><span lang="en">Help</span></div>
@@ -701,6 +724,7 @@
     <p class="legal" lang="fr">Voicemeeter, REAPER, FL Studio, Equalizer APO, Discord, OBS, Spotify et Windows appartiennent à leurs éditeurs respectifs. REKA est un projet indépendant, sans lien avec eux.</p>
     <p class="legal" lang="en">Voicemeeter, REAPER, FL Studio, Equalizer APO, Discord, OBS, Spotify and Windows belong to their respective publishers. REKA is an independent project with no ties to them.</p>
   </div>
+  <div class="mega" aria-hidden="true">REKA</div>
 </footer>
 
 <dialog class="lightbox" aria-label="Capture agrandie">
