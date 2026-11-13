@@ -135,6 +135,47 @@
     </div>
   </div>
 
+  <!-- Micro 3D -->
+  <section class="mic-scrolly" id="micro" aria-labelledby="micro-title-fr">
+    <div class="mic-stage">
+      <div class="mic-word" aria-hidden="true">XLR</div>
+      <img class="mic-poster" src="assets/img/mic.webp" width="900" height="1200" loading="lazy" alt="">
+      <canvas class="mic-canvas" aria-hidden="true"></canvas>
+      <div class="mic-copy">
+        <div class="eyebrow"><span lang="fr">Du micro à tes sorties</span><span lang="en">From mic to outputs</span></div>
+        <h2 id="micro-title-fr" lang="fr">Tout commence <em class="grad">au micro.</em></h2>
+        <h2 lang="en">It all starts <em class="grad">at the mic.</em></h2>
+        <ol class="mic-steps">
+          <li class="mic-step on">
+            <span class="k">01</span>
+            <h3 lang="fr">Branche ton micro</h3><h3 lang="en">Plug in your mic</h3>
+            <p lang="fr">Dans ⚙ → <strong>Audio</strong>, choisis le micro de l'entrée Microphone : <strong>WDM</strong> (le plus rapide), <strong>MME</strong> (le plus compatible), <strong>KS</strong> ou <strong>ASIO</strong>.</p>
+            <p lang="en">In ⚙ → <strong>Audio</strong>, pick the device for the Microphone input: <strong>WDM</strong> (fastest), <strong>MME</strong> (most compatible), <strong>KS</strong> or <strong>ASIO</strong>.</p>
+          </li>
+          <li class="mic-step">
+            <span class="k">02</span>
+            <h3 lang="fr">Traite ta voix</h3><h3 lang="en">Shape your voice</h3>
+            <p lang="fr">Ajoute tes plugins VST sur la strip Microphone, dans l'ordre que tu veux. Le délai qu'ils ajoutent s'affiche à côté de <em>Effets</em>.</p>
+            <p lang="en">Add your VST plugins to the Microphone strip, in any order. The delay they add shows up next to <em>Effets</em>.</p>
+          </li>
+          <li class="mic-step">
+            <span class="k">03</span>
+            <h3 lang="fr">Coupe-la d'un clic</h3><h3 lang="en">Mute it in one click</h3>
+            <p lang="fr"><strong>Muet</strong> coupe la strip. Avec le micro synchronisé, le micro barré s'affiche aussi dans Discord.</p>
+            <p lang="en"><strong>Muet</strong> (mute) silences the strip. With mic sync on, the muted-mic icon shows up in Discord too.</p>
+          </li>
+          <li class="mic-step">
+            <span class="k">04</span>
+            <h3 lang="fr">Envoie-la partout</h3><h3 lang="en">Send it everywhere</h3>
+            <p lang="fr"><strong>Monitor, Mic Out, Discord, Obs</strong> : un clic pour envoyer, un glisser pour doser.</p>
+            <p lang="en"><strong>Monitor, Mic Out, Discord, Obs</strong>: click to send, drag to set the level.</p>
+          </li>
+        </ol>
+        <div class="mic-rail" aria-hidden="true"><i></i><i></i><i></i><i></i></div>
+      </div>
+    </div>
+  </section>
+
   <!-- En bref -->
   <section id="fonctions" data-n="01">
     <div class="wrap">
@@ -734,5 +775,6 @@
 
 <script src="assets/js/site.js" defer></script>
 <script src="assets/js/fx.js" defer></script>
+<script type="module" src="assets/js/mic.js"></script>
 </body>
 </html>
